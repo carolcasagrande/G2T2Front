@@ -24,7 +24,7 @@ export const Container = styled.div`
 
   header img{
     padding: 15px;
-    width: 70%;
+    width: 70%; 
   }
 
 `
