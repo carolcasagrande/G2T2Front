@@ -59,10 +59,15 @@ nav img{
     font-weight: 300;
     text-align:left;
     /* width: 120%; */
-    margin: 8px 10px; 
+    margin: 8px 0; 
     border-bottom: 2px solid #666;
     transition: 0.5s; 
   } 
+
+  .input-full{
+    width: 100%;
+
+  }
 
   .date-time{
     display: flex;
@@ -70,10 +75,11 @@ nav img{
   }
 
   .description{
-    width: 400px;
+    width: 430px; 
     height: 400px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
+    margin-top: 20px;
+    padding: 5px;
   }
