@@ -1,42 +1,91 @@
-.aside .img-login{
+
+.menu ul{
+    display: flex;
+    justify-content: space-around;
+   
+}
+
+.menu li{
+    list-style: none;
+    
+}
+
+.container-geral{
     width: 100%;
     height: 750px;
-  }
-  
-  .form-content{
-    width: 100%;
+    padding: 0 10px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.container-card{
     display: flex;
     justify-content: space-around;
     align-items: center;
-  }
-  
-  .form-login{
-    width:430px;
-    height:450px;
-    background-color:#ffffff;
-    margin:auto;
-    border-radius:5px;
-    display:flex;
-    flex-direction:column;
-    justify-content: space-around;  
-  }
-  
-  .form-login h1{
-    font-size: 26px;
-    font-weight:300px;
-    margin:18px 0 5px;
+    flex-direction: row;
+}
+
+.polaroid {
+    width: 220px;
+    height: 220px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
+    margin: 20px;
+    display: grid;
+    align-content: space-around;
+    justify-content: center;
+    border-radius: 8px;
+    
+    background-image: linear-gradient(to right, #D40054 0%, #13132B 100%);
   }
-      
-  .form-login input{
-    display: initial;
-    border: none;
-    font-size: 16px;
-    padding: 8px;
-    font-weight: 300;
-    text-align:left;
-    width: 85%;
-    margin: 30px 25px;
-    border-bottom: 2px solid #666;
-    transition: 0.5s;
-  }
+
+  a figcaption{
+    font-size: 22px;
+    margin: 20px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.card-img{
+    width: 60px;
+}
+
+.card-img-users{
+    width: 85px;
+}
+
+/* footer .contato{
+    margin-right:5px;
+}
+
+footer .contato a img{
+ width: 40px;
+ height: 40px;
+}
+*/
+
+footer .redesocial{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+/*
+footer a{
+    align-content:center;
+    transition: text-shadow 1s;
+    padding: 5px;
+}
+*/
+footer p{
+    text-align: center;  
+    font-size:16px;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 20px 0 0;
+    color: #ffffff;
+}
+
+
