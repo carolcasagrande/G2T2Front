@@ -1,35 +1,124 @@
 import React from 'react';
 import logo from '../../../img/logo.png';
-/* import home from '../../../img/atend2.jpg'; */
+import github from '../../../img/github.png';
+import linkedin from '../../../img/linkedin.png';
+import patient from '../../../img/user.png';
+import specialist from '../../../img/users.png';
+import occupation from '../../../img/medico.png';
+import calendar from '../../../img/calendar.png';
+import prontuario from '../../../img/prontuario.png';
+import historico from '../../../img/historicomed.png';
+import voltar from '../../../img/voltar.png';
+/* import user from '../../../img/user.svg'; */
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
-import './style.css'
+import './styles.css';
 
 const Home: React.FC = () =>{
   return (
     <div className="home">
       <body>
       <div className="container">
-        <header className="header">        
-          <a className="home-link" href="/" target="_blank">
-              <img src={logo} className="logo" alt="logo" />
-          </a>              
+        <header className="header">    
+            <div className="header-logo">    
+                <a className="home-link" href="/" target="_blank">
+                    <img src={logo} className="logo" alt="logo" />
+                </a>    
+            </div>    
+            {/* <nav className="menu">
+              <ul>
+                <li><a href="/patient">Cadastro Paciente <img src={patient} className="patient-nav" alt="cadastro de paciente" /> </a></li>
+                <li><a href="/specialist">Cadastro Especialista <img src={specialist} className="logo" alt="cadastro de Especialista" /></a></li>
+                <li><a href="/occupation">Cadastro Profissão <img src={occupation} className="logo" alt="cadastro de Profissão" /></a></li>
+                <li><a href="/calls">Atendimento <img src={calendar} className="logo" alt="Atendimento" /></a></li>
+                <li><a href="/record">Prontuário <img src={prontuario} className="logo" alt="Prontuário" /></a></li>
+                <li><a href="/history">Histórico <img src={historico} className="logo" alt="Histórico" /></a></li>
+                <li><a href="/history">Voltar <img src={voltar} className="logo" alt="Histórico" /></a></li>
+              </ul>
+            </nav>   */}
         </header>     
         <main>   
-        {/* <aside className="aside">
-          <img src={home} className="img-home" alt="home" />
-        </aside> */}
-        <div className="form-content">
-          <form /* onSubmit={handleLogin} */ className="form-home">
-            <h1>Faça seu Login</h1>
-            <input type="text" id="name" placeholder="Digite o seu nome completo" /* value={login} onChange={(e) => setLogin(e.target.value)} required */ />
-            <input type="text" id="login" placeholder="Digite o seu login" /* value={password} onChange={(e) => setPassword(e.target.value)} required */ />
-            <input type="password" id="senha" placeholder="Digite sua senha" /* value={password} onChange={(e) => setPassword(e.target.value)} required  *//>
-            <button type="submit">Acessar <FiArrowRight size={25} /></button>
-          </form>
-        </div>
+        <div className="container-geral">
+          <section id="Skills" className="skills">
+          {/* <h2>Skills</h2> */}
+
+          <div className="container-card">
+            <div className="polaroid">
+              <figure>
+                <a href="/patient"><img src={patient} className="card-img" alt="cadastro de paciente" /><figcaption>Cadastro de Paciente</figcaption></a>
+              </figure>
+            </div>
+            <div className="polaroid">
+              <figure>
+                <a href="/specialist"><img src={specialist} className="card-img-users" alt="cadastro de Especialista" /><figcaption>Cadastro de Especialista</figcaption></a>
+              </figure>
+            </div>
+            <div className="polaroid">
+              <figure>
+                <a href="/occupation"> <img src={occupation} className="card-img" alt="cadastro de Profissão" /><figcaption>Cadastro Profissão</figcaption></a>
+              </figure>
+            </div>
+          </div>
+          <div className="container-card">
+            <div className="polaroid">
+              <figure>
+                <a href="/calls"><img src={calendar} className="card-img" alt="Atendimento"/><figcaption>Atendimento</figcaption></a>
+              </figure>
+            </div>
+            <div className="polaroid">
+              <figure>
+                <a href="/record"><img src={prontuario} className="card-img" alt="Prontuário" /><figcaption>Prontuário</figcaption></a>                
+              </figure>
+            </div>
+            <div className="polaroid">
+              <figure>
+                <a href="/history"> <img src={historico} className="card-img" alt="Histórico" /><figcaption>Histórico</figcaption></a>                
+              </figure>
+            </div>
+          </div>
+      </section>
+      </div>
+
         </main>
         <footer className="footer">
-          <p> Curso Gama&Afya - Desenvolvido por G2T2 | Ariele, Caroline e Fernando </p>
+          <p> Curso Gama&Afya - Desenvolvido por G2T2 |  </p>
+          <section className="redesocial">
+          <div className="contato">
+              <p>Andre, </p>
+              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+                <img src={github} alt="logo github" />
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
+                <img src={linkedin} alt="" />
+              </a>   */}      
+            </div>
+            <div className="contato">
+              <p>Ariele, </p>
+              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+                <img src={github} alt="logo github" />
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
+                <img src={linkedin} alt="" />
+              </a>    */}            
+            </div>
+            <div className="contato">
+              <p>Caroline e </p>
+              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+                <img src={github} alt="logo github" />
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
+                <img src={linkedin} alt="" />
+              </a>         */}     
+            </div>
+            <div className="contato">
+              <p> Fernando</p>
+              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+                <img src={github} alt="logo github" />
+              </a>
+              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
+                <img src={linkedin} alt="" />
+              </a>      */}        
+            </div>
+            </section> 
         </footer>
         </div>
       </body>

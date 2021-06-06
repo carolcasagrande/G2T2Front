@@ -15,21 +15,23 @@ const Login: React.FC = () =>{
           </a>              
         </header>     
         <main>   
-        <aside className="aside">
+        <aside className="aside-left">
           <img src={login} className="img-login" alt="login" />
         </aside>
-        <div className="form-content">
-          <form /* onSubmit={handleLogin} */ className="form-login  ">
-            <h1>Faça seu Login</h1>
-            <input type="text" id="name" placeholder="Digite o seu nome completo" /* value={login} onChange={(e) => setLogin(e.target.value)} required */ />
-            <input type="text" id="login" placeholder="Digite o seu login" /* value={password} onChange={(e) => setPassword(e.target.value)} required */ />
-            <input type="password" id="senha" placeholder="Digite sua senha" /* value={password} onChange={(e) => setPassword(e.target.value)} required  *//>
-            <button type="submit">Acessar <FiArrowRight size={25} /></button>
-          </form>
-        </div>
+        <aside className="aside-right">
+          <div className="form-content">
+            <form /* onSubmit={handleLogin} */ className="form-login  ">
+              <h1>Faça seu Login</h1>
+              <input type="text" id="name" placeholder="Digite o seu nome completo" /* value={login} onChange={(e) => setLogin(e.target.value)} required */ />
+              <input type="text" id="login" placeholder="Digite o seu login" /* value={password} onChange={(e) => setPassword(e.target.value)} required */ />
+              <input type="password" id="senha" placeholder="Digite sua senha" /* value={password} onChange={(e) => setPassword(e.target.value)} required  *//>
+              <button type="submit">Acessar <FiArrowRight size={25} /></button>
+            </form>
+          </div>
+        </aside>
         </main>
         <footer className="footer">
-          <p> Curso Gama&Afya - Desenvolvido por G2T2 | Ariele, Caroline e Fernando </p>
+          <p> Curso Gama&Afya - Desenvolvido por G2T2 | André, Ariele, Caroline e Fernando </p>
         </footer>
         </div>
       </body>
