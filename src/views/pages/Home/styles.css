@@ -39,7 +39,7 @@
     justify-content: center;
     border-radius: 8px;
     
-    background-image: linear-gradient(to right, #D40054 0%, #13132B 100%);
+    background-image: linear-gradient(to right, #D40054 0%, #5f0a2c 100%);
   }
 
   a figcaption{
@@ -57,35 +57,6 @@
     width: 85px;
 }
 
-/* footer .contato{
-    margin-right:5px;
-}
 
-footer .contato a img{
- width: 40px;
- height: 40px;
-}
-*/
-
-footer .redesocial{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-}
-
-/*
-footer a{
-    align-content:center;
-    transition: text-shadow 1s;
-    padding: 5px;
-}
-*/
-footer p{
-    text-align: center;  
-    font-size:16px;
-    font-family: 'Ubuntu', sans-serif;
-    padding: 20px 0 0;
-    color: #ffffff;
-}
 
 

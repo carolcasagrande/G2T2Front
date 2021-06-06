@@ -84,7 +84,46 @@ body{
     color: #ffffff;
     position: absolute;
     bottom: 0px;
+    flex-direction: column;
   }
+
+  footer .contato{
+    margin-right:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+footer .contato a img{
+ width: 30px;
+ height: 30px;
+}
+
+footer .redesocial{
+    margin-left: 5px;
+}
+
+footer .redesocial,
+footer .contato{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+footer a{
+    align-content:center;
+    transition: text-shadow 1s;
+    padding: 2px;
+}
+
+footer p{
+    text-align: center;  
+    font-size:16px;
+    font-family: 'Ubuntu', sans-serif;
+    padding: 5px 0;
+    color: #ffffff;
+}
 
 a{
     text-decoration:none;

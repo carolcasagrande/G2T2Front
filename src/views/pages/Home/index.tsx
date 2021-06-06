@@ -80,43 +80,43 @@ const Home: React.FC = () =>{
 
         </main>
         <footer className="footer">
-          <p> Curso Gama&Afya - Desenvolvido por G2T2 |  </p>
+          <p>Curso Gama & Afya - Desenvolvido por G2T2</p>
           <section className="redesocial">
-          <div className="contato">
-              <p>Andre, </p>
-              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+            <div className="contato">
+              <p>Andre</p>
+              <a target="_blank" href="https://github.com/andreludwig">
                 <img src={github} alt="logo github" />
               </a>
-              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
-                <img src={linkedin} alt="" />
-              </a>   */}      
+              <a target="_blank" href="https://www.linkedin.com/in/andr%C3%A9-ludwig-67b17414a/">
+                <img src={linkedin} alt="logo linkedin" />
+              </a>        
             </div>
             <div className="contato">
-              <p>Ariele, </p>
-              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+              <p>Ariele</p>
+              <a target="_blank" href="https://github.com/ArieleM">
                 <img src={github} alt="logo github" />
               </a>
-              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
-                <img src={linkedin} alt="" />
-              </a>    */}            
+              <a target="_blank" href="https://www.linkedin.com/in/pereiramendonca/">
+                <img src={linkedin} alt="logo linkedin" />
+              </a>              
             </div>
             <div className="contato">
-              <p>Caroline e </p>
-              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+              <p>Caroline</p>
+             <a target="_blank" href="https://github.com/carolcasagrande">
                 <img src={github} alt="logo github" />
               </a>
               <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
-                <img src={linkedin} alt="" />
-              </a>         */}     
+                <img src={linkedin} alt="logo linkedin" />
+              </a>              
             </div>
             <div className="contato">
-              <p> Fernando</p>
-              {/* <a target="_blank" href="https://github.com/carolcasagrande">
+              <p>Fernando</p>
+              <a target="_blank" href="https://github.com/ofernandovegano">
                 <img src={github} alt="logo github" />
               </a>
-              <a target="_blank" href="https://www.linkedin.com/in/carolinecasagrande">
-                <img src={linkedin} alt="" />
-              </a>      */}        
+              <a target="_blank" href="https://www.linkedin.com/in/fernandogomesrodrigues/">
+                <img src={linkedin} alt="logo linkedin" />
+              </a>      
             </div>
             </section> 
         </footer>
