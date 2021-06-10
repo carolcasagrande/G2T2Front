@@ -1,12 +1,41 @@
-import React from 'react';
+import React , { useState, useEffect, FormEvent } from 'react';
 import logo from '../../../img/logo.png';
 import github from '../../../img/github.png';
 import linkedin from '../../../img/linkedin.png';
 import login from '../../../img/atend.jpg';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
 import './style.css'
+import api from '../../../service/api';
 
-const Login: React.FC = () =>{
+const Login: React.FC = () => {
+
+  const [login, setLogin] = useState('');
+  const [password, setPassword] = useState('');
+
+  function handleLogin(event:FormEvent<HTMLFormElement>) {
+    event?.preventDefault()
+
+    const user = {
+      login: login,
+      password: password
+    }
+
+    api.post(`session`, user ).then(
+      response => {
+        localStorage.setItem('@tokenMaisha', response.data.token)
+        console.log(response.data)
+      }
+    )
+  }
+
+  useEffect(() => {
+    api.get('users').then(
+      response => {
+        console.log(response.data)
+      }
+    )
+  },[] )
+
   return (
     <div className="login">
       <body>
@@ -22,13 +51,13 @@ const Login: React.FC = () =>{
         </aside>
         <aside className="aside-right">
           <div className="form-content">
-            <form /* onSubmit={handleLogin} */ className="form-login  ">
+            <form  onSubmit={handleLogin} className="form-login  ">
               <h1>Faça seu Login</h1>
-              <input type="text" id="name" placeholder="Digite o seu nome completo" /* value={login} onChange={(e) => setLogin(e.target.value)} required */ />
-              <input type="text" id="login" placeholder="Digite o seu login" /* value={password} onChange={(e) => setPassword(e.target.value)} required */ />
-              <input type="password" id="senha" placeholder="Digite sua senha" /* value={password} onChange={(e) => setPassword(e.target.value)} required  *//>
+              <input type="text" id="login" placeholder="Digite o seu login" value={login} onChange={(e) => setLogin(e.target.value)} required />
+              <input type="password" id="senha" placeholder="Digite sua senha"  value={password} onChange={(e) => setPassword(e.target.value)} required  />
               <button type="submit">Acessar <FiArrowRight size={25} /></button>
             </form>
+
           </div>
         </aside>
         </main>
