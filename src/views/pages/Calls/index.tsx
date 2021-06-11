@@ -1,9 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import calls from '../../../img/doctor5.jpg';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
 import "./styles.css"
+import api from '../../../service/api'
+import { toast } from 'react-toastify';
+
+interface IProfession {
+  id: string, 
+  name: string, 
+}
 
 const Calls: React.FC = () =>{
+  const [patient, setPatient] = useState('');
+  const [specialist, setSpecialist] = useState('');
+  const [professions, setProfessions] = useState<IProfession[]>([]);
+  const [professionSelected, setProfessionSelected] = useState('');
+  const [dateScheduling, setDateScheduling] = useState('');
+  const [dateCalls, setDateCalls] = useState('');
+  const [hour, setHour] = useState('');
+  const [value, setValue] = useState('');
+  const [status, setStatus] = useState('');
+
+
+  async function handleCalls(event: React.FormEvent<HTMLFormElement>){
+    event?.preventDefault()
+
+    const dataCalls = {
+      date_schedule: dateScheduling,
+      date_service: dateCalls,
+      time_service: hour,
+      price: value,
+      status_service: status,
+      client_id: 14,
+      specialist_id: 29,
+    }
+
+    api.post(`services`, dataCalls).then(
+      response => {
+        console.log("teste", response.data)
+        if (response.status === 201) {
+          toast.success("Agendamento realizado com sucesso")
+        } else {
+          console.log("Verifique os dados informados")
+        }
+      }
+    )   
+  }
+
+
+  useEffect(() => {
+    api.get('professions').then(
+      response => {
+        setProfessions(response.data)
+      }
+    )
+  }, [])
+
   return (
     <div className="calls">
       <body>
@@ -14,26 +66,38 @@ const Calls: React.FC = () =>{
           </aside>
           <aside className="aside-right">
             <div className="form-content">
-              <form /* onSubmit={handleLogin} */ className="form-calls">
+            <form onSubmit={handleCalls}  className="form-calls">
                 <h1>Atendimentos</h1>
                 <div className="data-calls">
                     <div>
+                      <h4>Nome paciente:</h4>
+                      <input type="text" id="namePatient" placeholder="Nome do Paciente" value={patient} onChange={(e) => setPatient(e.target.value)}  />
+                      <h4>Nome Especialidade:</h4>
+                      <select name="Especialidade" id="status" required>
+                        {professions.map(profession => (
+                          <option value={profession.id}>{profession.name}</option>
+                        ))}
+                            
+                        </select>
+                      
+                    </div>
+                    <div>
                         <h3>Agendamento</h3>
-                        <input type="date" id="date" placeholder="Data:" /* value={date} onChange={(e) => setLogin(e.target.value)} required */ />
+                        <input type="date" id="date" placeholder="Data:" value={dateScheduling} onChange={(e) => setDateScheduling(e.target.value)} required />
                     </div>
                     <div>
                         <h3>Atendimento</h3>
                         <div className="date-time">
-                            <input type="date" id="date" placeholder="Data:" /* value={date} onChange={(e) => setLogin(e.target.value)} required */ />
-                            <input type="time" id="time" placeholder="Hora:" /* value={time} onChange={(e) => setLogin(e.target.value)} required */ />
+                            <input type="date" id="date" placeholder="Data:" value={dateCalls} onChange={(e) => setDateCalls(e.target.value)}  />
+                            <input type="time" id="time" placeholder="Hora:" value={hour} onChange={(e) => setHour(e.target.value)}  />
                         </div>
                         <div className="value-status">
-                        <input type="text" id="value" placeholder="Valor:" /* value={value} onChange={(e) => setLogin(e.target.value)} required */ />
-                        <select name="status" id="status" required>
+                        <input type="text" id="value" placeholder="Valor:" value={value} onChange={(e) => setValue(e.target.value)} required />
+                        <select name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)} required>
                             <option value="status">Selecione status</option>
-                            <option value="agendado">Agendado</option>
-                            <option value="realizado">Realizado</option>
-                            <option value="cancelado">Cancelado</option>
+                            <option value="AGENDADO">Agendado</option>
+                            <option value="REALIZADO">Realizado</option>
+                            <option value="CANCELADO">Cancelado</option>
                         </select>
                         </div>
                     </div>                    
