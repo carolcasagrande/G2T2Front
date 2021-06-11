@@ -1,9 +1,52 @@
-import React from 'react';
+import { useState, FocusEvent, FormEvent} from 'react';
+import axios from 'axios';
 import patient from '../../../img/atend2.jpg';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
-import "./styles.css"
+import "./styles.css";
+import api from '../../../service/api';
+interface IAddress{
+  cep: string;
+  logradouro: string;
+  numero: string;
+  bairro: string;
+  localidade: string;
+  uf: string;
+  complemento: string;
+}
 
 const Patient: React.FC = () =>{
+
+  const [name, setName] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [cep, setCep] = useState('');
+  const [address, setAddress] = useState<IAddress>({} as IAddress);
+
+  async function handleCep(event: FocusEvent<HTMLInputElement>){
+      event.preventDefault();    
+
+      const res = await axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+      setAddress({
+        cep: res.data.cep,
+        logradouro: res.data.logradouro,
+        numero: res.data.numero,
+        bairro: res.data.bairro,
+        localidade: res.data.localidade,
+        uf: res.data.uf,
+        complemento: res.data.complemento
+      });
+  }
+
+  function handleLogin(event: FormEvent<HTMLInputElement>){
+    event.preventDefault();
+    api.post('address', address);
+  }
+  console.log(address);
+  
+
+  
   return (
     <div className="patient">
       <body>
@@ -16,7 +59,7 @@ const Patient: React.FC = () =>{
               <div className="form-content">
                 <form /* onSubmit={handleLogin} */ className="form-patient  ">
                   <h1>Cadastro | Paciente</h1>
-                  <div className="data-patient">
+                    <div className="data-patient">
                       <input type="text" id="name" className="input-full" placeholder="Nome completo" /* value={name} onChange={(e) => setLogin(e.target.value)} required */ />
                       <div className="cpf-sangue">
                         <input type="text" id="cpf"  placeholder="CPF" /* value={cpf} onChange={(e) => setPassword(e.target.value)} required */ />
@@ -30,17 +73,17 @@ const Patient: React.FC = () =>{
                       
                   </div>
                   <h3>Endereço:</h3>
-                  <div className="adress">
-                      <input type="text" id="cep" className="input-full" placeholder="CEP" /* value={cep} onChange={(e) => setLogin(e.target.value)} required */ />
-                      <input type="text" id="logradouro" className="input-full" placeholder="Logradouro" /* value={logradouro} onChange={(e) => setPassword(e.target.value)} required */ />
-                      <input type="text" id="num" placeholder="Número" /* value={num} onChange={(e) => setPassword(e.target.value)} required  *//>
+                  <div className="address">
+                    <input type="text" id="cep" className="input-full" placeholder="CEP"  value={cep} onBlur={handleCep} onChange={(e) => setCep(e.target.value)} required />
+                    <input type="text" id="logradouro" className="input-full" placeholder="Logradouro"  value={address.logradouro} onBlur={(e) => setAddress({...address, logradouro: e.target.value})} required  />
+                    <input type="text" id="num" placeholder="Número" value={address.numero} onBlur={(e) => setAddress({...address, numero: e.target.value})} required  />
                     <div className="compl-bairro">
-                        <input type="text" id="compl" placeholder="Compl" /* value={compl} onChange={(e) => setPassword(e.target.value)} required  *//>
-                        <input type="text" id="bairro" placeholder="Bairro" /* value={bairro} onChange={(e) => setPassword(e.target.value)} required  *//>
+                      <input type="text" id="compl" placeholder="Compl"  value={address.complemento} onBlur={(e) => setAddress({...address, complemento: e.target.value})} required />
+                      <input type="text" id="bairro" placeholder="Bairro"  value={address.bairro} onBlur={(e) => setAddress({...address, bairro: e.target.value})} required />
                     </div>
                     <div className="city-uf">
-                        <input type="text" id="cidade" placeholder="Cidade" /* value={password} onChange={(e) => setPassword(e.target.value)} required  *//>
-                        <input type="text" id="uf" placeholder="UF" /* value={uf} onChange={(e) => setPassword(e.target.value)} required  *//>
+                      <input type="text" id="cidade" placeholder="Cidade"  value={address.localidade} onBlur={(e) => setAddress({...address, localidade: e.target.value})} required  />
+                      <input type="text" id="uf" placeholder="UF"  value={address.uf} onBlur={(e) => setAddress({...address, uf: e.target.value})} required />
                     </div>
                   </div>
                   <button type="submit">Cadastrar <FiArrowRight size={25} /></button>
