@@ -1,0 +1,25 @@
+footer .contato a img{
+  width: 20px;
+  height: 20px;
+  }
+
+footer .contato{
+  display: flex;
+  align-items: center;
+  margin-right:5px;
+}
+
+footer a{
+  align-content:center;
+  transition: text-shadow 1s;
+  padding: 2px;
+}
+
+.person-name{
+  text-align: center;  
+  font-size: 14px;
+  font-family: 'Ubuntu', sans-serif;
+  padding: 5px;
+  color: #CCCCCC;
+  padding-bottom: 10px;
+}
