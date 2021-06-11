@@ -5,11 +5,16 @@ import Routes from './routes';
 import './style/global.css';
 /* import 'react-toastify/dist/ReactToastify.css'  */
 
+import Footer from './components/Footer'
+import Header from './components/Header'
+
 function App() {
   return (
     <>
     <BrowserRouter>
-      <Routes/>
+      <Header />
+      <Routes />
+      <Footer />
     </BrowserRouter>
    {/*  <ToastContainer/>     */}
     </>
