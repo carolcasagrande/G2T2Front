@@ -35,16 +35,18 @@ const Calls: React.FC = () =>{
       specialist_id: 29,
     }
 
-    api.post(`services`, dataCalls).then(
-      response => {
-        console.log("teste", response.data)
-        if (response.status === 201) {
-          toast.success("Agendamento realizado com sucesso")
-        } else {
-          console.log("Verifique os dados informados")
-        }
-      }
-    )   
+    try {
+      const response = await api.post('services', dataCalls);
+          
+      if(response.status === 201) toast.success("Agendamento realizado com sucesso")
+
+    } catch (error) {
+
+      const errors = error.response.data?.erro
+
+      errors.map((erro: string) => toast.error(erro));
+      
+    }
   }
 
 

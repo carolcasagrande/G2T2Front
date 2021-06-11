@@ -5,7 +5,13 @@ import './styles.css'
 import github from '../../img/github.png';
 import linkedin from '../../img/linkedin.png';
 
-const Contact = ({ personName, githubUsername, linkedinUrlCompleted  }) => (
+interface IContact{
+  personName: string,
+  githubUsername: string,
+  linkedinUrlCompleted: string
+}
+
+const Contact = ({ personName, githubUsername, linkedinUrlCompleted  }:IContact) => (
   
       <div className="contato">
         <a target="_blank" href={`https://github.com/${githubUsername}`}>
