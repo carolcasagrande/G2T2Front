@@ -9,12 +9,19 @@ interface IProfession {
   id: string, 
   name: string, 
 }
+interface ISpecialists {
+  id: string, 
+  name: string, 
+}
+
 
 const Calls: React.FC = () =>{
   const [patient, setPatient] = useState('');
   const [specialist, setSpecialist] = useState('');
   const [professions, setProfessions] = useState<IProfession[]>([]);
+  const [specialists, setSpecialists] = useState<ISpecialists[]>([]);
   const [professionSelected, setProfessionSelected] = useState('');
+  const [specialistsSelected, setSpecialistsSelected] = useState('');
   const [dateScheduling, setDateScheduling] = useState('');
   const [dateCalls, setDateCalls] = useState('');
   const [hour, setHour] = useState('');
@@ -49,14 +56,25 @@ const Calls: React.FC = () =>{
     }
   }
 
-
   useEffect(() => {
     api.get('professions').then(
       response => {
         setProfessions(response.data)
       }
     )
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    api.get('specialists').then(
+      response => {
+        const specialistsFilter = response?.data
+        .filter( (specialist:any ) => 
+          specialist.profession.id === Number(professionSelected)
+        );
+        setSpecialists(specialistsFilter)
+      }
+    )
+  }, [professionSelected])
 
   return (
     <div className="calls">
@@ -75,13 +93,21 @@ const Calls: React.FC = () =>{
                       <h4>Nome paciente:</h4>
                       <input type="text" id="namePatient" placeholder="Nome do Paciente" value={patient} onChange={(e) => setPatient(e.target.value)}  />
                       <h4>Nome Especialidade:</h4>
-                      <select name="Especialidade" id="status" required>
+                      <select name="Especialidade" id="status" value={professionSelected} onChange={(e) => setProfessionSelected(e.target.value)}  required>
                         {professions.map(profession => (
-                          <option value={profession.id}>{profession.name}</option>
+                          <option key={profession.id} value={profession.id}>{profession.name}</option>
                         ))}
                             
-                        </select>
-                      
+                      </select>
+                      {
+                        professionSelected &&
+                          <select name="Especialidade" id="status" value={specialistsSelected} onChange={(e) => setProfessionSelected(e.target.value)}  required>
+                            {specialists.map(specialist => (
+                              <option key={specialist.id} value={specialist.id}>{specialist.name}</option>
+                            ))}
+                                
+                          </select>
+                      }
                     </div>
                     <div>
                         <h3>Agendamento</h3>
