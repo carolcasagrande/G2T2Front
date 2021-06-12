@@ -15,6 +15,7 @@
     "@typescript-eslint/parser": "2.x",
     "axios": "^0.21.1",
     "babel-eslint": "10.x",
+    "bootstrap": "^5.0.1",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "4.x",
     "eslint-plugin-import": "2.x",

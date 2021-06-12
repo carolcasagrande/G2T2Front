@@ -5,7 +5,13 @@ import './styles.css'
 import github from '../../img/github.png';
 import linkedin from '../../img/linkedin.png';
 
-const Contact = ({ personName, githubUsername, linkedinUrlCompleted  }) => (
+interface Props {
+  personName: String;
+  githubUsername: String;
+  linkedinUrlCompleted: String;
+}
+
+const Contact: React.FC<Props> = ({ personName, githubUsername, linkedinUrlCompleted  }) => (
   
       <div className="contato">
         <a target="_blank" href={`https://github.com/${githubUsername}`}>

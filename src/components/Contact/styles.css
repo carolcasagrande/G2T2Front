@@ -13,6 +13,7 @@ footer a{
   align-content:center;
   transition: text-shadow 1s;
   padding: 2px;
+  padding-top: 0;
 }
 
 .person-name{
@@ -21,5 +22,5 @@ footer a{
   font-family: 'Ubuntu', sans-serif;
   padding: 5px;
   color: #CCCCCC;
-  padding-bottom: 10px;
+  margin-bottom: 0;
 }

@@ -4,7 +4,7 @@ import './styles.css'
 
 import Contact from '../Contact'
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <footer className="footer">
     <section className="redesocial">
       <Contact personName='André' githubUsername='andreludwig' linkedinUrlCompleted='andr%C3%A9-ludwig-67b17414a'/>
