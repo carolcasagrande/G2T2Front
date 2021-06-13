@@ -1,6 +1,7 @@
 import React from 'react';
 
 import HomeHeader from '../../../components/Home-header';
+import PatientsWaiting from '../../../components/Patients-waiting';
 
 import './styles.css';
 
@@ -11,8 +12,7 @@ const Home: React.FC = () =>(
 
       <div className="column">
         <HomeHeader title='Pacientes na fila de espera' />
-        <div>
-        </div>
+        <PatientsWaiting />
       </div>
 
       <div className="column">
