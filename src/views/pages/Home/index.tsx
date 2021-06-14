@@ -1,65 +1,69 @@
-import React from 'react';
-import patient from '../../../img/user.png';
-import specialist from '../../../img/users.png';
-import occupation from '../../../img/medico.png';
-import calendar from '../../../img/calendar.png';
-import prontuario from '../../../img/prontuario.png';
-import historico from '../../../img/historicomed.png';
-/* import user from '../../../img/user.svg'; */
-import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
+import React, { useEffect, useState } from 'react';
+import Pusher from 'pusher-js';
+
+import api from '../../../service/api';
+
+import HomeHeader from '../../../components/Home-header';
+import PatientsWaiting from '../../../components/Patients-waiting';
+import MedicalRecordsHistory from '../../../components/Medical-records-history';
+
 import './styles.css';
 
-const Home: React.FC = () =>{
-  return (
-    <div className="home">
-      <body>
-        <div className="container">    
-          <main>   
-            <div className="container-geral">
-              <section id="Skills" className="skills">
-              {/* <h2>Skills</h2> */}
+const Home: React.FC = () => {
+  const [checkins, setCheckins] = useState<Array<any>>([])
+  const [queue, setQueue] =  useState<Boolean>(true)
 
-                <div className="container-card">
-                  <div className="polaroid">
-                    <figure>
-                      <a href="/patient"><img src={patient} className="card-img" alt="cadastro de paciente" /><figcaption>Cadastro de Paciente</figcaption></a>
-                    </figure>
-                  </div>
-                  <div className="polaroid">
-                    <figure>
-                      <a href="/specialist"><img src={specialist} className="card-img-users" alt="cadastro de Especialista" /><figcaption>Cadastro de Especialista</figcaption></a>
-                    </figure>
-                  </div>
-                  <div className="polaroid">
-                    <figure>
-                      <a href="/occupation"> <img src={occupation} className="card-img" alt="cadastro de Profissão" /><figcaption>Cadastro Profissão</figcaption></a>
-                    </figure>
-                  </div>
-                </div>
-                <div className="container-card">
-                  <div className="polaroid">
-                    <figure>
-                      <a href="/calls"><img src={calendar} className="card-img" alt="Atendimento"/><figcaption>Atendimento</figcaption></a>
-                    </figure>
-                  </div>
-                  <div className="polaroid">
-                    <figure>
-                      <a href="/record"><img src={prontuario} className="card-img" alt="Prontuário" /><figcaption>Prontuário</figcaption></a>                
-                    </figure>
-                  </div>
-                  <div className="polaroid">
-                    <figure>
-                      <a href="/history"> <img src={historico} className="card-img" alt="Histórico" /><figcaption>Histórico</figcaption></a>                
-                    </figure>
-                  </div>
-                </div>
-              </section>
-            </div>
-          </main>
+  // connection with mongoDB using websocket
+  useEffect(() => {
+    api.get('checkins/sync').then(response => {
+        setCheckins(response.data);
+        console.log(response.data)
+    })
+  }, [])
+
+  useEffect(() => {
+    const pusher = new Pusher('cde1c800fa96905d8626', {
+      cluster: 'us2'
+    });
+
+    const channel = pusher.subscribe('checkins');
+    channel.bind('inserted', (newCheckin: any) => {
+      alert(JSON.stringify(newCheckin));
+      setCheckins([...checkins, newCheckin])
+    }); 
+
+    return () => {
+      channel.unbind_all();
+      channel.unsubscribe();
+    }
+  }, [checkins])
+
+  console.log(checkins);
+
+  const handleClick = () => {
+    setQueue(!queue)
+  }
+  
+  return(
+    <div className="container container-home">
+      <div className="row dashboard">
+        
+        <div className="column">
+          {queue? (<PatientsWaiting checkins={checkins} />) : (<MedicalRecordsHistory />)}
+            
+          <button  onClick={handleClick} className='btn-history-queue'>
+            {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
+          </button>
         </div>
-      </body>
+
+        <div className="column">
+          <HomeHeader title='prontuário de atendimento' />
+          <div> Prontuário para editar </div>
+        </div>
+
+      </div>
     </div>
-  );
-}
+  )
+};
 
 export default Home;

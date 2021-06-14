@@ -1,0 +1,20 @@
+/* .patients {
+  background-color: white;
+  height: 85vh;
+  margin-top: 6vh;
+  width: 97.5%;
+  color: gray;
+} */
+
+.tbody {
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+
+.patients-table {
+  width: 100%;
+  border-radius: 5px;
+}
+
+
+

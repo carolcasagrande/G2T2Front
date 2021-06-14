@@ -1,0 +1,36 @@
+  .row-table {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin: 0 auto;
+}
+
+.row-table:hover {
+  color: #D40054;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.patients-table .td {
+  padding: 2vh;
+  font-weight: bold;
+}
+
+.icons {
+  display: none;
+}
+.icon {
+  margin: 3px;
+}
+.icon:active {
+  position:relative;
+  top:2px;
+}
+
+.row-table:hover .icons{
+  display: block;
+}
+
+.time-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

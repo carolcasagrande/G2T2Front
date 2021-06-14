@@ -1,6 +1,6 @@
 header {
   width: 100%;
-  height: 80px;
+  height: 10vh;
   background: #D40054;
   display: flex;
   justify-content: space-between;
@@ -10,4 +10,9 @@ header {
 header .logo{
   padding: 15px;
   width: 70%;
+}
+
+.back-page a img {
+  width: 50px;
+  margin: 30px;
 }

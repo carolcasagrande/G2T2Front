@@ -7,9 +7,9 @@
 }
 
 body{
-    background: #ffffff;
+    background: white;
     width: 100%;
-    min-height: 80%;
+    min-height: 85vh;
   }
 
 .hidden{
@@ -60,5 +60,9 @@ button:hover{
   
 a{
     text-decoration:none;
+}
+
+.container{
+  min-height: 85vh;
 }
 

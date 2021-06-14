@@ -1,0 +1,12 @@
+.head-links {
+  display: flex;
+}
+
+.head-links li {
+  margin: 15px;
+  text-decoration: none;
+}
+
+.head-links li a{
+  color: white;
+}

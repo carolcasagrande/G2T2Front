@@ -1,62 +1,34 @@
 
-.menu ul{
-    display: flex;
-    justify-content: space-around;
-   
+.container-home {
+  display: flex;
+  align-items: center;
+}
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.menu li{
-    list-style: none;
-    
+.column {
+  border-radius: 10px;
+  background-color: #F7F3F7;
+  height: 70vh;
+  width: 75vh;
+  box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
+  margin: 40px auto;
 }
 
-.container-geral{
-    width: 100%;
-    height: 750px;
-    padding: 0 10px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: row;
+.btn-history-queue{
+  width: 200px;
+  height: 30px;
+  font-size: 0.8rem;
+  padding: 0;
+  margin: 10px 23vh;
+  border: none;
+  border-radius: 100px;
+  display: block;
+  position: absolute;
+  bottom: 15vh;
+
 }
-
-.container-card{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-}
-
-.polaroid {
-    width: 220px;
-    height: 220px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    margin: 20px;
-    display: grid;
-    align-content: space-around;
-    justify-content: center;
-    border-radius: 8px;
-    
-    background-image: linear-gradient(to right, #D40054 0%, #5f0a2c 100%);
-  }
-
-  a figcaption{
-    font-size: 22px;
-    margin: 20px;
-    color: #ffffff;
-    font-weight: bold;
-}
-
-.card-img{
-    width: 60px;
-}
-
-.card-img-users{
-    width: 85px;
-}
-
-
-
 
