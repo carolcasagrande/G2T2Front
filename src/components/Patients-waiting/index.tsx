@@ -8,14 +8,27 @@ import PatientsHead from '../Patients-head';
 
 import './styles.css'
 
-const PatientsWaiting: React.FC = () => (
+interface Props {
+  checkins: any;
+}
+
+const PatientsWaiting: React.FC<Props> = ({ checkins }) => {
+  
+  return(
 
   <div className='patients-table'>
-    <PatientsHead />
-    <PatientsBody />
+    <div className='tbody'>
+      <PatientsHead />
+      {
+        checkins.map( (checkin: any) => {
+          return <PatientsBody key={checkin.appointment} checkin={ checkin } />
+        })
+      }
+    </div>
   </div>
+  )
 
-);
+};
 
 export default PatientsWaiting;
 

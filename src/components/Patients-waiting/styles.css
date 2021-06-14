@@ -6,6 +6,11 @@
   color: gray;
 } */
 
+.tbody {
+  overflow-y: scroll;
+  max-height: 50vh;
+}
+
 .patients-table {
   width: 100%;
   margin-top: 1vh;
