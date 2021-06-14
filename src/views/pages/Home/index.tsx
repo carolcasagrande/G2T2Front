@@ -5,12 +5,15 @@ import api from '../../../service/api';
 
 import HomeHeader from '../../../components/Home-header';
 import PatientsWaiting from '../../../components/Patients-waiting';
+import MedicalRecordsHistory from '../../../components/Medical-records-history';
 
 import './styles.css';
 
 const Home: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
+  const [queue, setQueue] =  useState<Boolean>(true)
 
+  // connection with mongoDB using websocket
   useEffect(() => {
     api.get('checkins/sync').then(response => {
         setCheckins(response.data);
@@ -36,15 +39,23 @@ const Home: React.FC = () => {
   }, [checkins])
 
   console.log(checkins);
+
+  const handleClick = () => {
+    setQueue(!queue)
+  }
   
   return(
     <div className="container container-home">
       <div className="row dashboard">
         
         <div className="column">
-          <HomeHeader title='Pacientes na fila de espera' />
-          <PatientsWaiting checkins={ checkins } />
+          {queue? (<PatientsWaiting checkins={checkins} />) : (<MedicalRecordsHistory />)}
+            
+          <button  onClick={handleClick} className='btn-history-queue'>
+            {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
+          </button>
         </div>
+
         <div className="column">
           <HomeHeader title='prontuário de atendimento' />
           <div> Prontuário para editar </div>
