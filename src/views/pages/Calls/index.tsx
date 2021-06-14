@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, FocusEvent } from 'react';
 import calls from '../../../img/doctor5.jpg';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
 import "./styles.css"
@@ -14,9 +14,15 @@ interface ISpecialists {
   name: string, 
 }
 
+interface IPatient {
+  id: string, 
+  name: string, 
+}
+
 
 const Calls: React.FC = () =>{
-  const [patient, setPatient] = useState('');
+  const [patient, setPatient] = useState<IPatient>();
+  const [cpf, setCpf] = useState('');
   const [specialist, setSpecialist] = useState('');
   const [professions, setProfessions] = useState<IProfession[]>([]);
   const [specialists, setSpecialists] = useState<ISpecialists[]>([]);
@@ -38,7 +44,7 @@ const Calls: React.FC = () =>{
       time_service: hour,
       price: value,
       status_service: status,
-      client_id: 14,
+      client_id: patient?.id,
       specialist_id: 29,
     }
 
@@ -63,6 +69,20 @@ const Calls: React.FC = () =>{
       }
     )
   }, []);
+
+  async function handleCpf(event: FocusEvent<HTMLInputElement>){
+    event.preventDefault();
+
+    const clients = await api.get('clients')
+    
+    const clientExist = clients?.data.find((client: any)=> client.cpf === cpf )
+    if(!clientExist){
+      toast.error('Cpf inválido.')
+    }
+
+    setPatient(clientExist)
+    
+  }
 
   useEffect(() => {
     api.get('specialists').then(
@@ -90,8 +110,14 @@ const Calls: React.FC = () =>{
                 <h1>Atendimentos</h1>
                 <div className="data-calls">
                     <div>
-                      <h4>Nome paciente:</h4>
-                      <input type="text" id="namePatient" placeholder="Nome do Paciente" value={patient} onChange={(e) => setPatient(e.target.value)}  />
+                      <h4>Cpf do paciente:</h4>
+                      <input type="text" id="cpfPatient" placeholder="Cpf do Paciente" value={cpf} onBlur={handleCpf} onChange={(e) => setCpf(e.target.value)} required />
+                      {patient && 
+                      <>
+                        <h4>Nome paciente:</h4>
+                        <input type="text" id="namePatient" placeholder="Nome do Paciente" value={patient.name} required />
+                      </>
+                      }
                       <h4>Nome Especialidade:</h4>
                       <select name="Especialidade" id="status" value={professionSelected} onChange={(e) => setProfessionSelected(e.target.value)}  required>
                         {professions.map(profession => (
@@ -101,7 +127,7 @@ const Calls: React.FC = () =>{
                       </select>
                       {
                         professionSelected &&
-                          <select name="Especialidade" id="status" value={specialistsSelected} onChange={(e) => setProfessionSelected(e.target.value)}  required>
+                          <select name="Especialidade" id="status" value={specialistsSelected} onChange={(e) => setSpecialistsSelected(e.target.value)}  required>
                             {specialists.map(specialist => (
                               <option key={specialist.id} value={specialist.id}>{specialist.name}</option>
                             ))}
@@ -116,8 +142,8 @@ const Calls: React.FC = () =>{
                     <div>
                         <h3>Atendimento</h3>
                         <div className="date-time">
-                            <input type="date" id="date" placeholder="Data:" value={dateCalls} onChange={(e) => setDateCalls(e.target.value)}  />
-                            <input type="time" id="time" placeholder="Hora:" value={hour} onChange={(e) => setHour(e.target.value)}  />
+                            <input type="date" id="date" placeholder="Data:" value={dateCalls} onChange={(e) => setDateCalls(e.target.value)} required />
+                            <input type="time" id="time" placeholder="Hora:" value={hour} onChange={(e) => setHour(e.target.value)} required />
                         </div>
                         <div className="value-status">
                         <input type="text" id="value" placeholder="Valor:" value={value} onChange={(e) => setValue(e.target.value)} required />
