@@ -1,10 +1,10 @@
-.patients {
+/* .patients {
   background-color: white;
   height: 85vh;
   margin-top: 6vh;
   width: 97.5%;
   color: gray;
-}
+} */
 
 .patients-table {
   width: 100%;
@@ -12,55 +12,6 @@
   border: 1vh solid #F7F3F7;
   border-radius: 5px;
 }
-.patients-table .th {
-  padding: 3vh 2vh;
-  font-weight: bold;
-}
-.patients-table .td {
-  padding: 2vh;
-  font-weight: bold;
-}
-
-.icon {
-  width: 15px;
-  margin: 3px;
-}
-.icon:active {
-  position:relative;
-  top:2px;
-}
-
-.icons {
-  display: none;
-}
-
-.row-table:hover .icons{
-  display: block;
-}
-
-.time-info {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 
 
-.row-table-header {
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  margin: 0 auto;
-  margin-right: 3vh;
-}
-.row-table {
-  border-bottom: 1px solid rgba(0,0,0,.1);
-  margin: 0 auto;
-}
 
-.row-table:hover {
-  color: #D40054;
-  background-color: white;
-  border-radius: 5px;
-}
-
-.tbody {
-  overflow-y: scroll;
-}
