@@ -8,7 +8,7 @@ import Specialist from './views/pages/Specialist';
 import Occupation from './views/pages/Occupation';
 import Calls from './views/pages/Calls';
 import Record from './views/pages/Record'; 
-import History from './views/pages/History';
+import MedicalRecordForm from './components/Medical-record-form';
  
 const Routes: React.FC = () => {
   return (
@@ -21,7 +21,7 @@ const Routes: React.FC = () => {
         <Route path="/occupation" component={Occupation} />
         <Route path="/calls" component={Calls} /> 
        <Route path="/record" component={Record} />
-       <Route path="/history" component={History} />
+       <Route path="/history" component={MedicalRecordForm} />
       </Switch>
     </BrowserRouter>
   );

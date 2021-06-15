@@ -1,0 +1,64 @@
+.form-medical-record-container{
+  width: 100%;
+  padding: 10px 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.form-medical-record input, 
+.form-medical-record textarea {
+  background-color: transparent;
+}
+
+.form-medical-record textarea {
+  border-radius: 10px;
+}
+
+.form-medical-record{
+  height: 60vh;
+  width: 60vh;
+  background-color: transparent;
+  display:flex;
+  flex-direction:column;
+  justify-content: space-around; 
+}    
+    
+.date-time-medical-record {
+  font-size: 16px;
+  padding: 3px;
+  text-align:left;
+  margin: 8px 0; 
+  border-bottom: 1px solid #666;
+} 
+
+.date-time{
+  display: flex;
+  justify-content: space-between;
+}
+
+.description{
+  width: 60vh; 
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 5px;
+}
+
+.btn-medical-record {
+    width: 200px;
+    height: 30px;
+    font-size: 0.8rem;
+    padding: 0;
+    border: none;
+    border-radius: 100px;
+    display: block;
+    bottom: 15vh;
+}
+
+.medical-record-material-icon {
+  vertical-align: baseline;
+}

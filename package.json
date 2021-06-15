@@ -25,6 +25,7 @@
     "eslint-plugin-react": "7.x",
     "eslint-plugin-react-hooks": "2.x",
     "jwt-decode": "^3.1.2",
+    "moment": "^2.29.1",
     "polished": "^4.1.0",
     "pusher-js": "^7.0.3",
     "react": "^17.0.1",

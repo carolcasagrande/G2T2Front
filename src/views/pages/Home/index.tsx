@@ -6,6 +6,7 @@ import api from '../../../service/api';
 import HomeHeader from '../../../components/Home-header';
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history';
+import MedicalRecordForm from '../../../components/Medical-record-form';
 
 import './styles.css';
 
@@ -58,7 +59,7 @@ const Home: React.FC = () => {
 
         <div className="column">
           <HomeHeader title='prontuário de atendimento' />
-          <div> Prontuário para editar </div>
+          <MedicalRecordForm />
         </div>
 
       </div>
