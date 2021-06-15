@@ -7,6 +7,7 @@ import HomeHeader from '../../../components/Home-header';
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history';
 import MedicalRecordForm from '../../../components/Medical-record-form';
+import MedicalRecords from '../../../components/Medical-records';
 
 import './styles.css';
 
@@ -59,7 +60,7 @@ const Home: React.FC = () => {
 
         <div className="column">
           <HomeHeader title='prontuário de atendimento' />
-          <MedicalRecordForm />
+          {queue? (<MedicalRecordForm />) : (<MedicalRecords />)}
         </div>
 
       </div>

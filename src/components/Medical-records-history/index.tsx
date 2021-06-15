@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 
 import api from '../../service/api';
 
+import './styles.css';
+
 import HomeHeader from '../Home-header';
 import SearchInput from '../Search-input';
 import CheckinPatient from '../Checkin-patient';
