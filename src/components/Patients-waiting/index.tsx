@@ -25,7 +25,7 @@ const PatientsWaiting: React.FC<Props> = ({ checkins }) => {
         <PatientsHead />
         {
           checkins.map( (checkin: any) => {
-            return <PatientsBody key={checkin.appointment} checkin={ checkin } />
+            return <PatientsBody key={checkin._id} checkin={ checkin } />
           })
         }
       </div>

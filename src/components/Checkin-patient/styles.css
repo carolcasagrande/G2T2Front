@@ -1,0 +1,20 @@
+.row-table-medical-record{
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin: 0 auto;
+}
+
+.row-table-medical-record:hover {
+  color: #D40054;
+  background-color: white;
+  border-radius: 5px;
+}
+.row-table-medical-record .td-medical-record{
+  padding: 2vh;
+  font-weight: bold;
+}
+.time-info-medical-record{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

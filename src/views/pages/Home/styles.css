@@ -23,12 +23,9 @@
   height: 30px;
   font-size: 0.8rem;
   padding: 0;
-  margin: 10px 23vh;
+  margin: 0 auto;
   border: none;
   border-radius: 100px;
   display: block;
-  position: absolute;
-  bottom: 15vh;
-
 }
 
