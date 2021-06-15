@@ -1,0 +1,34 @@
+.container-home {
+    display: flex;
+    align-items: center;
+  }
+  .dashboard {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .column {
+    border-radius: 10px;
+    background-color: #F7F3F7;
+    height: 70vh;
+    width: 75vh;
+    box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
+    margin: 40px auto;
+  }
+
+  .column-right{
+      height: 100vh;
+  }
+  
+  .btn-history-queue{
+    width: 200px;
+    height: 30px;
+    font-size: 0.8rem;
+    padding: 0;
+    margin: 0 auto;
+    border: none;
+    border-radius: 100px;
+    display: block;
+  }
+  

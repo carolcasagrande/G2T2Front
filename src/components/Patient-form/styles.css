@@ -1,0 +1,82 @@
+nav{
+    width: 100px;
+   height: 80px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+  }
+  
+  nav img{
+    width: 50px;
+  }
+  
+  .aside-left .img-patient{
+      width: 100%;
+      height: 750px;
+    }
+    
+    .form-content{
+      width: 100%;
+      padding: 10px 0;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      box-sizing: border-box;
+    }
+    
+    .form-patient{
+      width:430px;
+      height:450px;
+      background-color:#ffffff;
+      margin:auto;
+      border-radius:5px;
+      display:flex;
+      flex-direction:column;
+      justify-content: space-around; 
+      
+    }
+    
+    .form-patient h1{
+      font-size: 30px;
+      font-weight:300px;
+      margin:18px 0 30px;
+      text-align: center;
+      color: #13132B;
+    }
+  
+    .form-patient h3{
+      font-size: 22px;
+      font-weight:300px;
+      margin:15px 0 5px;
+      color: #13132B;
+    }      
+  
+    .input-full{
+      width: 100%;
+  
+    }
+        
+    .form-patient input{
+      display: initial;
+      border: none;
+      font-size: 16px;
+      padding: 3px;
+      font-weight: 300;
+      text-align:left;
+      /* width: 120%; */
+      margin: 8px 10px; 
+      border-bottom: 2px solid #666;
+      transition: 0.5s; 
+    } 
+  
+    .form-patient .cel-tel,
+    .form-patient .cpf-sangue,
+    .form-patient .compl-bairro,
+    .form-patient .city-uf{
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .adress{
+      margin-bottom: 15px;
+    }
