@@ -1,3 +1,7 @@
+.nav-cards{
+  display: flex;
+}
+
 .container-home {
     display: flex;
     align-items: center;
