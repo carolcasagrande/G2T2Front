@@ -1,6 +1,6 @@
 import React, { useState, useEffect, FocusEvent } from 'react';
 import calls from '../../../img/doctor5.jpg';
-import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
+import { FiArrowRight } from 'react-icons/fi';
 import "./styles.css"
 import api from '../../../service/api'
 import { toast } from 'react-toastify';
