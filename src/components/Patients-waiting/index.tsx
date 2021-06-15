@@ -13,14 +13,15 @@ import './styles.css'
 
 interface Props {
   checkins: any;
+  title: string;
 }
 
-const PatientsWaiting: React.FC<Props> = ({ checkins }) => {
+const PatientsWaiting: React.FC<Props> = ({ checkins, title }) => {
   
   return(
 
     <div className='patients-table'>
-      <HomeHeader title='Pacientes na fila de espera' />
+      <HomeHeader title={title} />
       <div className='tbody'>
         <PatientsHead />
         {

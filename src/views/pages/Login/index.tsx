@@ -1,5 +1,5 @@
 import React, {  useState, useEffect } from 'react';
-import login from '../../../img/atend.jpg';
+import loginImg from '../../../img/atend.jpg';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
 import './style.css'
 import api from '../../../service/api';
@@ -9,6 +9,7 @@ const Login: React.FC = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
+  
   function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault()
 
@@ -39,7 +40,7 @@ const Login: React.FC = () => {
         <div className="container">    
           <main>   
           <aside className="aside-left">
-            <img src={login} className="img-login" alt="login" />
+            <img src={loginImg} className="img-login" alt="login" />
           </aside>
           <aside className="aside-right">
             <div className="form-content">

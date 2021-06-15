@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import Pusher from 'pusher-js';
+import PatientForm from '../../../components/Patient-form'
 
 import api from '../../../service/api';
 
 import HomeHeader from '../../../components/Home-header';
+import PatientsHead from '../../../components/Patients-head';
+import PatientsBody from '../../../components/Patients-body';
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history';
 import MedicalRecordForm from '../../../components/Medical-record-form';
 
 import './styles.css';
 
-const Home: React.FC = () => {
+const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const [queue, setQueue] =  useState<Boolean>(true)
 
@@ -47,19 +50,35 @@ const Home: React.FC = () => {
   
   return(
     <div className="container container-home">
-      <div className="row dashboard">
+      <div className="dashboard">
         
-        <div className="column">
-          {queue? (<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) : (<MedicalRecordsHistory />)}
+        <div>
+            <div className="column-receptionist column-2">
+                <HomeHeader title='Olá atendente' />
+            </div>
+            <div className="column-receptionist column-1" >
+                <div className='patients-table'>
+                    <HomeHeader title='Agendamentos do dia' />
+                    <div className='column-body'>
+                        <PatientsHead />
+                        {
+                        checkins.map( (checkin: any) => {
+                            return <PatientsBody key={checkin._id} checkin={ checkin } />
+                        })
+                        }
+                    </div>
+                </div>  
+                
+            {/* <button  onClick={handleClick} className='btn-history-queue'>
+                {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
+            </button> */}
+            </div>
             
-          <button  onClick={handleClick} className='btn-history-queue'>
-            {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
-          </button>
-        </div>
+        </div>        
 
-        <div className="column">
-          <HomeHeader title='prontuário de atendimento' />
-          <MedicalRecordForm />
+        <div className="column-receptionist">
+          <HomeHeader title='Cadastro de Paciente' />
+          <PatientForm />
         </div>
 
       </div>
@@ -67,4 +86,4 @@ const Home: React.FC = () => {
   )
 };
 
-export default Home;
+export default Receptionist;

@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Login from './views/pages/Login';
 import Home from './views/pages/Home';
-import Patient from './views/pages/Patient';
+import Receptionist from './views/pages/Receptionist';
 import Specialist from './views/pages/Specialist';
 import Occupation from './views/pages/Occupation';
 import Calls from './views/pages/Calls';
@@ -15,8 +15,8 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Home} />
+        <Route path="/receptionist" component={Receptionist} />
         <Route path="/login" component={Login} />
-        <Route path="/patient" component={Patient} />
         <Route path="/specialist" component={Specialist} />
         <Route path="/occupation" component={Occupation} />
         <Route path="/calls" component={Calls} /> 
