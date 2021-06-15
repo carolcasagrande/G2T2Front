@@ -3,6 +3,7 @@
   display: flex;
   align-items: center;
 }
+
 .dashboard {
   display: flex;
   justify-content: space-between;

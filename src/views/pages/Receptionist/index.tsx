@@ -5,6 +5,8 @@ import PatientForm from '../../../components/Patient-form'
 import api from '../../../service/api';
 
 import HomeHeader from '../../../components/Home-header';
+import PatientsHead from '../../../components/Patients-head';
+import PatientsBody from '../../../components/Patients-body';
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history';
 import MedicalRecordForm from '../../../components/Medical-record-form';
@@ -48,25 +50,33 @@ const Receptionist: React.FC = () => {
   
   return(
     <div className="container container-home">
-      <div className="row dashboard">
+      <div className="dashboard">
         
-        <div className="column">
-            <div className="column column-left-up">
+        <div>
+            <div className="column-receptionist column-2">
                 <HomeHeader title='Olá atendente' />
-                <p>top</p>
             </div>
-            <div className="column column-left-down" >
-            <HomeHeader title='Agendamentos do dia' />
-            {/* {queue? (<PatientsWaiting checkins={checkins} />) : (<MedicalRecordsHistory />)} */}
+            <div className="column-receptionist column-1" >
+                <div className='patients-table'>
+                    <HomeHeader title='Agendamentos do dia' />
+                    <div className='column-body'>
+                        <PatientsHead />
+                        {
+                        checkins.map( (checkin: any) => {
+                            return <PatientsBody key={checkin._id} checkin={ checkin } />
+                        })
+                        }
+                    </div>
+                </div>  
                 
-            <button  onClick={handleClick} className='btn-history-queue'>
+            {/* <button  onClick={handleClick} className='btn-history-queue'>
                 {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
-            </button>
+            </button> */}
             </div>
             
         </div>        
 
-        <div className="column column-right">
+        <div className="column-receptionist">
           <HomeHeader title='Cadastro de Paciente' />
           <PatientForm />
         </div>

@@ -1,9 +1,9 @@
-import './styles.css';
 import { useState, FocusEvent, FormEvent} from 'react';
 import axios from 'axios';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
 import api from '../../service/api';
 import {toast} from 'react-toastify';
+import './styles.css';
 
 // import { Container } from './styles';
 
@@ -98,8 +98,8 @@ const PatientForm: React.FC = () => {
                   <div className="address">
                     <input type="text" id="cep" className="input-full" placeholder="CEP"  value={cep} onBlur={handleCep} onChange={(e) => setCep(e.target.value)} required />
                     <input type="text" id="logradouro" className="input-full" placeholder="Logradouro"  value={address.street} onChange={(e) => setAddress({...address, street: e.target.value})} required  />
-                    <input type="text" id="num" placeholder="Número" value={address.street_number} onChange={(e) => setAddress({...address, street_number: e.target.value})} required  />
                     <div className="compl-bairro">
+                      <input type="text" id="num" placeholder="Número" value={address.street_number} onChange={(e) => setAddress({...address, street_number: e.target.value})} required  />
                       <input type="text" id="bairro" placeholder="Bairro"  value={address.district} onChange={(e) => setAddress({...address, district: e.target.value})} required />
                     </div>
                     <div className="city-uf">
@@ -107,7 +107,7 @@ const PatientForm: React.FC = () => {
                       <input type="text" id="uf" placeholder="UF"  value={address.federative_unit} onChange={(e) => setAddress({...address, federative_unit: e.target.value})} required />
                     </div>
                   </div>
-                  <button type="submit">Cadastrar <FiArrowRight size={25} /></button>
+                  <button className="btnPatientForm" type="submit">Cadastrar <FiArrowRight size={15} /></button>
                 </form>
               </div>
     );
