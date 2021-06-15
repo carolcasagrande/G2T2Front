@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Pusher from 'pusher-js';
 import PatientForm from '../../../components/Patient-form'
+import Navbar from '../../../components/Navbar';
 
 import api from '../../../service/api';
 
@@ -49,9 +50,10 @@ const Receptionist: React.FC = () => {
   }
   
   return(
-    <div className="container container-home">
-      <div className="dashboard">
-        
+    <div className="nav-cards">
+    <Navbar/>
+    <div className="container container-home">      
+      <div className="dashboard">        
         <div>
             <div className="column-receptionist column-2">
                 <HomeHeader title='Olá atendente' />
@@ -82,6 +84,7 @@ const Receptionist: React.FC = () => {
         </div>
 
       </div>
+    </div>
     </div>
   )
 };

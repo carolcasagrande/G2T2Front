@@ -1,6 +1,6 @@
 import React from 'react';
 
-import HeaderLinks from '../Header-links';
+/* import HeaderLinks from '../Header-links'; */
 
 import logo from '../../img/logo.png';
 import voltar from '../../img/voltar.png';
@@ -15,7 +15,7 @@ const Header: React.FC = () => (
       </a>   
     </div> 
     <div>
-      <HeaderLinks />
+     {/*  <HeaderLinks /> */}
     </div>         
     <div className="back-page" >
       <a href="/"> <img src={voltar} className="voltar" alt="voltar" /></a>
