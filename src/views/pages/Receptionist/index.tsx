@@ -8,6 +8,7 @@ import api from '../../../service/api';
 import HomeHeader from '../../../components/Home-header';
 import PatientsHead from '../../../components/Patients-head';
 import PatientsBody from '../../../components/Patients-body';
+import CallsForm from '../../../components/CallsForm';
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
@@ -17,6 +18,7 @@ import './styles.css';
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const [queue, setQueue] =  useState<Boolean>(true)
+  const [pageActive, setPageActive] = useState('');
 
   // connection with mongoDB using websocket
   useEffect(() => {
@@ -44,6 +46,11 @@ const Receptionist: React.FC = () => {
   }, [checkins])
 
   console.log(checkins);
+  const handleState = (page:string) =>{
+    // setPageActive()
+    console.log(pageActive);
+    
+  }
 
   const handleClick = () => {
     setQueue(!queue)
@@ -51,7 +58,7 @@ const Receptionist: React.FC = () => {
   
   return(
     <div className="nav-cards">
-    <Navbar/>
+    <Navbar />
     <div className="container container-home">      
       <div className="dashboard">        
         <div>
@@ -59,28 +66,33 @@ const Receptionist: React.FC = () => {
                 <HomeHeader title='Olá atendente' />
             </div>
             <div className="column-receptionist column-1" >
-                <div className='patients-table'>
-                    <HomeHeader title='Agendamentos do dia' />
-                    <div className='column-body'>
-                        <PatientsHead />
-                        {
-                        checkins.map( (checkin: any) => {
-                            return <PatientsBody key={checkin._id} checkin={ checkin } />
-                        })
-                        }
-                    </div>
-                </div>  
-                
-            {/* <button  onClick={handleClick} className='btn-history-queue'>
-                {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
-            </button> */}
+              <div className='patients-table'>
+                  <HomeHeader title='Agendamentos do dia' />
+                  <div className='column-body'>
+                      <PatientsHead />
+                      {
+                      checkins.map( (checkin: any) => {
+                          return <PatientsBody key={checkin._id} checkin={ checkin } />
+                      })
+                      }
+                  </div>
+              </div>  
             </div>
             
         </div>        
 
         <div className="column-receptionist">
-          <HomeHeader title='Cadastro de Paciente' />
-          <PatientForm />
+          {pageActive === 'Cadastro' ?
+            <>
+              <HomeHeader title="Cadastro de paciente" />
+              <PatientForm/>
+            </>
+          : 
+            <>
+              <HomeHeader title="Agendamento" />
+              <CallsForm />
+            </>
+          }
         </div>
 
       </div>
