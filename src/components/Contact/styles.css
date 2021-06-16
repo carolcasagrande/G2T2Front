@@ -1,12 +1,13 @@
-footer .contato a img{
+footer .contact a img{
   width: 20px;
   height: 20px;
   }
 
-footer .contato{
+footer .contact{
   display: flex;
   align-items: center;
   margin-right:5px;
+  padding-bottom: 10px;
 }
 
 footer a{
@@ -23,4 +24,5 @@ footer a{
   padding: 5px;
   color: #CCCCCC;
   margin-bottom: 0;
+  padding-right: 0;
 }

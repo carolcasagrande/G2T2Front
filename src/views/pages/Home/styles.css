@@ -17,6 +17,7 @@
   width: 75vh;
   box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
   margin: 40px auto;
+  margin-top: 15vh;
 }
 
 .btn-history-queue{
@@ -28,5 +29,8 @@
   border: none;
   border-radius: 100px;
   display: block;
+}
+.dashboard-and-navbar {
+  display: flex;
 }
 
