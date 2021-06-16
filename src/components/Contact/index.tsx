@@ -8,18 +8,20 @@ import linkedin from '../../img/linkedin.png';
 interface IContact{
   personName: string,
   githubUsername: string,
-  linkedinUrlCompleted: string
+  linkedinUrlCompleted?: string
 }
 
 const Contact = ({ personName, githubUsername, linkedinUrlCompleted  }:IContact) => (
   
-      <div className="contato">
+      <div className="contact">
         <a target="_blank" href={`https://github.com/${githubUsername}`}>
           <img src={github} alt="logo github" />
         </a>
-        <a target="_blank" href={`https://www.linkedin.com/in/${linkedinUrlCompleted}`}>
-          <img src={linkedin} alt="logo linkedin" />
-        </a>              
+        {linkedinUrlCompleted ?
+          <a target="_blank" href={`https://www.linkedin.com/in/${linkedinUrlCompleted}`}>
+            <img src={linkedin} alt="logo linkedin" />
+          </a>              
+        : null}
         <p className='person-name'>{personName}</p>
       </div>
 );

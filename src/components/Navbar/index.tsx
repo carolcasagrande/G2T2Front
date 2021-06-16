@@ -5,16 +5,18 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 
 const Navbar: React.FC = () => {
   return (
-      <nav className="menu-lateral">
-        <a href="#">
-            <EventAvailableIcon style={{ fontSize: 65, color:'#D40054' }}/> 
-            Agendamento
-        </a>
-        <a href="#">
-            <AssignmentIndIcon style={{ fontSize: 65, color:'#D40054'  }}/>
-            Cadastro
-        </a>
-      </nav>
+      <div className="side-navbar-container">
+        <nav className="menu-lateral">
+          <a href="#">
+              <EventAvailableIcon style={{ fontSize: 65, color:'#D40054' }}/> 
+              Agendamento
+          </a>
+          <a href="#">
+              <AssignmentIndIcon style={{ fontSize: 65, color:'#D40054'  }}/>
+              Cadastro
+          </a>
+        </nav>
+      </div>
 
     );
 }
