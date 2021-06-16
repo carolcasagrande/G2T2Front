@@ -111,3 +111,11 @@ nav img{
     display: flex;
     margin-top: 20px;
   }
+  .calls-input{
+    border: none;
+    background:#f7f3f7;
+    width: 100%;
+    text-align: center;
+    color: #7e7d7d;
+    margin-top: 5px;
+  }
