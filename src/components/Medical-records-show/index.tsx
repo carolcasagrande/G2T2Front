@@ -10,7 +10,7 @@ import 'moment/locale/pt-br';
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
-const MedicalRecord: React.FC = () =>{
+const MedicalRecordShow: React.FC = () =>{
   const activeMedicalRecord = useSelector((state: any) => state.medicalRecord.activeMedicalRecord)
 
   return (
@@ -36,4 +36,4 @@ const MedicalRecord: React.FC = () =>{
   );
 }
 
-export default MedicalRecord;
+export default MedicalRecordShow;

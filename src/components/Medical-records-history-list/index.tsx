@@ -10,9 +10,9 @@ import {setMedicalRecordActive} from '../../redux/medical-record/medical-record.
 
 import HomeHeader from '../Home-header';
 import SearchInput from '../Search-input';
-import CheckinPatient from '../Checkin-patient';
+import MedicalRecordHistory from '../Medical-record-history';
 
-const MedicalRecordsHistory: React.FC = () => {
+const MedicalRecordsHistoryList: React.FC = () => {
   const [medicalRecordsHistory, setMedicalRecordsHistory] = useState<Array<any>>([])
   const dispatch = useDispatch();
   const activeMedicalRecord = useSelector((state: any) => state.medicalRecord.activeMedicalRecord)
@@ -40,7 +40,7 @@ const MedicalRecordsHistory: React.FC = () => {
                 onClick={() => dispatch(setMedicalRecordActive(record))}
                 
               >
-                <CheckinPatient record={record} key={record.id}/>
+                <MedicalRecordHistory record={record} key={record.id}/>
               </div>
             )
           })
@@ -49,4 +49,4 @@ const MedicalRecordsHistory: React.FC = () => {
   )
 };
 
-export default MedicalRecordsHistory;
+export default MedicalRecordsHistoryList;

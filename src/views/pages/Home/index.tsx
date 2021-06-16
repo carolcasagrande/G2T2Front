@@ -5,9 +5,9 @@ import api from '../../../service/api';
 
 import HomeHeader from '../../../components/Home-header';
 import PatientsWaiting from '../../../components/Patients-waiting';
-import MedicalRecordsHistory from '../../../components/Medical-records-history';
+import MedicalRecordsHistoryList from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
-import MedicalRecords from '../../../components/Medical-records';
+import MedicalRecordsShow from '../../../components/Medical-records-show';
 
 import './styles.css';
 
@@ -51,7 +51,7 @@ const Home: React.FC = () => {
       <div className="row dashboard">
         
         <div className="column">
-          {queue? (<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) : (<MedicalRecordsHistory />)}
+          {queue? (<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) : (<MedicalRecordsHistoryList />)}
 
           <button  onClick={handleClick} className='btn-history-queue'>
             {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
@@ -62,7 +62,7 @@ const Home: React.FC = () => {
           <HomeHeader title='prontuário de atendimento' />
           {queue ?
             (<MedicalRecordForm />)
-            : (<MedicalRecords />)}
+            : (<MedicalRecordsShow />)}
         </div>
 
       </div>

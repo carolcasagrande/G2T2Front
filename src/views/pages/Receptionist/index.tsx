@@ -9,7 +9,7 @@ import HomeHeader from '../../../components/Home-header';
 import PatientsHead from '../../../components/Patients-head';
 import PatientsBody from '../../../components/Patients-body';
 import PatientsWaiting from '../../../components/Patients-waiting';
-import MedicalRecordsHistory from '../../../components/Medical-records-history';
+import MedicalRecordsHistory from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
 
 import './styles.css';

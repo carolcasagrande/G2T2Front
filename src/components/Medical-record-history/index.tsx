@@ -10,12 +10,12 @@ interface Props {
   record: any;
 }
 
-const CheckinPatient: React.FC<Props> = ({ record }) => (
+const MedicalRecordHistory: React.FC<Props> = ({ record }) => (
   <>
     <div className="col-7">
       <div className='td-medical-record'>{ record.medical_record.client.name }</div>
     </div>
-    <div className="col-5 time-info-medical-record">
+    <div className="col-5 time-info-medical-record-history">
       <div className='td-medical-record'>
         { `${moment(record.history_date).format('L')} 
            ${moment(record.history_hour).format('LT')}` 
@@ -26,6 +26,6 @@ const CheckinPatient: React.FC<Props> = ({ record }) => (
 
 );
 
-export default CheckinPatient;
+export default MedicalRecordHistory;
 
 // ${Date.parse(record.history_hour)}
