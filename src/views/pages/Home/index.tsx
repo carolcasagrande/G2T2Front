@@ -52,7 +52,7 @@ const Home: React.FC = () => {
         
         <div className="column">
           {queue? (<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) : (<MedicalRecordsHistory />)}
-            
+
           <button  onClick={handleClick} className='btn-history-queue'>
             {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
           </button>
@@ -60,7 +60,9 @@ const Home: React.FC = () => {
 
         <div className="column">
           <HomeHeader title='prontuário de atendimento' />
-          {queue? (<MedicalRecordForm />) : (<MedicalRecords />)}
+          {queue ?
+            (<MedicalRecordForm />)
+            : (<MedicalRecords />)}
         </div>
 
       </div>

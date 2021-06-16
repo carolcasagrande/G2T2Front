@@ -9,7 +9,6 @@
 .tbody {
   overflow-y: scroll;
   max-height: 50vh;
-  min-height: 52vh;
 }
 
 .patients-table {

@@ -11,8 +11,7 @@ interface Props {
 }
 
 const CheckinPatient: React.FC<Props> = ({ record }) => (
-
-  <div className="row row-table-medical-record">
+  <>
     <div className="col-7">
       <div className='td-medical-record'>{ record.medical_record.client.name }</div>
     </div>
@@ -23,7 +22,7 @@ const CheckinPatient: React.FC<Props> = ({ record }) => (
         }
       </div>
     </div>
-  </div>
+  </>
 
 );
 
