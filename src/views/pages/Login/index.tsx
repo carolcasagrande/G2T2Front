@@ -39,9 +39,9 @@ const Login: React.FC = () => {
       <body>
         <div className="container">    
           <main>   
-          <aside className="aside-left">
+          {/* <aside className="aside-left">
             <img src={loginImg} className="img-login" alt="login" />
-          </aside>
+          </aside> */}
           <aside className="aside-right">
             <div className="form-content">
               <form  onSubmit={handleLogin} className="form-login  ">

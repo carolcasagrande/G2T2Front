@@ -1,18 +1,29 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
 
 import "./styles.css"
 
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
+import { setCheckinActive } from '../../redux/checkin/checkin.actions.js';
+
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
-const MedicalRecordForm: React.FC = () =>{
+const MedicalRecordForm: React.FC = () => {
+  const dispatch = useDispatch();
+
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    dispatch(setCheckinActive(null));
+    console.log("BOTÃO APERTADOOOOOO")
+  }
+  
   return (
                
     <div className="form-medical-record-container">
-      <form /* onSubmit={handleLogin} */ className="form-medical-record">
+      <form onSubmit={handleLogin} className="form-medical-record">
       
         <div className="date-time">
           <div className='date-time-medical-record' >

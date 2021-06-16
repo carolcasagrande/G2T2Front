@@ -1,4 +1,7 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { setCheckinActive } from '../../redux/checkin/checkin.actions.js';
 
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -9,26 +12,33 @@ interface Props {
   checkin: any;
 }
 
-const PatientsBody: React.FC<Props> = ({ checkin }) => (
+const PatientsBody: React.FC<Props> = ({ checkin }) => {
+  const dispatch = useDispatch();
+  const activeCheckin = useSelector((state: any) => state.checkin.activeCheckin)
 
-  <div className="row row-table">
-    <div className="col-7">
-      <div className='td'>{ checkin.patient }</div>
-    </div>
-    <div className="col-5 time-info">
-      <div className='td'> 15 min</div>
-      <div className="icons">
-        <span aria-label="Delete">
-          <EditIcon className='icon' style={{ width: '20px'}}/>
-        </span>
-        <span aria-label="Edit">
-          <DeleteIcon className='icon' style={{ width: '20px'}}/>
-        </span>
+  return(
+    <div
+      className={`row row-table ${activeCheckin?._id === checkin._id ? "active-checkin" : ""}`}
+      onClick={() => dispatch(setCheckinActive(checkin))}
+    >
+      <div className="col-7">
+        <div className='td'>{checkin.patient}</div>
+      </div>
+      <div className="col-5 time-info">
+        <div className='td'> 15 min</div>
+        <div className="icons">
+          <span aria-label="Delete">
+            <EditIcon className='icon' style={{ width: '20px' }} />
+          </span>
+          <span aria-label="Edit">
+            <DeleteIcon className='icon' style={{ width: '20px' }} />
+          </span>
+        </div>
       </div>
     </div>
-  </div>
+  )
 
-);
+};
 
 export default PatientsBody;
 
