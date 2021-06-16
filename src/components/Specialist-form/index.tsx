@@ -1,9 +1,9 @@
 import React from 'react';
-import specialist from '../../../img/doctor3.jpg';
-import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
+import specialist from '../../img/doctor3.jpg';
+import { FiArrowRight } from 'react-icons/fi';
 import "./styles.css"
 
-const Specialist: React.FC = () =>{
+const SpecialistForm: React.FC = () =>{
   return (
     <div className="specialist">
       <body>
@@ -54,5 +54,5 @@ const Specialist: React.FC = () =>{
   );
 }
 
-export default Specialist;
+export default SpecialistForm;
 

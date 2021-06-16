@@ -1,6 +1,6 @@
 footer {
   width: 100%;
-  height: 120px;
+  height: 5vh;
   background: #D40054;
   text-align: center;
   display: flex;
@@ -14,8 +14,6 @@ footer {
 
 footer .redesocial{
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
   margin-left: 5px;
 }
 
@@ -25,4 +23,12 @@ footer .redesocial{
   font-family: 'Ubuntu', sans-serif;
   padding: 5px;
   color: #CCCCCC;
+  padding-bottom: 10px;
+}
+.front-back-division {
+  margin: 0 15px;
+}
+
+.developed-by {
+  margin: 0 30px;
 }
