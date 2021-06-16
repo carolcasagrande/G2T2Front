@@ -1,5 +1,8 @@
 import React, { useState, useEffect, FocusEvent } from 'react';
 import calls from '../../../img/doctor5.jpg';
+import moment from 'moment';
+import 'moment/locale/pt-br';
+
 import { FiArrowRight } from 'react-icons/fi';
 import "./styles.css"
 import api from '../../service/api'
@@ -94,8 +97,10 @@ const CallsForm: React.FC = () => {
       }
     )
   }, [professionSelected])
-  return (
+  return (<>
+      <input className="calls-input" type="text" placeholder={moment().format('llll')} value={moment().format('llll')} />
     <form onSubmit={handleCalls}  className="form-calls">
+      {/* <p>{moment().format('llll')}</p> */}
 
       <div className="data-calls">
         <div >
@@ -156,6 +161,7 @@ const CallsForm: React.FC = () => {
       </div>         
       <button className="btnPatientForm" type="submit">Cadastrar <FiArrowRight size={18} /></button>
     </form>
+    </>
   )
 }
 
