@@ -4,15 +4,17 @@
     flex-direction: column;
 
     box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
-    height: 100vh;
+    height: 60vh;
     width: 110px;
     position: sticky;
     top: 10;
     border-bottom-right-radius: 200px;
-    /* border-top-right-radius: 200px; */
+    border-top-right-radius: 200px;
 }
 .side-navbar-container {
     min-height: 95vh;
+    display: flex;
+    align-items: center;
 }
 
 .menu-lateral a{
@@ -21,4 +23,5 @@
     margin: 20px;
     padding: 15px;
 }
+
 

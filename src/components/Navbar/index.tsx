@@ -9,11 +9,11 @@ const Navbar: React.FC = () => {
         <nav className="menu-lateral">
           <a href="#">
               <EventAvailableIcon style={{ fontSize: 65, color:'#D40054' }}/> 
-              Agendamento
+              <p>Agendamento</p> 
           </a>
           <a href="#">
               <AssignmentIndIcon style={{ fontSize: 65, color:'#D40054'  }}/>
-              Cadastro
+              <p>Cadastro</p> 
           </a>
         </nav>
       </div>
