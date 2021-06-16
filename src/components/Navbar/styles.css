@@ -2,8 +2,9 @@
     background: pink;
     display: flex;
     flex-direction: column;
-    height: 90vh;
-    width: 100px;
+    height: 95vh;
+    width: 110px;
+    box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
 }
 
 .menu-lateral a{
