@@ -1,4 +1,4 @@
-  .row-table {
+.row-table {
   border-bottom: 1px solid rgba(0,0,0,.1);
   margin: 0 auto;
 }
@@ -7,6 +7,7 @@
   color: #D40054;
   background-color: white;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .patients-table .td {

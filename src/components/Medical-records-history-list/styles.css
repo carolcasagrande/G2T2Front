@@ -1,0 +1,33 @@
+.medical-records-history-container {
+  height: 64vh;
+}
+
+.row-table-medical-record{
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.row-table-medical-record:hover {
+  color: #D40054;
+  background-color: white;
+  cursor: pointer;
+}
+
+.row-table-medical-record:active {
+  position:relative;
+  top:1.5px;
+}
+
+.row-table-medical-record .td-medical-record{
+  padding: 2vh;
+  font-weight: bold;
+}
+
+.active {
+  background-color: rgb(181, 245, 210);
+}
+
+.active:hover {
+  background-color: rgb(155, 247, 196);
+}
