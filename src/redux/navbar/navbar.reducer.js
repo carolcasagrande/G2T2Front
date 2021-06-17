@@ -2,7 +2,7 @@ import NavbarTypes from './navbar.types'
 
 const INITIAL_STATE = {
   activeSpecialistNavbar: 'appointment',
-  activeReceptionistNavbar: 'appointment'
+  activeReceptionistNavbar: 'scheduling'
 }
 
 const NavbarReducer = (state =  INITIAL_STATE  , action) => {
