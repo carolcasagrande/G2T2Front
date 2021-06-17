@@ -1,7 +1,7 @@
 import MedicalRecordTypes from './medical-record.types'
 
-export const setMedicalRecordActive = (id) => ({
+export const setMedicalRecordActive = (patient) => ({
   type: MedicalRecordTypes.ACTIVE_MEDICAL_RECORD,
-  payload: id
+  payload: patient
 });
 

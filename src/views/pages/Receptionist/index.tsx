@@ -1,29 +1,35 @@
 import React, { useEffect, useState } from 'react';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import Typography from '@material-ui/core/Typography';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { useDispatch, useSelector } from 'react-redux';
+//web-socket
 import Pusher from 'pusher-js';
+//axios
+import api from '../../../service/api';
+//Components
 import PatientForm from '../../../components/Patient-form'
 import Navbar from '../../../components/Navbar';
-
-import api from '../../../service/api';
-
 import HomeHeader from '../../../components/Home-header';
 import PatientsHead from '../../../components/Patients-head';
 import PatientsBody from '../../../components/Patients-body';
 import CallsForm from '../../../components/CallsForm';
-import PatientsWaiting from '../../../components/Patients-waiting';
-import MedicalRecordsHistory from '../../../components/Medical-records-history-list';
-import MedicalRecordForm from '../../../components/Medical-record-form';
-
+//Material-ui
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+//Redux action
+import { setReceptionistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
+//Styles
 import './styles.css';
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const [pageActive, setPageActive] = useState('');
-  const [expanded, setExpanded] = React.useState<string | false>('panel1');
+  const dispatch = useDispatch();
+  const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
+
+  const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
@@ -56,7 +62,20 @@ const Receptionist: React.FC = () => {
   
   return(
     <div className="nav-cards">
-    <Navbar />
+    <Navbar>
+      <div onClick={() => dispatch(setReceptionistNavbarActive('scheduling'))}
+        className={activeTab === 'scheduling' ? "active-tab" : ''}
+      >
+        <EventAvailableIcon style={{ fontSize: 60, color:'#D40054' }}/> 
+        Agendar
+      </div>
+      <div onClick={() => dispatch(setReceptionistNavbarActive('registration'))}
+        className={activeTab === 'registration' ? "active-tab" : ''}
+      >
+        <AssignmentIndIcon style={{ fontSize: 60, color:'#D40054'  }}/>
+        Cadastrar
+      </div>
+    </Navbar>
     <div className="container container-home">      
       <div className="dashboard">        
         <div>

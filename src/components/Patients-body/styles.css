@@ -35,3 +35,11 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.active-checkin {
+  background-color: rgb(181, 245, 210);
+}
+
+.active-checkin:hover {
+  background-color: rgb(155, 247, 196);
+}

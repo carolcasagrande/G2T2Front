@@ -1,20 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+//Web-socket
 import Pusher from 'pusher-js';
-
+// Axios
 import api from '../../../service/api';
-
-import HomeHeader from '../../../components/Home-header';
+// Components
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistoryList from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
 import MedicalRecordsShow from '../../../components/Medical-records-show';
 import Navbar from '../../../components/Navbar';
-
+// Material-ui
+import PeopleIcon from '@material-ui/icons/People';
+import ListAltIcon from '@material-ui/icons/ListAlt';
+// Redux action
+import { setSpecialistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
+// Styles
 import './styles.css';
 
-const Home: React.FC = () => {
+
+const Specialist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const [queue, setQueue] =  useState<Boolean>(true)
+  const dispatch = useDispatch();
+  const activeTab = useSelector((state: any) => state.navbar.activeSpecialistNavbar);
 
   // connection with mongoDB using websocket
   useEffect(() => {
@@ -39,31 +48,37 @@ const Home: React.FC = () => {
       channel.unbind_all();
       channel.unsubscribe();
     }
-  }, [checkins])
-
-  console.log(checkins);
-
-  const handleClick = () => {
-    setQueue(!queue)
-  }
+  }, [checkins])  
   
   return (
   
     <div className='dashboard-and-navbar'>
-      <Navbar />    
+      <Navbar>   
+        <div onClick={() => dispatch(setSpecialistNavbarActive('appointment'))}
+          className={activeTab === 'appointment' ? "active-tab" : ''}
+        >
+          <PeopleIcon style={{ fontSize: 60, color:'#D40054' }}/> 
+          Consulta
+        </div>
+        <div onClick={() => dispatch(setSpecialistNavbarActive('history'))}
+          className={activeTab === 'history' ? "active-tab" : ''}
+        >
+          <ListAltIcon style={{ fontSize: 60, color:'#D40054' }}/> 
+          Histórico
+        </div>
+      </Navbar> 
       <div className="container container-home">
         <div className="row dashboard">
         
           <div className="column">
-            {queue? (<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) : (<MedicalRecordsHistoryList />)}
-            <button  onClick={handleClick} className='btn-history-queue'>
-              {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
-            </button>
+            {activeTab === 'appointment'
+              ?(<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) 
+                : (<MedicalRecordsHistoryList />)
+            }
           </div>
 
           <div className="column">
-            <HomeHeader title='prontuário de atendimento' />
-            {queue ?
+            {activeTab === 'appointment'?
               (<MedicalRecordForm />)
               : (<MedicalRecordsShow />)}
           </div>
@@ -74,4 +89,4 @@ const Home: React.FC = () => {
   )
 };
 
-export default Home;
+export default Specialist;
