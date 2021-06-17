@@ -25,11 +25,10 @@ import './styles.css';
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
-  const [pageActive, setPageActive] = useState('');
   const dispatch = useDispatch();
   const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
 
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
@@ -83,17 +82,6 @@ const Receptionist: React.FC = () => {
                 <HomeHeader title='Olá atendente' />
             </div>
             <div className="column-receptionist column-1" >
-              {/* <div className='patients-table'>
-                  <HomeHeader title='Agendamentos do dia' />
-                  <div className='column-body'>
-                      <PatientsHead />
-                      {
-                      checkins.map( (checkin: any) => {
-                          return <PatientsBody key={checkin._id} checkin={ checkin } />
-                      })
-                      }
-                  </div>
-              </div>   */}
                 <Accordion className="accordion-receptionist"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -150,7 +138,7 @@ const Receptionist: React.FC = () => {
         </div>        
 
         <div className="column-receptionist">
-          {pageActive === 'Cadastro' ?
+          {activeTab === 'registration' ?
             <>
               <HomeHeader title="Cadastro de paciente" />
               <PatientForm/>
