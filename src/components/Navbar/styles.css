@@ -2,19 +2,15 @@
     background: pink;
     display: flex;
     flex-direction: column;
-
     box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
     height: 60vh;
-    width: 110px;
     position: sticky;
-    top: 10;
+    top: 20vh;
     border-bottom-right-radius: 200px;
     border-top-right-radius: 200px;
 }
 .side-navbar-container {
     min-height: 95vh;
-    display: flex;
-    align-items: center;
 }
 
 .menu-lateral div{

@@ -1,29 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+//Web-socket
 import Pusher from 'pusher-js';
-
-
-import { setSpecialistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
-
+// Axios
 import api from '../../../service/api';
-
+// Components
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistoryList from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
 import MedicalRecordsShow from '../../../components/Medical-records-show';
 import Navbar from '../../../components/Navbar';
-
-import './styles.css';
-
+// Material-ui
 import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
+// Redux action
+import { setSpecialistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
+// Styles
+import './styles.css';
 
 
 const Specialist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const [queue, setQueue] =  useState<Boolean>(true)
   const dispatch = useDispatch();
-  const activeTab = useSelector((state: any) => state.navbar.activeSpecialistNavbar)
+  const activeTab = useSelector((state: any) => state.navbar.activeSpecialistNavbar);
 
   // connection with mongoDB using websocket
   useEffect(() => {
