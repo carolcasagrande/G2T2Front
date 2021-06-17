@@ -6,6 +6,8 @@ import "./styles.css"
 import moment from 'moment';
 import 'moment/locale/pt-br';
 
+import HomeHeader from '../Home-header';
+
 import { setCheckinActive } from '../../redux/checkin/checkin.actions.js';
 
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
@@ -21,25 +23,27 @@ const MedicalRecordForm: React.FC = () => {
   }
   
   return (
-               
-    <div className="form-medical-record-container">
-      <form onSubmit={handleLogin} className="form-medical-record">
-      
-        <div className="date-time">
-          <div className='date-time-medical-record' >
-            {moment().format('LL')}
-            <CalendarTodayIcon className="medical-record-material-icon" style={{ fontSize: 30, padding: 5 }} />
+    <>
+      <HomeHeader title='prontuário de atendimento' />     
+      <div className="form-medical-record-container">
+        <form onSubmit={handleLogin} className="form-medical-record">
+        
+          <div className="date-time">
+            <div className='date-time-medical-record' >
+              {moment().format('LL')}
+              <CalendarTodayIcon className="medical-record-material-icon" style={{ fontSize: 30, padding: 5 }} />
+            </div>
+            <div className='date-time-medical-record' >
+              {moment().format('LT')}
+              <QueryBuilderIcon className="medical-record-material-icon" style={{ fontSize: 30, padding: 5 }} />
+            </div>
           </div>
-          <div className='date-time-medical-record' >
-            {moment().format('LT')}
-            <QueryBuilderIcon className="medical-record-material-icon" style={{ fontSize: 30, padding: 5 }} />
-          </div>
-        </div>
-        <textarea name="description" className="description" placeholder="Escreva o prontuário de atendimento..."></textarea>      
-        <button className="btn-medical-record" type="submit">Registrar </button>
+          <textarea name="description" className="description" placeholder="Escreva o prontuário de atendimento..."></textarea>      
+          <button className="btn-medical-record" type="submit">Registrar </button>
 
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
               
   );
 }

@@ -12,6 +12,9 @@ import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
 
+import EventAvailableIcon from '@material-ui/icons/EventAvailable';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+
 import './styles.css';
 
 const Receptionist: React.FC = () => {
@@ -51,7 +54,16 @@ const Receptionist: React.FC = () => {
   
   return(
     <div className="nav-cards">
-    <Navbar/>
+    <Navbar>
+      <div>
+        <EventAvailableIcon style={{ fontSize: 60, color:'#D40054' }}/> 
+        Agendamento
+      </div>
+      <div>
+        <AssignmentIndIcon style={{ fontSize: 60, color:'#D40054'  }}/>
+        Cadastro
+      </div>
+    </Navbar>
     <div className="container container-home">      
       <div className="dashboard">        
         <div>

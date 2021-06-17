@@ -12,10 +12,15 @@
     min-height: 95vh;
 }
 
-.menu-lateral a{
+.menu-lateral div{
     color: #D40054;
     text-align: center;
     margin: 20px;
     padding: 15px;
+    cursor: pointer;
+}
+
+.active-tab {
+  border-right: 6px solid #d40054;
 }
 
