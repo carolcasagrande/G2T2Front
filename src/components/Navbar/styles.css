@@ -2,14 +2,19 @@
     background: pink;
     display: flex;
     flex-direction: column;
-    height: 85vh;
-    width: 100px;
+
+    box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
+    height: 60vh;
+    width: 110px;
     position: sticky;
-    top: 0;
+    top: 10;
     border-bottom-right-radius: 200px;
+    border-top-right-radius: 200px;
 }
 .side-navbar-container {
     min-height: 95vh;
+    display: flex;
+    align-items: center;
 }
 
 .menu-lateral div{
@@ -23,4 +28,5 @@
 .active-tab {
   border-right: 6px solid #d40054;
 }
+
 

@@ -6,7 +6,6 @@ import Specialist from './views/pages/Specialist';
 import Receptionist from './views/pages/Receptionist';
 import SpecialistForm from './components/Specialist-form';
 import Occupation from './views/pages/Occupation';
-import Calls from './views/pages/Calls';
 import Record from './views/pages/Record'; 
 import MedicalRecordForm from './components/Medical-record-form';
  
@@ -19,7 +18,6 @@ const Routes: React.FC = () => {
         <Route path="/login" component={Login} />
         <Route path="/specialist" component={SpecialistForm} />
         <Route path="/occupation" component={Occupation} />
-        <Route path="/calls" component={Calls} /> 
        <Route path="/record" component={Record} />
        <Route path="/history" component={MedicalRecordForm} />
       </Switch>

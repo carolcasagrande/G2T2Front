@@ -1,4 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Pusher from 'pusher-js';
 import PatientForm from '../../../components/Patient-form'
 import Navbar from '../../../components/Navbar';
@@ -8,6 +13,7 @@ import api from '../../../service/api';
 import HomeHeader from '../../../components/Home-header';
 import PatientsHead from '../../../components/Patients-head';
 import PatientsBody from '../../../components/Patients-body';
+import CallsForm from '../../../components/CallsForm';
 import PatientsWaiting from '../../../components/Patients-waiting';
 import MedicalRecordsHistory from '../../../components/Medical-records-history-list';
 import MedicalRecordForm from '../../../components/Medical-record-form';
@@ -20,6 +26,13 @@ import './styles.css';
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const [queue, setQueue] =  useState<Boolean>(true)
+  const [pageActive, setPageActive] = useState('');
+
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+
+  const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   // connection with mongoDB using websocket
   useEffect(() => {
@@ -47,6 +60,11 @@ const Receptionist: React.FC = () => {
   }, [checkins])
 
   console.log(checkins);
+  const handleState = (page:string) =>{
+    // setPageActive()
+    console.log(pageActive);
+    
+  }
 
   const handleClick = () => {
     setQueue(!queue)
@@ -71,28 +89,76 @@ const Receptionist: React.FC = () => {
                 <HomeHeader title='Olá atendente' />
             </div>
             <div className="column-receptionist column-1" >
-                <div className='patients-table'>
-                    <HomeHeader title='Agendamentos do dia' />
-                    <div className='column-body'>
-                        <PatientsHead />
+              {/* <div className='patients-table'>
+                  <HomeHeader title='Agendamentos do dia' />
+                  <div className='column-body'>
+                      <PatientsHead />
+                      {
+                      checkins.map( (checkin: any) => {
+                          return <PatientsBody key={checkin._id} checkin={ checkin } />
+                      })
+                      }
+                  </div>
+              </div>   */}
+                <Accordion className="accordion-receptionist"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1bh-content"
+                    id="panel1bh-header"
+                    className="accordion-receptionist"
+                  >
+                    <div className="header-receptionist">
+                      <HomeHeader  title='Agendamentos do dia' />
+                    </div>
+                  </AccordionSummary>
+                  <AccordionDetails >
+                    <div className="header-receptionist">
+                      <PatientsHead />
+                      <div className='column-body'>
                         {
                         checkins.map( (checkin: any) => {
                             return <PatientsBody key={checkin._id} checkin={ checkin } />
                         })
                         }
+                      </div>
                     </div>
-                </div>  
-                
-            {/* <button  onClick={handleClick} className='btn-history-queue'>
-                {queue? ('Ir para histórico de prontuários') : ('Ir para fila de pacientes')}
-            </button> */}
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel2bh-content"
+                    id="panel2bh-header"
+                  >
+                    <div className="header-receptionist">
+                      <HomeHeader title='Checkins' />
+                    </div>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <div className='column-body header-receptionist'>
+                        {
+                        checkins.map( (checkin: any) => {
+                            return <PatientsBody key={checkin._id} checkin={ checkin } />
+                        })
+                        }
+                      </div>
+                  </AccordionDetails>
+                </Accordion>
             </div>
-            
         </div>        
 
         <div className="column-receptionist">
-          <HomeHeader title='Cadastro de Paciente' />
-          <PatientForm />
+          {pageActive === 'Cadastro' ?
+            <>
+              <HomeHeader title="Cadastro de paciente" />
+              <PatientForm/>
+            </>
+          : 
+            <>
+              <HomeHeader title="Agendamento" />
+              <CallsForm />
+            </>
+          }
         </div>
 
       </div>
