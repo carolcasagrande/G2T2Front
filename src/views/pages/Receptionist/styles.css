@@ -30,12 +30,14 @@
 
   .column-body {
     overflow-y: scroll;
-    height: 100%;
-    max-height: 30vh;
-    min-height: 15vh;
+    height: 25vh;
+    width: 100%;
     margin-right: 5px;
   }
-  
+  .column-body p {
+    text-align: center;
+    margin-top: 10px;
+  }
   .patients-table {
     width: 100%;
     border-radius: 5px;
@@ -60,4 +62,16 @@
 .accordion-receptionist{
   border-radius: 10px;
   background-color: #F7F3F7;
+}
+.MuiPaper-root{
+  background-color: #F7F3F7 !important;
+  border-radius: 50px;
+}
+.MuiAccordion-rounded{
+  border-radius: 10px !important;
+  margin-bottom: 10px;
+  /* border-top: 1px solid black; */
+}
+.receptionist-none-border div{
+  border: none;
 }

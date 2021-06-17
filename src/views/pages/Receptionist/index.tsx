@@ -25,12 +25,10 @@ import './styles.css';
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
-  const [queue, setQueue] =  useState<Boolean>(true)
-  const [pageActive, setPageActive] = useState('');
   const dispatch = useDispatch();
   const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
 
-  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
@@ -60,17 +58,6 @@ const Receptionist: React.FC = () => {
       channel.unsubscribe();
     }
   }, [checkins])
-
-  console.log(checkins);
-  const handleState = (page:string) =>{
-    // setPageActive()
-    console.log(pageActive);
-    
-  }
-
-  const handleClick = () => {
-    setQueue(!queue)
-  }
   
   return(
     <div className="nav-cards">
@@ -95,17 +82,6 @@ const Receptionist: React.FC = () => {
                 <HomeHeader title='Olá atendente' />
             </div>
             <div className="column-receptionist column-1" >
-              {/* <div className='patients-table'>
-                  <HomeHeader title='Agendamentos do dia' />
-                  <div className='column-body'>
-                      <PatientsHead />
-                      {
-                      checkins.map( (checkin: any) => {
-                          return <PatientsBody key={checkin._id} checkin={ checkin } />
-                      })
-                      }
-                  </div>
-              </div>   */}
                 <Accordion className="accordion-receptionist"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
@@ -113,22 +89,27 @@ const Receptionist: React.FC = () => {
                     id="panel1bh-header"
                     className="accordion-receptionist"
                   >
-                    <div className="header-receptionist">
+                    <div className="header-receptionist receptionist-none-border">
                       <HomeHeader  title='Agendamentos do dia' />
                     </div>
                   </AccordionSummary>
-                  <AccordionDetails >
+
                     <div className="header-receptionist">
+
                       <PatientsHead />
+
                       <div className='column-body'>
                         {
-                        checkins.map( (checkin: any) => {
-                            return <PatientsBody key={checkin._id} checkin={ checkin } />
-                        })
+                          checkins.length > 1 ?
+                            checkins.map( (checkin: any) => {
+                                return <PatientsBody key={checkin._id} checkin={ checkin } />
+                            })
+                          :
+                          <p>Sem pacientes na fila de espera.</p>
                         }
                       </div>
                     </div>
-                  </AccordionDetails>
+
                 </Accordion>
                 <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                   <AccordionSummary
@@ -136,25 +117,28 @@ const Receptionist: React.FC = () => {
                     aria-controls="panel2bh-content"
                     id="panel2bh-header"
                   >
-                    <div className="header-receptionist">
+                    <div className="header-receptionist receptionist-none-border">
                       <HomeHeader title='Checkins' />
                     </div>
                   </AccordionSummary>
-                  <AccordionDetails>
                     <div className='column-body header-receptionist'>
-                        {
-                        checkins.map( (checkin: any) => {
-                            return <PatientsBody key={checkin._id} checkin={ checkin } />
-                        })
-                        }
-                      </div>
-                  </AccordionDetails>
+                      <PatientsHead />
+
+                      {
+                        checkins.length > 1 ?
+                          checkins.map( (checkin: any) => {
+                              return <PatientsBody key={checkin._id} checkin={ checkin } />
+                          })
+                        :
+                        <p>Nenhum paciente agendado para hoje.</p>
+                      }
+                    </div>
                 </Accordion>
             </div>
         </div>        
 
         <div className="column-receptionist">
-          {pageActive === 'Cadastro' ?
+          {activeTab === 'registration' ?
             <>
               <HomeHeader title="Cadastro de paciente" />
               <PatientForm/>
@@ -166,7 +150,6 @@ const Receptionist: React.FC = () => {
             </>
           }
         </div>
-
       </div>
     </div>
     </div>
