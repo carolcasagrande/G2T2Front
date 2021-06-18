@@ -18,8 +18,8 @@ header {
   width: 10vh;
   margin-left: 0;
 }
-.logo {
-  font-size: 2rem;
+.logo img{
+  width: 145%;
 }
 
 .home-link{

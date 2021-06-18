@@ -1,5 +1,5 @@
 .menu-lateral{
-    background: pink;
+    background: #ffc0cb;
     display: flex;
     flex-direction: column;
     box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
