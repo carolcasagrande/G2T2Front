@@ -6,27 +6,30 @@
 .container-login{
   width: 100vw;
   height: 92.9vh;
-  background: #D40054;
+  background: pink;
   display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.form-content{
+.form-content-login{
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  
+  padding: 0 350px;  
 }
 
 .form-login{
   width:500px;
   height:400px;
   background: #F7F3F7;
-  margin:auto;
+  /* margin:auto; */
   border-radius:5px;
   display:flex;
   flex-direction:column;
   justify-content: center;  
+  box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
 }
 
 .form-login h1{
