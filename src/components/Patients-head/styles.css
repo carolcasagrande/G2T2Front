@@ -1,10 +1,13 @@
 .patients-table .th {
-  padding: 3vh 2vh;
+  padding: 3vh 1vh;
   font-weight: bold;
+  font-size: 0.9rem;
 }
 
 .row-table-header {
   border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.row-table-header .tr{
   margin: 0 auto;
-  margin-right: 3vh;
 }

@@ -5,16 +5,15 @@ import Pusher from 'pusher-js';
 // Axios
 import api from '../../../service/api';
 // Components
-import PatientsWaiting from '../../../components/Patients-waiting';
-import MedicalRecordsHistoryList from '../../../components/Medical-records-history-list';
-import MedicalRecordForm from '../../../components/Medical-record-form';
-import MedicalRecordsShow from '../../../components/Medical-records-show';
 import Navbar from '../../../components/Navbar';
+import ColumnSpecialistConsultation from '../../../components/Column-specialist-consultation';
+import ColumnSpecialistHistory from '../../../components/Column-specialist-history';
 // Material-ui
 import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 // Redux action
 import { setSpecialistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
+import { setMedicalRecordActive } from '../../../redux/medical-record/medical-record.actions.js';
 // Styles
 import './styles.css';
 
@@ -48,19 +47,24 @@ const Specialist: React.FC = () => {
       channel.unbind_all();
       channel.unsubscribe();
     }
-  }, [checkins])  
+  }, [checkins])
+
+  const handleClick = (tab: string) => {
+    dispatch(setSpecialistNavbarActive(tab));
+    dispatch(setMedicalRecordActive(null));
+  };
   
   return (
   
     <div className='dashboard-and-navbar'>
       <Navbar>   
-        <div onClick={() => dispatch(setSpecialistNavbarActive('appointment'))}
+        <div onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleClick('appointment')}
           className={activeTab === 'appointment' ? "active-tab" : ''}
         >
           <PeopleIcon style={{ fontSize: 60, color:'#D40054' }}/> 
           Consulta
         </div>
-        <div onClick={() => dispatch(setSpecialistNavbarActive('history'))}
+        <div onClick={(e: React.MouseEvent<HTMLDivElement, MouseEvent>) => handleClick('history')}
           className={activeTab === 'history' ? "active-tab" : ''}
         >
           <ListAltIcon style={{ fontSize: 60, color:'#D40054' }}/> 
@@ -70,18 +74,12 @@ const Specialist: React.FC = () => {
       <div className="container container-home">
         <div className="row dashboard">
         
-          <div className="column">
-            {activeTab === 'appointment'
-              ?(<PatientsWaiting checkins={checkins} title="Pacientes na fila de espera" />) 
-                : (<MedicalRecordsHistoryList />)
-            }
-          </div>
-
-          <div className="column">
-            {activeTab === 'appointment'?
-              (<MedicalRecordForm />)
-              : (<MedicalRecordsShow />)}
-          </div>
+          {activeTab === 'appointment' ?
+            ( <ColumnSpecialistConsultation checkins={checkins} /> )
+            :
+            ( <ColumnSpecialistHistory /> )
+          }
+              
         </div>
       </div>
     </div>

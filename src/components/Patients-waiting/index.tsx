@@ -13,17 +13,16 @@ import './styles.css'
 
 interface Props {
   checkins: any;
-  title: string;
 }
 
-const PatientsWaiting: React.FC<Props> = ({ checkins, title }) => {
+const PatientsWaiting: React.FC<Props> = ({ checkins }) => {
   
   return(
 
     <div className='patients-table'>
-      <HomeHeader title={title} />
+      <HomeHeader title="Fila de espera" />
+      <PatientsHead />
       <div className='tbody'>
-        <PatientsHead />
         {
           checkins.map( (checkin: any) => {
             return <PatientsBody key={checkin._id} checkin={ checkin } />

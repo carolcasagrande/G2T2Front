@@ -22,7 +22,7 @@ const PatientsBody: React.FC<Props> = ({ checkin }) => {
       onClick={() => dispatch(setCheckinActive(checkin))}
     >
       <div className="col-7">
-        <div className='td'>{checkin.patient}</div>
+        <div className='td'>{checkin.patient.slice(0,22)}{checkin.patient > 21 ? '...' : ""}</div>
       </div>
       <div className="col-5 time-info">
         <div className='td'> 15 min</div>
