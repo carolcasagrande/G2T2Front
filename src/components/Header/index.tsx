@@ -1,5 +1,5 @@
 import React from 'react';
-import ImgLogin from '../../img/logo-maisha.png'
+import ImgLogin from '../../assets/img/logo-maisha.png'
 import './styles.css'
 
 const Header: React.FC = () => (
