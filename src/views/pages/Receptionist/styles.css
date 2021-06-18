@@ -15,17 +15,17 @@
   .column-receptionist {
     border-radius: 10px;
     background-color: #F7F3F7;
-    height: 80vh;
-    width: 75vh;
+    height: 76vh;
+    width: 70vh;
     box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
-    margin: 40px auto;
+    margin: 0 auto;
   }
   .column-1{
-    height: 67vh;
+    height: 60vh;
   }
   .column-2{
     height: 12vh;
-    margin-bottom: -30px;
+    margin-bottom: 20px;
   }
 
   .column-body {
