@@ -36,7 +36,9 @@ const MedicalRecordShow: React.FC = () =>{
         </div>
 
       </div>
-      : <div className='medical-record-history-not-selected'><h3>"Escolha um prontuário no histórico de prontuários"</h3></div>
+      : <div className='medical-record-history-not-selected'>
+          <h3>Selecione um paciente para ver o histórico de prontuário</h3>
+        </div>
       }
     </>  
               
