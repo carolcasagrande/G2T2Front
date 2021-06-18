@@ -14,10 +14,11 @@ import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 const MedicalRecordShow: React.FC = () =>{
   const activeMedicalRecord = useSelector((state: any) => state.medicalRecord.activeMedicalRecord)
-
+  console.log(activeMedicalRecord)
   return (
     <>
       <HomeHeader title='prontuário' />
+      {activeMedicalRecord ?
       <div className="medical-records-container">
 
         <div className="medical-records-date-time">
@@ -35,6 +36,8 @@ const MedicalRecordShow: React.FC = () =>{
         </div>
 
       </div>
+      : <div className='medical-record-history-not-selected'><h3>"Escolha um prontuário no histórico de prontuários"</h3></div>
+      }
     </>  
               
   );

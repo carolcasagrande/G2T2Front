@@ -65,3 +65,11 @@ a{
   min-height: 85vh;
 }
 
+.column {
+  border-radius: 10px;
+  background-color: #F7F3F7;
+  height: 70vh;
+  box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
+  margin: 40px auto;
+  margin-top: 15vh;
+}
