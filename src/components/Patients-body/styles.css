@@ -1,6 +1,7 @@
 .row-table {
   border-bottom: 1px solid rgba(0,0,0,.1);
   margin: 0 auto;
+  font-size: 0.9rem;
 }
 
 .row-table:hover {
@@ -11,7 +12,7 @@
 }
 
 .patients-table .td {
-  padding: 2vh;
+  padding: 2vh 1vh;
   font-weight: bold;
 }
 
@@ -32,8 +33,11 @@
 
 .time-info {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+}
+.time-info .td{
+  margin-right: 2vh;
 }
 
 .active-checkin {

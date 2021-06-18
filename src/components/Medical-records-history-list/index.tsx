@@ -18,6 +18,7 @@ const MedicalRecordsHistoryList: React.FC = () => {
     })
   }, [])
 
+
   return(
     <div className="medical-records-history-container">
       <HomeHeader title='Histórico de prontuários' />

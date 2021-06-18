@@ -20,21 +20,12 @@ const MedicalRecordHistory: React.FC<Props> = ({ record }) => {
   return(
   <div
     className={
-      `row row-table-medical-record
+      `row-table-medical-record
       ${activeMedicalRecord?.id === record.id ? "active" : ""} `
     }
     onClick={() => dispatch(setMedicalRecordActive(record))}
   >
-    <div className="col-7">
-      <div className='td-medical-record'>{record.medical_record.client.name}</div>
-    </div>
-    <div className="col-5 time-info-medical-record-history">
-      <div className='td-medical-record'>
-        {`${moment(record.history_date).format('L')} 
-           ${moment(record.history_hour).format('LT')}`
-        }
-      </div>
-    </div>
+    <div className='td-medical-record'>{record.medical_record.client.name}</div>
   </div>
   )
 
