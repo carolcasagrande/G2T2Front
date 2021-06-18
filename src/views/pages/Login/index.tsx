@@ -1,6 +1,5 @@
 import React, {  useState, useEffect } from 'react';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
-//import Header from '../../../components/Header';
 import './style.css'
 import api from '../../../service/api';
 
