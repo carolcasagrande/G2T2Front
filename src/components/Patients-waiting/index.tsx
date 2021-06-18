@@ -1,21 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import edit from '../../img/pencil.png';
 import trash from '../../img/trash.png';
 
-import PatientsBody from '../Patients-body';
+import api from '../../service/api';
+
 import PatientsHead from '../Patients-head';
+import MedicalRecordHistory from '../Medical-record-history';
 
 import HomeHeader from '../Home-header';
 
 
 import './styles.css'
 
-interface Props {
-  checkins: any;
-}
+const PatientsWaiting: React.FC = () => {
+  const [medicalRecordsHistory, setMedicalRecordsHistory] = useState<Array<any>>([])
 
-const PatientsWaiting: React.FC<Props> = ({ checkins }) => {
+  useEffect(() => {
+    try {
+      api.get('medical-records-history').then(response => {
+        setMedicalRecordsHistory(response.data)
+        console.log(response.data);
+      })  
+    } catch (error) {
+      prompt('Algo deu errado: Por favor recarregue a página!')
+    }
+  }, [])
   
   return(
 
@@ -24,8 +34,10 @@ const PatientsWaiting: React.FC<Props> = ({ checkins }) => {
       <PatientsHead />
       <div className='tbody'>
         {
-          checkins.map( (checkin: any) => {
-            return <PatientsBody key={checkin._id} checkin={ checkin } />
+          medicalRecordsHistory.map( (record: any) => {
+            return (
+                <MedicalRecordHistory record={record} key={record.id}/>
+            )
           })
         }
       </div>
