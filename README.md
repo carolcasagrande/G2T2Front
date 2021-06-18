@@ -26,32 +26,25 @@ Para instalar o node [clique aqui](https://nodejs.org/en/)
 ### 🚀 OJETIVO 
  <p> Maisha tem como objetivo trazer mais agilidade para o dia a dia da clínica, facilitando o acesso dos dados do cliente quando necessário, ... </p>
 
-### 🔨 Tecnologias
-
-As seguintes ferramentas foram usadas na construção do projeto:
-
-- [React](https://pt-br.reactjs.org/)
-- [React Redux](https://react-redux.js.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [style-componts](https://styled-components.com/)
-- [Jest](https://jestjs.io/)
-- [Axios](https://www.npmjs.com/package/axios)
-
 ### Autores
 
 <h3 align="center">
 Feito com 💜 por 
-<a href="">André Ludwig, 
-<a href="">Ariele Mendonça,
-<a href="https://www.linkedin.com/in/carolinecasagrande/">Caroline Casagrande,
-<a href="">Fernando Gomes.
-</a>
+</h3>
+
 <br><br>
 
-<p align="left">
-<a href="https://linkedin.com/in/carolinecasagrande" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="carolinecasagrande" height="30" width="40" /></a>
+<p align="left"> Andre Ludwig
 <a href="www.linkedin.com/in/andreludwig-almeida" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="andreludwig-almeida" height="30" width="40" /></a>
 </p>
+<p align="left"> Caroline Casagrande
+<a href="https://linkedin.com/in/carolinecasagrande" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="carolinecasagrande" height="30" width="40" /></a> 
+</p>
+
+
+
+
+
 
 ### 🔨 Tecnologias
 <p align="left"> 
