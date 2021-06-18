@@ -1,5 +1,4 @@
 import React from 'react';
-import specialist from '../../img/doctor3.jpg';
 import { FiArrowRight } from 'react-icons/fi';
 import "./styles.css"
 
@@ -10,7 +9,7 @@ const SpecialistForm: React.FC = () =>{
         <div className="container">   
           <main>   
             <aside className="aside-left">
-              <img src={specialist} className="img-specialist" alt="especialista" />
+              {/* <img src={specialist} className="img-specialist" alt="especialista" /> */}
             </aside>
             <aside className="aside-right">
               <div className="form-content">
