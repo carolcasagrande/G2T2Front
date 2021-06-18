@@ -34,11 +34,17 @@ Feito com 💜 por
 
 <br><br>
 
-<p align="left"> Andre Ludwig
+<p align="left"> Andre Ludwig:
 <a href="www.linkedin.com/in/andreludwig-almeida" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="andreludwig-almeida" height="30" width="40" /></a>
 </p>
-<p align="left"> Caroline Casagrande
+<p align="left"> Ariele Mendonça:
+<a href="https://www.linkedin.com/in/pereiramendonca" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="carolinecasagrande" height="30" width="40" /></a> 
+</p>
+<p align="left"> Caroline Casagrande:
 <a href="https://linkedin.com/in/carolinecasagrande" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="carolinecasagrande" height="30" width="40" /></a> 
+</p>
+<p align="left"> Fernando:
+<a href="https://www.linkedin.com/in/fernandogomesrodrigues/" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/linked-in-alt.svg" alt="carolinecasagrande" height="30" width="40" /></a> 
 </p>
 
 

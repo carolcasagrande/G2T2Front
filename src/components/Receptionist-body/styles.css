@@ -1,0 +1,49 @@
+.row-table {
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  margin: 0 auto;
+  font-size: 0.9rem;
+}
+
+.row-table:hover {
+  color: #D40054;
+  background-color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.patients-table .td {
+  padding: 2vh 1vh;
+  font-weight: bold;
+}
+
+.icons {
+  display: none;
+}
+.icon {
+  margin: 3px;
+}
+.icon:active {
+  position:relative;
+  top:2px;
+}
+
+.row-table:hover .icons{
+  display: block;
+}
+
+.time-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.time-info .td{
+  margin-right: 2vh;
+}
+
+.active-checkin {
+  background-color: rgb(181, 245, 210);
+}
+
+.active-checkin:hover {
+  background-color: rgb(155, 247, 196);
+}

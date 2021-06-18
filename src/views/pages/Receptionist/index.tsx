@@ -13,7 +13,7 @@ import PatientsBody from '../../../components/Patients-body';
 import CallsForm from '../../../components/CallsForm';
 //Material-ui
 import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+//import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
@@ -22,9 +22,50 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import { setReceptionistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
 //Styles
 import './styles.css';
+//import ReceptionistBody from '../../../components/Receptionist-body';
+
+interface IClient {
+  address_id: number;
+  cpf: string;
+  email: string;
+  id: number;
+  mobile: string;
+  name: string;
+  phone: string;
+  type_blood: string;
+}
+interface ISpecialist {
+  address_id: number;
+  email: string;
+  id: number;
+  mobile: string;
+  name: string;
+  phone: string;
+  profession_id: number;
+  register: string;
+}
+interface ISchedule {
+  client: {
+  address_id: number;
+  cpf: string;
+  email: string;
+  id: number;
+  mobile: string;
+  name: string;
+  phone: string;
+  type_blood: string;
+};
+  date_schedule: string;
+  date_service: string;
+  specialist: ISpecialist;
+  status_service: string;
+  time_service: string;
+} 
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
+  const [schedules, setSchedules] = useState<ISchedule[]>([])
+
   const dispatch = useDispatch();
   const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
 
@@ -33,6 +74,12 @@ const Receptionist: React.FC = () => {
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
+
+  useEffect(()=> {
+    api.get('services').then(response => {
+      setSchedules(response.data)
+    })
+  }, [])
 
   // connection with mongoDB using websocket
   useEffect(() => {
@@ -79,7 +126,7 @@ const Receptionist: React.FC = () => {
       <div className="dashboard">        
         <div>
             <div className="column-receptionist column-2">
-                <HomeHeader title='Olá atendente' />
+                <HomeHeader title='Olá, Maria!' />
             </div>
             <div className="column-receptionist column-1" >
                 <Accordion className="accordion-receptionist"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -90,7 +137,7 @@ const Receptionist: React.FC = () => {
                     className="accordion-receptionist"
                   >
                     <div className="header-receptionist receptionist-none-border">
-                      <HomeHeader  title='Agendamentos do dia' />
+                      <HomeHeader  title='Agendamentos' />
                     </div>
                   </AccordionSummary>
 
@@ -99,15 +146,9 @@ const Receptionist: React.FC = () => {
                       <PatientsHead />
 
                       <div className='column-body'>
-                        {
-                          checkins.length > 1 ?
-                            checkins.map( (checkin: any) => {
-                                return <PatientsBody key={checkin._id} checkin={ checkin } />
-                            })
-                          :
-                          <p>Sem pacientes na fila de espera.</p>
-                        }
+                       
                       </div>
+
                     </div>
 
                 </Accordion>
@@ -134,6 +175,12 @@ const Receptionist: React.FC = () => {
                       }
                     </div>
                 </Accordion>
+                
+                {/* {schedules && schedules.map(schedule => (
+                          <p>{schedule.client}</p>
+                        ))
+                }  */}
+
             </div>
         </div>        
 
