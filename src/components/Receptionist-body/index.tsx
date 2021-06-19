@@ -55,18 +55,20 @@ const ReceptionistBody: React.FC = () => {
   return(
     <div>
       <div className="row-title" style={{display: 'flex'}}>
-        <p className="col-4">Paciente</p>
+        <p className="col-3">Paciente</p>
         <p className="col-2">Atendimento</p>
-        <p className="col-3">Status</p>
+        <p className="col-2">Horário</p>
+        <p className="col-2">Status</p>
         <p className="col-2">Agendamento</p>
       </div>
       {
         schedules.map(schedule => (
           <div className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
-            <p className="col-4" >{schedule.client?.name}</p>
-            <p className="col-2">{moment(schedule.date_service).format('DD-MM-YY')}</p>
-            <p className="col-3">{schedule.status_service.toLowerCase()}</p>
-            <p className="col-2">{moment(schedule.date_schedule).format('DD-MM-YY')}</p>
+            <p className="col-3" >{schedule.client?.name}</p>
+            <p className="col-2">{moment.utc(schedule.time_service).format('HH:mm')}</p>
+            <p className="col-2">{moment.utc(schedule.date_service).format('DD-MM-YY')}</p>
+            <p className="col-2">{schedule.status_service.toLowerCase()}</p>
+            <p className="col-2">{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
             <div className="icons">
               <span aria-label="Edit">
                 <EditIcon className='icon' style={{ width: '20px' }} />
