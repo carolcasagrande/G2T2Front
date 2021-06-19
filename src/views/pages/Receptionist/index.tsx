@@ -13,7 +13,7 @@ import PatientsBody from '../../../components/Patients-body';
 import CallsForm from '../../../components/CallsForm';
 //Material-ui
 import Accordion from '@material-ui/core/Accordion';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+//import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
@@ -22,9 +22,11 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import { setReceptionistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
 //Styles
 import './styles.css';
+import ReceptionistBody from '../../../components/Receptionist-body';
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
+
   const dispatch = useDispatch();
   const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
 
@@ -79,7 +81,7 @@ const Receptionist: React.FC = () => {
       <div className="dashboard">        
         <div>
             <div className="column-receptionist column-2">
-                <HomeHeader title='Olá atendente' />
+                <HomeHeader title='Olá, Maria!' />
             </div>
             <div className="column-receptionist column-1" >
                 <Accordion className="accordion-receptionist"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
@@ -90,24 +92,16 @@ const Receptionist: React.FC = () => {
                     className="accordion-receptionist"
                   >
                     <div className="header-receptionist receptionist-none-border">
-                      <HomeHeader  title='Agendamentos do dia' />
+                      <HomeHeader  title='Agendamentos' />
                     </div>
                   </AccordionSummary>
 
                     <div className="header-receptionist">
 
-                      <PatientsHead />
-
                       <div className='column-body'>
-                        {
-                          checkins.length > 1 ?
-                            checkins.map( (checkin: any) => {
-                                return <PatientsBody key={checkin._id} checkin={ checkin } />
-                            })
-                          :
-                          <p>Sem pacientes na fila de espera.</p>
-                        }
+                        <ReceptionistBody />
                       </div>
+
                     </div>
 
                 </Accordion>
@@ -134,6 +128,9 @@ const Receptionist: React.FC = () => {
                       }
                     </div>
                 </Accordion>
+                
+                
+
             </div>
         </div>        
 
@@ -149,7 +146,7 @@ const Receptionist: React.FC = () => {
               <CallsForm />
             </>
           }
-        </div>
+        </div> 
       </div>
     </div>
     </div>
