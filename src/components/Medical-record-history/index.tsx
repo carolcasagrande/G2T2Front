@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 
 import './styles.css';
@@ -16,17 +17,36 @@ interface Props {
 const MedicalRecordHistory: React.FC<Props> = ({ record }) => {
   const dispatch = useDispatch();
   const activeMedicalRecord = useSelector((state: any) => state.medicalRecord.activeMedicalRecord)
-
+  const urlLocation = useLocation<Array<{}>>();
+  
   return(
-  <div
-    className={
-      `row-table-medical-record
-      ${activeMedicalRecord?.id === record.id ? "active" : ""} `
-    }
-    onClick={() => dispatch(setMedicalRecordActive(record))}
-  >
-    <div className='td-medical-record'>{record.medical_record.client.name}</div>
-  </div>
+    <div
+      className={
+        `row
+        row-table-medical-record
+        ${activeMedicalRecord?.id === record.id ? "active" : ""}`
+      }
+      onClick={() => dispatch(setMedicalRecordActive(record))}
+    >
+      {urlLocation.pathname === '/specialist/appointment' ?
+        (
+        <>
+          <div className='td-medical-record col-7'>
+            {record.medical_record.client.name.slice(0, 22)}
+            {record.medical_record.client.name > 21 ? '...' : ""}
+          </div>
+          <div className="time-info col-5">
+            <div className='td'> 15 min</div>
+          </div>
+        </>
+        )
+      :
+        (<div className='td-medical-record'>
+          {record.medical_record.client.name}
+        </div>)
+      }
+      
+    </div>
   )
 
 };

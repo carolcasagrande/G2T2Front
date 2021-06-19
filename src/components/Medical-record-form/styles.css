@@ -17,8 +17,7 @@
 }
 
 .form-medical-record{
-  height: 60vh;
-  width: 60vh;
+  width: 100%;
   background-color: transparent;
   display:flex;
   flex-direction:column;
