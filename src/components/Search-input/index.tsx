@@ -9,7 +9,7 @@ const SearchInput: React.FC = () =>(
     <div className="search">
       <div className="search-input">
         <SearchIcon style={{color: '#13132B'}}/>
-        <input type="Buscar histórico de pacientes" />
+        <input placeholder="Buscar pacientes" />
       </div>
     </div>
 

@@ -7,7 +7,7 @@ import MedicalRecordsShow from '../Medical-records-show';
 
 import './styles.css'
 
-const ColumnSpecialistConsultation: React.FC = () => (
+const ColumnSpecialistAppointment: React.FC = () => (
   <>
     <div className="column column-small">
       <PatientsWaiting />
@@ -21,4 +21,4 @@ const ColumnSpecialistConsultation: React.FC = () => (
   </>
 );
 
-export default ColumnSpecialistConsultation;
+export default ColumnSpecialistAppointment;

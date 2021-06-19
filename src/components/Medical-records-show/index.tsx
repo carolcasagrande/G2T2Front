@@ -17,7 +17,7 @@ const MedicalRecordShow: React.FC = () =>{
   console.log(activeMedicalRecord)
   return (
     <>
-      <HomeHeader title='prontuário' />
+      <HomeHeader title='Histórico do paciente' />
       {activeMedicalRecord ?
       <div className="medical-records-container">
 
