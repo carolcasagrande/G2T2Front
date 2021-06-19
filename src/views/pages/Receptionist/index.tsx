@@ -78,6 +78,9 @@ const Receptionist: React.FC = () => {
   useEffect(()=> {
     api.get('services').then(response => {
       setSchedules(response.data)
+      console.log("@@@@")
+      console.log(schedules)
+      console.log("@@@@@")
     })
   }, [])
 
