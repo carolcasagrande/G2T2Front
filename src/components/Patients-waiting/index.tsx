@@ -34,11 +34,15 @@ const PatientsWaiting: React.FC = () => {
       <PatientsHead />
       <div className='tbody'>
         {
-          medicalRecordsHistory.map( (record: any) => {
-            return (
-                <MedicalRecordHistory record={record} key={record.id}/>
-            )
-          })
+          medicalRecordsHistory ?
+            (medicalRecordsHistory.map( (record: any) => {
+              return (
+                  <MedicalRecordHistory record={record} key={record.id}/>
+              )
+            }))
+          :
+            (<div className='patients-waiting-not-selected'><h3>Não há pacientes na fila de espera</h3></div>)
+
         }
       </div>
     </div>

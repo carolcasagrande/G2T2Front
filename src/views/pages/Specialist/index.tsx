@@ -8,7 +8,7 @@ import Pusher from 'pusher-js';
 import api from '../../../service/api';
 // Components
 import Navbar from '../../../components/Navbar';
-import ColumnSpecialistConsultation from '../../../components/Column-specialist-consultation';
+import ColumnSpecialistAppointment from '../../../components/Column-specialist-appointment';
 import ColumnSpecialistHistory from '../../../components/Column-specialist-history';
 // Material-ui
 import PeopleIcon from '@material-ui/icons/People';
@@ -79,7 +79,7 @@ const Specialist: React.FC = () => {
         <div className="row dashboard">
         
           { urlLocation.pathname === '/specialist/appointment' ?
-            ( <ColumnSpecialistConsultation /> )
+            ( <ColumnSpecialistAppointment /> )
             :
             ( <ColumnSpecialistHistory /> )
           }

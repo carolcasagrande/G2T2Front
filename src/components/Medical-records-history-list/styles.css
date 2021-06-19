@@ -31,3 +31,14 @@
 .active:hover {
   background-color: rgb(155, 247, 196);
 }
+
+.medicalrecords-history-list-not-selected{
+  display: flex;
+  height: 70%;
+}
+
+.medicalrecords-history-list-not-selected h3 {
+  text-align: center;
+  margin: auto;
+  color: rgb(180, 179, 179);
+}

@@ -52,7 +52,7 @@ const MedicalRecordForm: React.FC = () => {
 
   return (
     <>
-      <HomeHeader title='prontuário de atendimento' /> 
+      <HomeHeader title='Novo prontuário' /> 
       {activeCheckinToMedicalRecordShow ?    
       <div className="form-medical-record-container">
         <form onSubmit={handleSubmit} className="form-medical-record">
@@ -82,7 +82,7 @@ const MedicalRecordForm: React.FC = () => {
 
         </form>
       </div>
-      : <div className='medical-record-not-selected'><h3>"Escolha um paciente na fila de espera para atender"</h3></div>
+      : <div className='medical-record-not-selected'><h3>Escolha um paciente na fila de espera para criar um prontuário</h3></div>
       }
     </>
               
