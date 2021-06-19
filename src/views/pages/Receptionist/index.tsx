@@ -22,49 +22,10 @@ import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
 import { setReceptionistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
 //Styles
 import './styles.css';
-//import ReceptionistBody from '../../../components/Receptionist-body';
-
-interface IClient {
-  address_id: number;
-  cpf: string;
-  email: string;
-  id: number;
-  mobile: string;
-  name: string;
-  phone: string;
-  type_blood: string;
-}
-interface ISpecialist {
-  address_id: number;
-  email: string;
-  id: number;
-  mobile: string;
-  name: string;
-  phone: string;
-  profession_id: number;
-  register: string;
-}
-interface ISchedule {
-  client: {
-  address_id: number;
-  cpf: string;
-  email: string;
-  id: number;
-  mobile: string;
-  name: string;
-  phone: string;
-  type_blood: string;
-};
-  date_schedule: string;
-  date_service: string;
-  specialist: ISpecialist;
-  status_service: string;
-  time_service: string;
-} 
+import ReceptionistBody from '../../../components/Receptionist-body';
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
-  const [schedules, setSchedules] = useState<ISchedule[]>([])
 
   const dispatch = useDispatch();
   const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
@@ -74,15 +35,6 @@ const Receptionist: React.FC = () => {
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
     setExpanded(isExpanded ? panel : false);
   };
-
-  useEffect(()=> {
-    api.get('services').then(response => {
-      setSchedules(response.data)
-      console.log("@@@@")
-      console.log(schedules)
-      console.log("@@@@@")
-    })
-  }, [])
 
   // connection with mongoDB using websocket
   useEffect(() => {
@@ -146,10 +98,8 @@ const Receptionist: React.FC = () => {
 
                     <div className="header-receptionist">
 
-                      <PatientsHead />
-
                       <div className='column-body'>
-                       
+                        <ReceptionistBody />
                       </div>
 
                     </div>
@@ -179,10 +129,7 @@ const Receptionist: React.FC = () => {
                     </div>
                 </Accordion>
                 
-                {/* {schedules && schedules.map(schedule => (
-                          <p>{schedule.client}</p>
-                        ))
-                }  */}
+                
 
             </div>
         </div>        
@@ -199,7 +146,7 @@ const Receptionist: React.FC = () => {
               <CallsForm />
             </>
           }
-        </div>
+        </div> 
       </div>
     </div>
     </div>

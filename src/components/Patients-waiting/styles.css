@@ -16,5 +16,16 @@
   border-radius: 5px;
 }
 
+.patients-waiting-not-selected{
+  display: flex;
+  height: 70%;
+}
+
+.patients-waiting-not-selected h3 {
+  text-align: center;
+  margin: auto;
+  color: rgb(180, 179, 179);
+}
+
 
 

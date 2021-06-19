@@ -26,14 +26,6 @@ const PatientsBody: React.FC<Props> = ({ checkin }) => {
       </div>
       <div className="col-5 time-info">
         <div className='td'> 15 min</div>
-        <div className="icons">
-          <span aria-label="Delete">
-            <EditIcon className='icon' style={{ width: '20px' }} />
-          </span>
-          <span aria-label="Edit">
-            <DeleteIcon className='icon' style={{ width: '20px' }} />
-          </span>
-        </div>
       </div>
     </div>
   )

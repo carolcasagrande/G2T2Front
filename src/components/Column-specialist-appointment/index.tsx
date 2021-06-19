@@ -7,14 +7,10 @@ import MedicalRecordsShow from '../Medical-records-show';
 
 import './styles.css'
 
-interface Props {
-  checkins: any;
-}
-
-const ColumnSpecialistConsultation: React.FC<Props> = ({ checkins }) => (
+const ColumnSpecialistAppointment: React.FC = () => (
   <>
     <div className="column column-small">
-      <PatientsWaiting checkins={checkins} />
+      <PatientsWaiting />
     </div>
     <div className="column column-medium">
       <MedicalRecordsShow />
@@ -25,4 +21,4 @@ const ColumnSpecialistConsultation: React.FC<Props> = ({ checkins }) => (
   </>
 );
 
-export default ColumnSpecialistConsultation;
+export default ColumnSpecialistAppointment;

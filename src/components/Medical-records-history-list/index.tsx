@@ -21,14 +21,17 @@ const MedicalRecordsHistoryList: React.FC = () => {
 
   return(
     <div className="medical-records-history-container">
-      <HomeHeader title='Histórico de prontuários' />
+      <HomeHeader title='Pacientes' />
       <SearchInput />
       {
-          medicalRecordsHistory.map( (record: any) => {
+        medicalRecordsHistory ?
+          (medicalRecordsHistory.map( (record: any) => {
             return (
                 <MedicalRecordHistory record={record} key={record.id}/>
             )
-          })
+          }))
+        :
+          (<div className='medicalrecords-history-list-not-selected'><h3>Não há pacientes no seu histórico</h3></div>)
         }
     </div>
   )

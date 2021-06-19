@@ -10,7 +10,7 @@ import NavbarReducer from './navbar/navbar.reducer';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['activeMedicalRecord', 'activeCheckin', 'activeNavbar']
+  whitelist: ['medicalRecord', 'navbar', 'checkin']
 }
 
 const rootReducer = combineReducers({
