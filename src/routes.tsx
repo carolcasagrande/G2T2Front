@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import PrivateRoutes from './private.routes';
 
 import Login from './views/pages/Login';
 import Specialist from './views/pages/Specialist';
@@ -13,7 +14,7 @@ const Routes: React.FC = () => {
         <Route path="/receptionist/schedule" component={Receptionist} />
         <Route path="/receptionist/registration" component={Receptionist} />
         <Route path="/specialist/appointment" component={Specialist} />
-        <Route path="/specialist/history" component={Specialist} />
+        <PrivateRoutes path="/specialist/history" component={Specialist} />
       </Switch>
     </BrowserRouter>
   );

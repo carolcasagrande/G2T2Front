@@ -25,21 +25,13 @@ const Login: React.FC = () => {
       password: password
     }
 
-    api.post(`session`, user ).then(
+    api.post(`sessions`, user ).then(
       response => {
         localStorage.setItem('@tokenMaisha', response.data.token)
         console.log(response.data)
       }
     )
   }
-
-  useEffect(() => {
-    api.get('users').then(
-      response => {
-        console.log(response.data)
-      }
-    )
-  },[] )
 
   return (
     <div className="login">
