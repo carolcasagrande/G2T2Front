@@ -1,3 +1,12 @@
+.medical-records-container{
+  width: 85%;
+  padding: 10px 0;
+  margin: 30px auto;
+  min-height: 30vh;
+  max-height: 48vh;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
 .medical-record-history-not-selected {
   display: flex;
   height: 70%;

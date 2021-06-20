@@ -25,8 +25,8 @@ const MedicalRecordForm: React.FC = () => {
     event.preventDefault();
 
     const dataMedicalRecordHistoryToSave = {
-      history_date: new Date(),
-      history_time: new Date(),
+      history_date: moment().format('YYYY-MM-DD HH:mm:ss'),
+      history_time: moment().format('YYYY-MM-DD HH:mm:ss'),
       description: description,
       specialist_id: activeService?.specialist.id,
       medical_record_id: activeService?.medical_record.id,

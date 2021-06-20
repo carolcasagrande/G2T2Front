@@ -15,14 +15,15 @@ const SpecialistAppointment: React.FC = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const status = 'realizado'
+    const status = 'aguardando-atendimento'
     const specialist_id = '1'
+
     try {
       api.get(`services/${specialist_id}/${status}`).then(response => {
         dispatch(setServicesWaitingAppointment(response.data));
       })  
     } catch (error) {
-      prompt('Algo deu errado: Por favor recarregue a página!')
+      alert('Algo deu errado: Por favor recarregue a página!')
     }
   }, [])
 
