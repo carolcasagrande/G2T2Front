@@ -11,25 +11,26 @@ const MedicalRecordsList: React.FC = () =>{
   const activeMedicalRecords = useSelector((state: any) =>
     state.active.activePatientOrService?.medical_record.medical_records_history
   )
-  // console.log(activeMedicalRecords);
   return (
     <>
       <HomeHeader title='Histórico do paciente' />
-      {activeMedicalRecords ?
-        (
-          activeMedicalRecords.map((activeMedicalRecord: any) => {
-            return <MedicalRecord activeMedicalRecord={activeMedicalRecord} key={activeMedicalRecord.id} />
-          })
-        )
-        :
+      <div className="medical-records-container">
+        {activeMedicalRecords ?
           (
-            <div className='medical-record-history-not-selected'>
-              <h3>Selecione um paciente para ver o histórico de prontuário</h3>
-            </div>
+            activeMedicalRecords.map((activeMedicalRecord: any) => {
+              return <MedicalRecord activeMedicalRecord={activeMedicalRecord} key={activeMedicalRecord.id} />
+            })
           )
+          :
+            (
+              <div className='medical-record-history-not-selected'>
+                <h3>Selecione um paciente para ver o histórico de prontuário</h3>
+              </div>
+            )
 
-      }
-    </>  
+        }
+      </div>
+    </>
               
   );
 }

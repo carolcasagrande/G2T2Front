@@ -13,7 +13,7 @@ interface Props {
 }
 
 const MedicalRecord: React.FC<Props> = ({ activeMedicalRecord }) =>(
-  <div className="medical-records-container">
+  <div>
     <div className="medical-records-date-time">
       <div className='date-time-medical-records' >
         {moment(activeMedicalRecord.history_date).format('LL')}
