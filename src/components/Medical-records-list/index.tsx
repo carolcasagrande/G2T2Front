@@ -18,7 +18,7 @@ const MedicalRecordsList: React.FC = () =>{
       {activeMedicalRecords ?
         (
           activeMedicalRecords.map((activeMedicalRecord: any) => {
-            return <MedicalRecord activeMedicalRecord={activeMedicalRecord} />
+            return <MedicalRecord activeMedicalRecord={activeMedicalRecord} key={activeMedicalRecord.id} />
           })
         )
         :
