@@ -6,11 +6,16 @@ const INITIAL_STATE = {
 
 const ServicesReducer = (state =  INITIAL_STATE  , action) => {
   switch (action.type) {
-    case ServicesTypes.SET_SERVICES:
+    case ServicesTypes.SET_SERVICES_WAITING_APPOINTMENT:
       return {
         ...state,
-        services: action.payload
+        servicesWaitingAppointment: action.payload
       };
+      case ServicesTypes.SET_SERVICES_DONE:
+        return {
+          ...state,
+          servicesDone: action.payload
+        };
       case ServicesTypes.ACTIVE_SERVICE:
         return {
           ...state,

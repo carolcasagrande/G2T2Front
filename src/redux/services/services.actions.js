@@ -1,7 +1,12 @@
 import ServicesTypes from './services.types'
 
-export const setServices = (services) => ({
-  type: ServicesTypes.SET_SERVICES,
+export const setServicesWaitingAppointment = (services) => ({
+  type: ServicesTypes.SET_SERVICES_WAITING_APPOINTMENT,
+  payload: services
+});
+
+export const setServicesDone = (services) => ({
+  type: ServicesTypes.SET_SERVICES_DONE,
   payload: services
 });
 
