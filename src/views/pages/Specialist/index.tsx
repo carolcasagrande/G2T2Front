@@ -1,57 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-//Web-socket
-import Pusher from 'pusher-js';
-// Axios
-import api from '../../../service/api';
+
 // Components
 import Navbar from '../../../components/Navbar';
-import ColumnSpecialistAppointment from '../../../components/Column-specialist-appointment';
-import ColumnSpecialistHistory from '../../../components/Column-specialist-history';
+import SpecialistAppointment from '../../../components/Specialist-appointment';
+import SpecialistHistory from '../../../components/Specialist-history';
 // Material-ui
 import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 // Redux action
-import { setMedicalRecordActive } from '../../../redux/medical-record/medical-record.actions.js';
+import { setActive } from '../../../redux/active/active.actions.js';
 // Styles
 import './styles.css';
 
-
 const Specialist: React.FC = () => {
-  const [checkins, setCheckins] = useState<Array<any>>([]);
-  const [queue, setQueue] =  useState<Boolean>(true);
   const dispatch = useDispatch();
   const urlLocation = useLocation<Array<{}>>();
 
-  // connection with mongoDB using websocket
-  useEffect(() => {
-    api.get('checkins/sync').then(response => {
-        setCheckins(response.data);
-        console.log(response.data)
-    })
-  }, [])
-
-  useEffect(() => {
-    const pusher = new Pusher('cde1c800fa96905d8626', {
-      cluster: 'us2'
-    });
-
-    const channel = pusher.subscribe('checkins');
-    channel.bind('inserted', (newCheckin: any) => {
-      alert(JSON.stringify(newCheckin));
-      setCheckins([...checkins, newCheckin])
-    }); 
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
-    }
-  }, [checkins])
-
   const handleClick = (tab: string) => {
-    dispatch(setMedicalRecordActive(null));
+    dispatch(setActive(null));
   };
   
   return (
@@ -79,9 +48,9 @@ const Specialist: React.FC = () => {
         <div className="row dashboard">
         
           { urlLocation.pathname === '/specialist/appointment' ?
-            ( <ColumnSpecialistAppointment /> )
+            ( <SpecialistAppointment /> )
             :
-            ( <ColumnSpecialistHistory /> )
+            ( <SpecialistHistory /> )
           }
               
         </div>
