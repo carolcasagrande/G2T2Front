@@ -12,8 +12,6 @@ import 'moment/locale/pt-br';
 
 import HomeHeader from '../Home-header';
 
-import { setCheckinActive } from '../../redux/checkin/checkin.actions.js';
-
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
@@ -46,9 +44,7 @@ const MedicalRecordForm: React.FC = () => {
       
     }
     
-    // dispatch(setCheckinActive(null));
   }
-  const dateActive = activeCheckinToMedicalRecordShow?.appointment.split(" ")
 
   return (
     <>

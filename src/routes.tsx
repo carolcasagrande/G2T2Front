@@ -10,10 +10,10 @@ const Routes: React.FC = () => {
     <BrowserRouter>
       <Switch>
         <Route path="/" exact component={Login} />
-        <Route path="/receptionist" component={Receptionist} />
+        <Route path="/receptionist/schedule" component={Receptionist} />
+        <Route path="/receptionist/registration" component={Receptionist} />
         <Route path="/specialist/appointment" component={Specialist} />
         <Route path="/specialist/history" component={Specialist} />
-
       </Switch>
     </BrowserRouter>
   );
