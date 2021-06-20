@@ -11,7 +11,7 @@ const PrivateRoutes: any = ({ component: Component, path: Path, ...rest}: any) =
     } else {
       const onlyToken: any = isLogin?.split(' ')[1]
       const tokenPayLoad : any = jwt.decode(onlyToken)
-      const expSeconds = tokenPayLoad.exp;
+      const expSeconds = tokenPayLoad?.exp;
       const timeNow = Date.now() / 1000;
   
       return timeNow > expSeconds ? false : true

@@ -28,8 +28,9 @@ const Login: React.FC = () => {
     api.post(`sessions`, user ).then(
       response => {
         localStorage.setItem('@tokenMaisha', response.data.token)
-        console.log(response.data)
       }
+    ).then(
+      
     )
   }
 
