@@ -22,13 +22,24 @@ interface IPatient {
   name: string, 
 }
 
+interface ICalls {
+  date_schedule: string;
+  date_service: string;
+	time_service: string;
+  price: string;
+  status_service: string;
+  client_id: string;
+  specialist_id: string;
+}
 const CallsForm: React.FC = () => {
+
+  const [call, setCall] = useState<ICalls>();
   const [patient, setPatient] = useState<IPatient>();
   const [cpf, setCpf] = useState('');
   const [specialist, setSpecialist] = useState('');
   const [professions, setProfessions] = useState<IProfession[]>([]);
   const [specialists, setSpecialists] = useState<ISpecialists[]>([]);
-  const [professionSelected, setProfessionSelected] = useState('');
+  const [professionSelected, setProfessionSelected] = useState('1');
   const [specialistsSelected, setSpecialistsSelected] = useState('');
   const [dateScheduling, setDateScheduling] = useState('');
   const [dateCalls, setDateCalls] = useState('');
@@ -36,30 +47,30 @@ const CallsForm: React.FC = () => {
   const [value, setValue] = useState('');
   const [status, setStatus] = useState('');
 
-
   async function handleCalls(event: React.FormEvent<HTMLFormElement>){
     event?.preventDefault()
 
-    const dataCalls = {
-      date_schedule: dateScheduling,
+    let dataCalls = {
+      date_schedule: moment().format('YYYY-MM-DD HH:mm:ss'),
       date_service: dateCalls,
-      time_service: hour,
+      time_service: `${dateCalls} ${hour}`,
       price: value,
       status_service: status,
       client_id: patient?.id,
-      specialist_id: 29,
+      specialist_id: specialistsSelected,
     }
 
     try {
       const response = await api.post('services', dataCalls);
           
-      if(response.status === 201) toast.success("Agendamento realizado com sucesso")
+      if(response.status === 201){
+        toast.success("Agendamento realizado com sucesso")
+      } 
+
 
     } catch (error) {
 
-      const errors = error.response.data?.erro
-
-      errors.map((erro: string) => toast.error(erro));
+      toast.error(error)
       
     }
   }
@@ -79,7 +90,7 @@ const CallsForm: React.FC = () => {
     
     const clientExist = clients?.data.find((client: any)=> client.cpf === cpf )
     if(!clientExist){
-      toast.error('Cpf inválido.')
+      toast.error('CPF inválido.')
     }
 
     setPatient(clientExist)
@@ -87,20 +98,18 @@ const CallsForm: React.FC = () => {
   }
 
   useEffect(() => {
-    api.get('specialists').then(
+    api.get(`specialists/${professionSelected}`).then(
       response => {
         const specialistsFilter = response?.data
-        .filter( (specialist:any ) => 
-          specialist.profession.id === Number(professionSelected)
-        );
         setSpecialists(specialistsFilter)
       }
     )
   }, [professionSelected])
+
+  
   return (<>
-      <input className="calls-input" type="text" placeholder={moment().format('llll')} value={moment().format('llll')} />
+    <input className="calls-input" type="text" placeholder={moment().format('llll')} value={moment().format('YYYY-MM-DD HH:mm:ss')} />
     <form onSubmit={handleCalls}  className="form-calls">
-      {/* <p>{moment().format('llll')}</p> */}
 
       <div className="data-calls">
         <div >
@@ -120,19 +129,24 @@ const CallsForm: React.FC = () => {
           <div>
 
             <h4>Especialidade:</h4>
-            <select name="Especialidade" id="status" className="profession-select" value={professionSelected} onChange={(e) => setProfessionSelected(e.target.value)}  required>
+            <select name="Especialidade" id="status" className="profession-select" 
+              value={professionSelected} 
+              onChange={(e) => setProfessionSelected(e.target.value)}  required
+            >
+
               {professions.map(profession => (
                 <option key={profession.id} value={profession.id}>{profession.name}</option>
-                ))}  
+              ))}  
             </select>
             {
               professionSelected &&
               <select name="Especialidade"id="status" className="specialist-select"  value={specialistsSelected} onChange={(e) => setSpecialistsSelected(e.target.value)}  required>
-                  {specialists.map(specialist => (
-                    <option key={specialist.id} value={specialist.id}>{specialist.name}</option>
-                    ))}
+                <option value="">----</option>
+                {specialists.map(specialist => (
+                  <option key={specialist.id} value={specialist.id}>{specialist.name}</option>
+                ))}
                       
-                </select>
+              </select>
             }
           </div>
         </div>
@@ -140,7 +154,7 @@ const CallsForm: React.FC = () => {
           <div>
             <h4>Atendimento:</h4>
             <div className="date-time">
-              <input type="date" id="date" placeholder="Data:" value={dateCalls} onChange={(e) => setDateCalls(e.target.value)} required />
+              <input type="date" id="date" placeholder="Data:" value={dateCalls} onChange={(e) => setDateCalls(e.target.value ) } required />
 
               <input type="time" id="time" placeholder="Hora:" value={hour} onChange={(e) => setHour(e.target.value)} required />
               
