@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MedicalRecordsHistoryList from '../Medical-records-history-list';
+import ClientsHistory from '../Clients-history';
 import MedicalRecordsShow from '../Medical-records-show';
 
 import './styles.css'
@@ -8,7 +8,7 @@ import './styles.css'
 const ColumnSpecialistHistory: React.FC = () => (
   <>
     <div className="column column-large">
-      <MedicalRecordsHistoryList />
+      <ClientsHistory />
     </div>
     <div className="column column-large">
       <MedicalRecordsShow />

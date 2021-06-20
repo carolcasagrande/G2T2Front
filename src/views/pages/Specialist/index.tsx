@@ -15,6 +15,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 // Redux action
 import { setMedicalRecordActive } from '../../../redux/medical-record/medical-record.actions.js';
+import { setServices } from '../../../redux/services/services.actions.js';
 // Styles
 import './styles.css';
 
@@ -25,30 +26,15 @@ const Specialist: React.FC = () => {
   const dispatch = useDispatch();
   const urlLocation = useLocation<Array<{}>>();
 
-  // connection with mongoDB using websocket
   useEffect(() => {
-    api.get('checkins/sync').then(response => {
-        setCheckins(response.data);
-        console.log(response.data)
-    })
-  }, [])
-
-  useEffect(() => {
-    const pusher = new Pusher('cde1c800fa96905d8626', {
-      cluster: 'us2'
-    });
-
-    const channel = pusher.subscribe('checkins');
-    channel.bind('inserted', (newCheckin: any) => {
-      alert(JSON.stringify(newCheckin));
-      setCheckins([...checkins, newCheckin])
-    }); 
-
-    return () => {
-      channel.unbind_all();
-      channel.unsubscribe();
+    try {
+      api.get('services').then(response => {
+        dispatch(setServices(response.data));
+      })  
+    } catch (error) {
+      prompt('Algo deu errado: Por favor recarregue a página!')
     }
-  }, [checkins])
+  }, [])
 
   const handleClick = (tab: string) => {
     dispatch(setMedicalRecordActive(null));

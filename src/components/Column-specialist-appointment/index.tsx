@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PatientsWaiting from '../Patients-waiting';
+import WaitingList from '../Waiting-list';
 import MedicalRecordForm from '../Medical-record-form';
 import MedicalRecordsShow from '../Medical-records-show';
 
@@ -10,7 +10,7 @@ import './styles.css'
 const ColumnSpecialistAppointment: React.FC = () => (
   <>
     <div className="column column-small">
-      <PatientsWaiting />
+      <WaitingList />
     </div>
     <div className="column column-medium">
       <MedicalRecordsShow />

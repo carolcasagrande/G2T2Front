@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 
 import edit from '../../img/pencil.png';
 import trash from '../../img/trash.png';
@@ -6,26 +7,17 @@ import trash from '../../img/trash.png';
 import api from '../../service/api';
 
 import PatientsHead from '../Patients-head';
-import MedicalRecordHistory from '../Medical-record-history';
+import WaitingListPatient from '../Waiting-list-patient';
 
 import HomeHeader from '../Home-header';
 
 
 import './styles.css'
 
-const PatientsWaiting: React.FC = () => {
+const WaitingList: React.FC = () => {
   const [medicalRecordsHistory, setMedicalRecordsHistory] = useState<Array<any>>([])
+  const services = useSelector((state: any) => state.services.services)
 
-  useEffect(() => {
-    try {
-      api.get('medical-records-history').then(response => {
-        setMedicalRecordsHistory(response.data)
-        console.log(response.data);
-      })  
-    } catch (error) {
-      prompt('Algo deu errado: Por favor recarregue a página!')
-    }
-  }, [])
   
   return(
 
@@ -34,10 +26,10 @@ const PatientsWaiting: React.FC = () => {
       <PatientsHead />
       <div className='tbody'>
         {
-          medicalRecordsHistory ?
-            (medicalRecordsHistory.map( (record: any) => {
+          services ?
+            (services.map( (service: any) => {
               return (
-                  <MedicalRecordHistory record={record} key={record.id}/>
+                  <WaitingListPatient service={service} key={service.id}/>
               )
             }))
           :
@@ -51,5 +43,5 @@ const PatientsWaiting: React.FC = () => {
 
 };
 
-export default PatientsWaiting;
+export default WaitingList;
 
