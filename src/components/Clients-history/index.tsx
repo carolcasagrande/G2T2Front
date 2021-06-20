@@ -8,7 +8,7 @@ import SearchInput from '../Search-input';
 import Client from '../Client';
 
 const ClientsHistory: React.FC = () => {
-  const services = useSelector((state: any) => state.services.services)
+  const services = useSelector((state: any) => state.services.servicesDone)
 
   return(
     <div className="medical-records-history-container">
@@ -16,13 +16,18 @@ const ClientsHistory: React.FC = () => {
       <SearchInput />
       {
         services ?
-          (services.map( (service: any) => {
+          (
+            services.map( (service: any) => {
             return (
                 <Client service={service} key={service.id}/>
             )
           }))
         :
-          (<div className='medicalrecords-history-list-not-selected'><h3>Não há pacientes no seu histórico</h3></div>)
+          (
+            <div className='medicalrecords-history-list-not-selected'>
+              <h3>Não há pacientes no seu histórico</h3>
+            </div>
+          )
         }
     </div>
   )

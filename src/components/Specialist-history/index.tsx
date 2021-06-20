@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import api from '../../service/api';
 
 import ClientsHistory from '../Clients-history';
-import MedicalRecordsShow from '../Medical-records-show';
+import MedicalRecordsList from '../Medical-records-list';
 
 import { setServicesDone } from '../../redux/services/services.actions.js';
 
@@ -31,7 +31,7 @@ const SpecialistHistory: React.FC = () => {
       <ClientsHistory />
     </div>
     <div className="column column-large">
-      <MedicalRecordsShow />
+      <MedicalRecordsList />
     </div>
     </>
   )

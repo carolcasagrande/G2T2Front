@@ -1,0 +1,11 @@
+.medical-record-history-not-selected {
+  display: flex;
+  height: 70%;
+}
+
+.medical-record-history-not-selected h3{
+  text-align: center;
+  margin: auto;
+  color:rgb(180, 179, 179);
+}
+

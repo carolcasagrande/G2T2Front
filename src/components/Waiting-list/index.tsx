@@ -1,24 +1,16 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-
-import edit from '../../img/pencil.png';
-import trash from '../../img/trash.png';
-
-import api from '../../service/api';
+import React from 'react';
+import { useSelector } from 'react-redux'
 
 import PatientsHead from '../Patients-head';
 import WaitingListPatient from '../Waiting-list-patient';
 
 import HomeHeader from '../Home-header';
 
-
 import './styles.css'
 
 const WaitingList: React.FC = () => {
-  const [medicalRecordsHistory, setMedicalRecordsHistory] = useState<Array<any>>([])
-  const services = useSelector((state: any) => state.services.services)
+  const services = useSelector((state: any) => state.services.servicesWaitingAppointment)
 
-  
   return(
 
     <div className='patients-table'>

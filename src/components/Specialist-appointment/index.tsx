@@ -5,7 +5,7 @@ import api from '../../service/api';
 
 import WaitingList from '../Waiting-list';
 import MedicalRecordForm from '../Medical-record-form';
-import MedicalRecordsShow from '../Medical-records-show';
+import MedicalRecordsList from '../Medical-records-list';
 
 import { setServicesWaitingAppointment } from '../../redux/services/services.actions.js';
 
@@ -32,7 +32,7 @@ const SpecialistAppointment: React.FC = () => {
       <WaitingList />
     </div>
     <div className="column column-medium">
-      <MedicalRecordsShow />
+      <MedicalRecordsList />
     </div>
     <div className="column column-medium">
       <MedicalRecordForm />
