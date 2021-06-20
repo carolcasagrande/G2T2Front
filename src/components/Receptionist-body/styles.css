@@ -24,9 +24,11 @@
 .icons {
   display: none;
 }
+
 .icon {
   margin-bottom: 8px;
 }
+
 .icon:active {
   position:relative;
   top:2px;
@@ -34,4 +36,13 @@
 
 .row-table:hover .icons{
   display: block;
+}
+
+.btnSave{
+  background-color: none;
+  border: none;
+}
+
+.btnSave:hover{
+  background-color: none;
 }

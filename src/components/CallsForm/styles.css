@@ -72,7 +72,7 @@ nav img{
     margin-top: 10px;
   }
 
-  select{
+  .select-calls{
     border-radius: 100px;
     height: 30px;
     width: 115px;
@@ -89,8 +89,20 @@ nav img{
     margin: 0 auto;
     border: none;
     border-radius: 100px;
-    display: block;
+    display: block; 
+    cursor: pointer;
+    transition: 0.5s;
+    color: #ffffff;
+    background: #13132B;
+   
   }
+
+  .btnPatientForm:hover{
+    color: #13132B;
+    background: #D40054;
+    font-weight: 300;
+  } 
+
   .profession-select{
     width: 170px;
     margin-right: 40px;
