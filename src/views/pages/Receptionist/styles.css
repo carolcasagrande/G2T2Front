@@ -11,17 +11,22 @@
     justify-content: space-between;
     width: 100%;
   }
+
+  /* .column-receptionist-status{
+    height: 70vh;
+    width: 75vh;
+  } */
   
   .column-receptionist {
     border-radius: 10px;
     background-color: #F7F3F7;
-    height: 76vh;
-    width: 75vh;
+    height: 71vh;
+    width: 75vh; 
     box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
     margin: 0 auto;
   }
   .column-1{
-    height: 60vh;
+    height: 56vh;
   }
   .column-2{
     height: 12vh;
@@ -30,7 +35,7 @@
 
   .column-body {
     overflow-y: scroll;
-    height: 25vh;
+    height: 40vh;
     width: 100%;
     margin-right: 5px;
   }

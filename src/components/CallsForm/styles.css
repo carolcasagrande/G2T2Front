@@ -75,7 +75,7 @@ nav img{
   select{
     border-radius: 100px;
     height: 30px;
-    width: 80px;
+    width: 115px;
     padding: 0 3px;
     color: #ffffff;
     background: #13132B;
@@ -92,11 +92,11 @@ nav img{
     display: block;
   }
   .profession-select{
-    width: 150px;
+    width: 170px;
     margin-right: 40px;
   }
   .specialist-select{
-    width: 200px;
+    width: 215px;
   }
   .info-patient{
     display: flex;

@@ -65,6 +65,13 @@ const CallsForm: React.FC = () => {
           
       if(response.status === 201){
         toast.success("Agendamento realizado com sucesso")
+        setValue("")
+        setCpf("") 
+        setProfessionSelected("")
+        setSpecialistsSelected("")
+        setDateCalls("")
+        setHour("")
+        setStatus("")
       } 
 
 
@@ -109,7 +116,7 @@ const CallsForm: React.FC = () => {
   
   return (<>
     <input className="calls-input" type="text" placeholder={moment().format('llll')} value={moment().format('YYYY-MM-DD HH:mm:ss')} />
-    <form onSubmit={handleCalls}  className="form-calls">
+    <form onSubmit={handleCalls}  className="form-calls" >
 
       <div className="data-calls">
         <div >

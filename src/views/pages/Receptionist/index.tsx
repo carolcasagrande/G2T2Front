@@ -79,7 +79,7 @@ const Receptionist: React.FC = () => {
     </Navbar>
     <div className="container container-home">      
       <div className="dashboard">        
-        <div>
+        <div className="column-receptionist-status">
             <div className="column-receptionist column-2">
                 <HomeHeader title='Olá, Maria!' />
             </div>
@@ -105,7 +105,7 @@ const Receptionist: React.FC = () => {
                     </div>
 
                 </Accordion>
-                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
+                {/* <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
                   <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel2bh-content"
@@ -127,7 +127,7 @@ const Receptionist: React.FC = () => {
                         <p>Nenhum paciente agendado para hoje.</p>
                       }
                     </div>
-                </Accordion>
+                </Accordion> */}
                 
                 
 
