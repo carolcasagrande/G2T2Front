@@ -19,14 +19,11 @@ const Routes: React.FC = () => {
         <Route 
           exact 
           path='/'
-          render={() => currentUser ?
-            (currentUser.user_profile === 'Especialista' ?
-              <Redirect to='/specialist/appointment' />
-            :
-              <Redirect to='/receptionist/schedule' />
+          render={() => currentUser ? (currentUser.user_profile === 'Especialista' ?
+              <Redirect to='/specialist/appointment' /> : <Redirect to='/receptionist/schedule' />
             )
             : (<Login />)}
-            />
+        />
         <PrivateRoutes path="/receptionist/schedule" component={Receptionist} />
         <PrivateRoutes path="/receptionist/registration" component={Receptionist} />
         <PrivateRoutes path="/specialist/appointment" component={Specialist} />

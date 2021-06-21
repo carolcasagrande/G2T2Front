@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 //web-socket
 import Pusher from 'pusher-js';
 //axios
@@ -24,6 +25,10 @@ import ReceptionistBody from '../../../components/Receptionist-body';
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
   const urlLocation = useLocation<Array<{}>>();
+  const history = useHistory();
+  const currentUser = useSelector((state: any) => state.user.currentUser)
+  
+  if (currentUser?.user_profile === 'Especialista') history.push("/specialist/appointment")
   
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
