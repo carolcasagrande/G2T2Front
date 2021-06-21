@@ -113,7 +113,7 @@ const ReceptionistBody: React.FC = () => {
         
         schedules.map(schedule => (
         <>      
-        
+        {active !== schedule.id &&
           <div onClick={() => handleActive(schedule)} className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
             <p className="col-2" >{schedule.client?.name}</p>
             <p className="col-2" >{schedule.specialist?.name}</p>
@@ -127,6 +127,7 @@ const ReceptionistBody: React.FC = () => {
               </span>
             </div>
           </div>
+          }
           {active === schedule.id &&
           <form onSubmit={handleEditRow}  >
             <div className="row-table" key={schedule.id} style={{display: 'flex'}}>
