@@ -1,12 +1,11 @@
 import React, { useState, useEffect, FocusEvent } from 'react';
-import calls from '../../../img/doctor5.jpg';
 import moment from 'moment';
 import 'moment/locale/pt-br';
-
 import { FiArrowRight } from 'react-icons/fi';
 import "./styles.css"
 import api from '../../service/api'
 import { toast } from 'react-toastify';
+import { cpfMask } from '../../utils/Mask';
 
 interface IProfession {
   id: string, 
@@ -33,15 +32,12 @@ interface ICalls {
 }
 const CallsForm: React.FC = () => {
 
-  const [call, setCall] = useState<ICalls>();
   const [patient, setPatient] = useState<IPatient>();
   const [cpf, setCpf] = useState('');
-  const [specialist, setSpecialist] = useState('');
   const [professions, setProfessions] = useState<IProfession[]>([]);
   const [specialists, setSpecialists] = useState<ISpecialists[]>([]);
   const [professionSelected, setProfessionSelected] = useState('1');
   const [specialistsSelected, setSpecialistsSelected] = useState('');
-  const [dateScheduling, setDateScheduling] = useState('');
   const [dateCalls, setDateCalls] = useState('');
   const [hour, setHour] = useState('');
   const [value, setValue] = useState('');
@@ -123,7 +119,7 @@ const CallsForm: React.FC = () => {
           <h4>Paciente:</h4>
           <div className="info-patient">
             <h4>CPF</h4>
-            <input type="text" id="cpfPatient" placeholder="CPF do Paciente" value={cpf} onBlur={handleCpf} onChange={(e) => setCpf(e.target.value)} required />
+            <input type="text" id="cpfPatient" placeholder="CPF do Paciente" value={cpf} onBlur={handleCpf} onChange={(e) => setCpf(cpfMask(e.target.value))} required />
           </div>
           {patient && 
           <div className="info-patient">
