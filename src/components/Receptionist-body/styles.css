@@ -46,3 +46,7 @@
 .btnSave:hover{
   background-color: none;
 }
+
+.inputEdit{
+  border: none;
+}
