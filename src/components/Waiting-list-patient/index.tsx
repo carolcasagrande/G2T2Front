@@ -1,6 +1,8 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
+
+import moment from 'moment';
+import 'moment/locale/pt-br';
 
 import './styles.css';
 
@@ -28,8 +30,8 @@ const WaitingListPatient: React.FC<Props> = ({ service }) => {
         {service.client.name.slice(0, 22)}
         {service.client.name > 21 ? '...' : ""}
       </div>
-      <div className="time-info col-5">
-        <div className='td'> 15 min</div>
+      <div className="waiting-list-time-info col-5">
+        <div className='waiting-list-td'> {moment.utc(service.date_schedule).format('HH:mm')} </div>
       </div>
       
     </div>

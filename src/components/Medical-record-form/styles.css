@@ -67,6 +67,15 @@
     display: block;
     bottom: 15vh;
     margin: 20px auto;
+    color: #ffffff;
+    background: #13132B;
+    transition: 0.5s;
+}
+
+.btn-medical-record:hover {
+  color: #13132B;
+  background: #D40054;
+  font-weight: 300;
 }
 
 .medical-record-material-icon {
