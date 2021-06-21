@@ -1,12 +1,15 @@
 import React, {  useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { FiArrowRight } from 'react-icons/fi';
 import Lottie from 'react-lottie';
 import './style.css'
 import api from '../../../service/api';
 import lottieLogin from '../../../assets/animation/lottie.json'
 
-const Login: React.FC = () => {
+import { setCurrentUser } from '../../../redux/user/user.action.js'
 
+const Login: React.FC = () => {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
@@ -19,27 +22,23 @@ const Login: React.FC = () => {
   
   function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault()
+    setLogin('')
+    setPassword('')
 
     const user = {
       login: login,
       password: password
     }
 
-    api.post(`session`, user ).then(
+    api.post(`sessions`, user ).then(
       response => {
         localStorage.setItem('@tokenMaisha', response.data.token)
-        console.log(response.data)
+        dispatch(setCurrentUser(response.data.user))
       }
+    ).then(
+      
     )
   }
-
-  useEffect(() => {
-    api.get('users').then(
-      response => {
-        console.log(response.data)
-      }
-    )
-  },[] )
 
   return (
     <div className="login">
