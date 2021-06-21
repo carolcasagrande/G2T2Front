@@ -127,12 +127,9 @@ yarn
 Funcionalidades que o sistema oferece:
 - Cadastro de Clientes
 - Cadastro de Atendimentos e de Históricos de Prontuários
-- Pesquisa
-	- Busca de atendimentos por Status, Paciente, Especialista, Data de agendamento ou de atendimento
 - Criação de Agendamentos
 - Criptografia de senhas
 - Sistema de autenticação de usuário
-- Validação de requisições
 - Mensagens de erro 
 - Documentação dos endpoints
 
