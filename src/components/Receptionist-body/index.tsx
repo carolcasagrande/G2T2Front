@@ -63,41 +63,34 @@ const ReceptionistBody: React.FC = () => {
   const [statusEdit, setStatusEdit] = useState('');
   const [scheduleEdit, setScheduleEdit ] = useState<any>({});
   const [dateCallsEdit, setDateCallsEdit] = useState('');
-
-  console.log("1111111111", scheduleEdit)
+  const [updateSchedule, setUpdateSchedule] = useState('');
   
     function handleEditRow(event: FormEvent<HTMLFormElement>) {
     event?.preventDefault()
-    console.log("2222222222", scheduleEdit)
-    console.log('3333333', scheduleEdit.date_schedule )
 
      let dataCallsEdit = {
       date_schedule: scheduleEdit.date_schedule,
-      date_service: dateCallsEdit,
-      time_service: `${dateCallsEdit} ${hourEdit}`,
+      date_service: dateCallsEdit?dateCallsEdit:scheduleEdit.date_service,
+      time_service: hourEdit?`${dateCallsEdit} ${hourEdit}`:scheduleEdit.time_service,
       price: scheduleEdit.price,
-      status_service: statusEdit,
+      status_service: statusEdit?statusEdit:scheduleEdit.status_service,
       client_id:scheduleEdit.client_id ,
       specialist_id: scheduleEdit.specialist_id,
     }
      
-    console.log("@@@@@@", dataCallsEdit)
-    //acionar api para update
+    api.put(`services/${scheduleEdit.id}`, dataCallsEdit).then(response => {
+      setUpdateSchedule(response.data)
+    })
+    
   }
 
-  async function handleBeforeEditRow(schedule: any){
-    await setScheduleEdit(schedule)
-    setDateCallsEdit(scheduleEdit.date_service)
-  }
+ 
 
   useEffect(()=> {
     api.get('services').then(response => {
       setSchedules(response.data)
-      console.log("########")
-      console.log(schedules)
-      console.log("##########")
     })
-  }, [])
+  }, [updateSchedule])
 
  
   return(
@@ -105,9 +98,10 @@ const ReceptionistBody: React.FC = () => {
     <div>
       <div className="row-title" style={{display: 'flex'}}>
         <p className="col-3">Paciente</p>
+        <p className="col-3">Especialista</p>
         <p className="col-2">Atendimento</p>
-        <p className="col-2">Horário</p>
-        <p className="col-2">Status</p>
+        <p className="col-1">Horário</p>
+        <p className="col-1">Status</p>
         <p className="col-2">Agendamento</p>
       </div>
       {
@@ -115,11 +109,12 @@ const ReceptionistBody: React.FC = () => {
         schedules.map(schedule => (
         <>      
         
-          <div onClick={() => handleBeforeEditRow(schedule)} className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
+          <div onClick={() => setScheduleEdit(schedule)} className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
             <p className="col-3" >{schedule.client?.name}</p>
+            <p className="col-3" >{schedule.specialist?.name}</p>
             <p className="col-2">{moment.utc(schedule.date_service).format('DD-MM-YY')}</p> 
-            <p className="col-2">{moment.utc(schedule.time_service).format('HH:mm')}</p>
-            <p className="col-2">{schedule.status_service.toLowerCase()}</p>
+            <p className="col-1">{moment.utc(schedule.time_service).format('HH:mm')}</p>
+            <p className="col-1">{schedule.status_service.toLowerCase()}</p>
             <p className="col-2">{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
             <div className="icons">
               <span aria-label="Edit">
