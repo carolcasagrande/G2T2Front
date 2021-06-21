@@ -5,3 +5,8 @@ export const setCurrentUser = (user) => ({
   payload: user
 });
 
+export const logoutCurrentUser = () => ({
+  type: UserTypes.LOGOUT_USER,
+  payload: null
+});
+

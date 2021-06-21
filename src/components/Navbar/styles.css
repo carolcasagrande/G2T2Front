@@ -27,4 +27,12 @@
   border-right: 6px solid #d40054;
 }
 
+.btn-logout {
+  background-color: transparent;
+  font-size: 0.7rem;
+  font-weight: bold;
+  position: absolute;
+  bottom: 1vh;
+}
+
 

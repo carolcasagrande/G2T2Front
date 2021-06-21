@@ -14,8 +14,6 @@ const Routes: React.FC = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {/* <Route path="/" exact component={Login} /> */}
-        {console.log(currentUser)}
         <Route 
           exact 
           path='/'
@@ -24,10 +22,10 @@ const Routes: React.FC = () => {
             )
             : (<Login />)}
         />
-        <PrivateRoutes path="/receptionist/schedule" component={Receptionist} />
-        <PrivateRoutes path="/receptionist/registration" component={Receptionist} />
-        <PrivateRoutes path="/specialist/appointment" component={Specialist} />
-        <PrivateRoutes path="/specialist/history" component={Specialist} />
+        <PrivateRoutes exact path="/receptionist/schedule" component={Receptionist} />
+        <PrivateRoutes exact path="/receptionist/registration" component={Receptionist} />
+        <PrivateRoutes exact path="/specialist/appointment" component={Specialist} />
+        <PrivateRoutes exact path="/specialist/history" component={Specialist} />
       </Switch>
     </BrowserRouter>
   );

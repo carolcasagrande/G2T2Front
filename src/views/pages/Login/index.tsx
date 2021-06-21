@@ -33,8 +33,6 @@ const Login: React.FC = () => {
     api.post(`sessions`, user ).then(
       response => {
         localStorage.setItem('@tokenMaisha', response.data.token)
-        localStorage.setItem('@roleMaisha', response.data.user.user_profile)
-        localStorage.setItem('@specialistIdMaisha', response.data.user.specialist_id)
         dispatch(setCurrentUser(response.data.user))
       }
     ).then(
