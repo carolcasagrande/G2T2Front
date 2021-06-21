@@ -65,6 +65,13 @@ const CallsForm: React.FC = () => {
           
       if(response.status === 201){
         toast.success("Agendamento realizado com sucesso")
+        setValue("")
+        setCpf("") 
+        setProfessionSelected("")
+        setSpecialistsSelected("")
+        setDateCalls("")
+        setHour("")
+        setStatus("")
       } 
 
 
@@ -109,7 +116,7 @@ const CallsForm: React.FC = () => {
   
   return (<>
     <input className="calls-input" type="text" placeholder={moment().format('llll')} value={moment().format('YYYY-MM-DD HH:mm:ss')} />
-    <form onSubmit={handleCalls}  className="form-calls">
+    <form onSubmit={handleCalls}  className="form-calls" >
 
       <div className="data-calls">
         <div >
@@ -129,7 +136,7 @@ const CallsForm: React.FC = () => {
           <div>
 
             <h4>Especialidade:</h4>
-            <select name="Especialidade" id="status" className="profession-select" 
+            <select name="Especialidade" id="status" className="profession-select select-calls" 
               value={professionSelected} 
               onChange={(e) => setProfessionSelected(e.target.value)}  required
             >
@@ -140,7 +147,7 @@ const CallsForm: React.FC = () => {
             </select>
             {
               professionSelected &&
-              <select name="Especialidade"id="status" className="specialist-select"  value={specialistsSelected} onChange={(e) => setSpecialistsSelected(e.target.value)}  required>
+              <select name="Especialidade"id="status" className="specialist-select select-calls"  value={specialistsSelected} onChange={(e) => setSpecialistsSelected(e.target.value)}  required>
                 <option value="">----</option>
                 {specialists.map(specialist => (
                   <option key={specialist.id} value={specialist.id}>{specialist.name}</option>
@@ -159,7 +166,7 @@ const CallsForm: React.FC = () => {
               <input type="time" id="time" placeholder="Hora:" value={hour} onChange={(e) => setHour(e.target.value)} required />
               
               <div className="value-status">
-                <select name="status" id="status" value={status} onChange={(e) => setStatus(e.target.value)} required>
+                <select name="status" id="status" className="select-calls" value={status} onChange={(e) => setStatus(e.target.value)} required>
                     <option value="status">Status</option>
                     <option value="AGENDADO">Agendado</option>
                     <option value="REALIZADO">Realizado</option>

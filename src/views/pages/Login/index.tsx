@@ -57,7 +57,7 @@ const Login: React.FC = () => {
             <h1>Faça seu Login</h1>
             <input type="text" id="login" placeholder="Digite o seu login" value={login} onChange={(e) => setLogin(e.target.value)} required />
             <input type="password" id="senha" placeholder="Digite sua senha"  value={password} onChange={(e) => setPassword(e.target.value)} required  />
-            <button type="submit">Acessar <FiArrowRight size={25} /></button>
+            <button className="btn-login" type="submit">Acessar <FiArrowRight size={25} /></button>
           </form>
         </div>
         </div>

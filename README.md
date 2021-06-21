@@ -1,5 +1,5 @@
 # Afya Labs : )
-## Sistema de Atendimento Médico :hospital:
+## Sistema de Atendimento Médico 
 
 ## 📑 Sobre
 <p>Projeto Acadêmico realizado junto com Afya Educacional e Gama Academy, onde foi desenvolvido uma aplicação de uma clínica de atendimento médico, onde é possível realizar o cadastro do paciente, agendamento dos atendimentos, registrar novo prontuário e consultar histórico do prontuário. </p>
@@ -116,7 +116,7 @@ yarn
 </br>
 </br>
 
-## 🎨 Protótipo inicial
+## 🎨 Protótipo
 <p align="left">Nosso protótipo inicial</p>
 <a href="https://www.figma.com/file/gL6xbMilgPsOVZ668WQ7lH/DesafioGama%26Afya?node-id=0%3A1" target="_blank"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> 
 
@@ -151,7 +151,10 @@ Funcionalidades que o sistema oferece:
 <a href="https://www.figma.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> 
 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" alt="javascript" width="40" height="40"/> </a> 
 <a href="https://git-scm.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/git-scm/git-scm-icon.svg" alt="git" width="40" height="40"/> </a> 
+<a href="https://jwt.io/" target="_blank"> <img src="https://cdnlogo.com/logos/j/20/jwt.svg" alt="" width="40" height="40"/> </a> 
 </p>
+
+</br>
 
 ### Front-end
 <p align="left"> 
@@ -161,17 +164,24 @@ Funcionalidades que o sistema oferece:
 <a href="https://reactjs.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="40" height="40"/> </a> 
 <a href="https://redux.js.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="40" height="40"/> </a>
 <a href="https://www.typescriptlang.org/" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" alt="typescript" width="40" height="40"/> </a>
+<a href="https://axios-http.com/docs/intro" target="_blank"> <img src="https://cdn.icon-icons.com/icons2/2699/PNG/512/axios_logo_icon_168545.png" alt="axios" width="40" height="40"/></a> 
+<a href="https://material-ui.com/pt/" target="_blank"> <img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/material_ui_icon_137419.png" alt="material-ui" width="45" height="45"/></a> 
 </p>
+
+</br>
 
 ### Backend
 
 <p align="left">
-<a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> </a> <a href="https://www.figma.com/" target="_blank"> <img src="https://www.vectorlogo.zone/logos/figma/figma-icon.svg" alt="figma" width="40" height="40"/> </a> 
+<a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> 
 <a href="https://www.postgresql.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> </a> 
 <a href="https://jestjs.io" target="_blank"> <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>
+<a href="http://sequelize.org/" target="_blank"> <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/sequelize_original_logo_icon_146348.png" alt="sequelize" width="40" height="40"/> </a> 
+<a href="https://swagger.io/" target="_blank"> <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_swagger_icon_130134.png" alt="swagger" width="40" height="40"/></a> 
+<a href="" target="_blank"> <img src="" alt="" width="40" height="40"/>Bcrypt </a> 
+<a href="" target="_blank"> <img src="" alt="" width="40" height="40"/>Sucrase </a> 
 </p>
 
-</br>
 </br>
 </br>
 
@@ -198,9 +208,7 @@ Feito com 💜 por
 </p>
 
 </br>
-</br>
 
 <h4 align="center"> 
 	 Maisha 🚀 Concluído... 💚💗
 </h4>
-

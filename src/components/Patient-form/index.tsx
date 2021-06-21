@@ -81,7 +81,7 @@ const PatientForm: React.FC = () => {
                       <div className="cpf-sangue">
                         <input type="text" id="cpf"  placeholder="CPF"  value={patient.cpf} onChange={(e) => setPatient({...patient, cpf: e.target.value})} required />
 
-                        <select name="Tipo Sanguíneo" id="type_blood" value={patient.type_blood} onChange={(e) => setPatient({...patient, type_blood: e.target.value})}  required>
+                        <select className="select-blood" name="Tipo Sanguíneo" id="type_blood" value={patient.type_blood} onChange={(e) => setPatient({...patient, type_blood: e.target.value})}  required>
                             {blood_types.map(type => (
                               <option key={type} value={type}>{type}</option>
                             ))}     
