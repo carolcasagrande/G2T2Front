@@ -21,10 +21,15 @@
     border-radius: 10px;
     background-color: #F7F3F7;
     height: 71vh;
-    width: 75vh; 
+    width: 90vh; 
     box-shadow: -1px 4px 20px -6px rgba(0,0,0,0.60);
     margin: 0 auto;
   }
+
+  .form-schedule{
+    width: 60vh;
+  }
+
   .column-1{
     height: 56vh;
   }

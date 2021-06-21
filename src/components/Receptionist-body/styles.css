@@ -47,6 +47,29 @@
   background-color: none;
 }
 
-.inputEdit{
+.inputEdit, .select-edit{
   border: none;
+  background:#f7f3f7;
+
+}
+
+.inputEdit:hover, .select-edit:hover{
+  background: #ffffff;
+}
+
+#dateEdit{
+  margin-left: 28px;
+}
+
+#timeEdit{
+  margin-left: 16px;
+}
+
+.value-status-edit{
+  margin-left: 3px;
+}
+
+.date-schedule-edit{
+  margin-left: -14px;
+  margin-right: 36px;
 }

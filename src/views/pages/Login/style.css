@@ -54,8 +54,7 @@
   background: #F7F3F7;
 }
 
-btn-login{
-  /* margin: auto; */
+.btn-login{  
   display: flex;
   justify-content: space-between;
   cursor: pointer;
@@ -73,7 +72,7 @@ btn-login{
   margin: 15px auto;
 }
 
-btn-login:hover{
+.btn-login:hover{
   color: #13132B;
   background: #D40054;
   font-weight: 300;

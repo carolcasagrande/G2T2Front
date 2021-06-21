@@ -131,13 +131,13 @@ const ReceptionistBody: React.FC = () => {
           {active === schedule.id &&
           <form onSubmit={handleEditRow}  >
             <div className="row-table" key={schedule.id} style={{display: 'flex'}}>
-              <p >{schedule.client?.name}</p>
-              <p >{schedule.specialist?.name}</p>
-              <input className="inputEdit" type="date" id="dateEdit" placeholder="Data:" value={!dateCallsEdit?moment.utc(schedule.date_service).format('YYYY-MM-DD'):dateCallsEdit} onChange={(e) => setDateCallsEdit(e.target.value)}/>
-              <input className="inputEdit" type="time" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
+              <p  className="col-2">{schedule.client?.name}</p>
+              <p className="col-2" >{schedule.specialist?.name}</p>
+              <input className="inputEdit col-2" type="text" id="dateEdit" placeholder="Data:" value={!dateCallsEdit?moment.utc(schedule.date_service).format('YYYY-MM-DD'):dateCallsEdit} onChange={(e) => setDateCallsEdit(e.target.value)}/>
+              <input className="inputEdit col-1" type="text" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
               
-              <div className="value-status">
-                  <select name="status" id="status" value={!statusEdit?schedule.status_service.toUpperCase():statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
+              <div className="value-status-edit col-2">
+                  <select className="select-edit" name="status" id="status" value={!statusEdit?schedule.status_service.toUpperCase():statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
                       <option value="status">Status</option>
                       <option value="AGENDADO">Agendado</option>
                       <option value="REALIZADO">Realizado</option>
@@ -146,7 +146,7 @@ const ReceptionistBody: React.FC = () => {
                   </select>
                 </div>
 
-              <p >{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
+              <p className="date-schedule-edit">{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
              
               <button  type="submit" className="btnSave">
                 <div className="icons">
