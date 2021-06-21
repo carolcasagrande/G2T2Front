@@ -31,31 +31,6 @@ main{
   justify-content: center;
   align-items: center;
 } */
-
-button{
-  /* margin: auto; */
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  border: none;
-  border-radius: 100px;
-  padding: 10px 20px;
-  width: 40%;
-  /* text-align:left; */
-  transition: 0.5s;
-  color: #ffffff;
-  background: #13132B;
-  font-size: 18px;
-  font-weight: 300;
-  border: none;
-  margin: 15px auto;
-}
-
-button:hover{
-  color: #13132B;
-  background: #D40054;
-  font-weight: 300;
-}
   
 a{
     text-decoration:none;
@@ -73,3 +48,27 @@ a{
   margin: 40px auto;
   margin-top: 15vh;
 }
+/* 
+button{
+  
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 20px;
+  width: 40%;
+  transition: 0.5s;
+  color: #ffffff;
+  background: #13132B;
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  margin: 15px auto;
+}
+
+button:hover{
+  color: #13132B;
+  background: #D40054;
+  font-weight: 300;
+} */

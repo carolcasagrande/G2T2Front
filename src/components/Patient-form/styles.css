@@ -91,3 +91,12 @@ nav{
       border-radius: 100px;
       display: block;
     }
+
+    .select-blood{
+      border-radius: 100px;
+      height: 30px;
+      width: 65px;
+      padding: 0 3px;
+      color: #ffffff;
+      background: #13132B;
+    }

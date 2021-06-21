@@ -54,5 +54,27 @@
   background: #F7F3F7;
 }
 
+.btn-login{  
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  border: none;
+  border-radius: 100px;
+  padding: 10px 20px;
+  width: 40%;
+  /* text-align:left; */
+  transition: 0.5s;
+  color: #ffffff;
+  background: #13132B;
+  font-size: 18px;
+  font-weight: 300;
+  border: none;
+  margin: 15px auto;
+}
 
+.btn-login:hover{
+  color: #13132B;
+  background: #D40054;
+  font-weight: 300;
+}
 

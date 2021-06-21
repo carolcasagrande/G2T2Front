@@ -61,7 +61,7 @@ const Receptionist: React.FC = () => {
     <NavbarReceptionist />
     <div className="container container-home">      
       <div className="dashboard">        
-        <div>
+        <div className="column-receptionist-status">
             <div className="column-receptionist column-2">
                 <HomeHeader title='Olá, Maria!' />
             </div>
@@ -86,37 +86,12 @@ const Receptionist: React.FC = () => {
 
                     </div>
 
-                </Accordion>
-                <Accordion expanded={expanded === 'panel2'} onChange={handleChange('panel2')}>
-                  <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel2bh-content"
-                    id="panel2bh-header"
-                  >
-                    <div className="header-receptionist receptionist-none-border">
-                      <HomeHeader title='Checkins' />
-                    </div>
-                  </AccordionSummary>
-                    <div className='column-body header-receptionist'>
-                      <PatientsHead />
-
-                      {
-                        checkins.length > 1 ?
-                          checkins.map( (checkin: any) => {
-                              return <PatientsBody key={checkin._id} checkin={ checkin } />
-                          })
-                        :
-                        <p>Nenhum paciente agendado para hoje.</p>
-                      }
-                    </div>
-                </Accordion>
-                
-                
+                </Accordion>                
 
             </div>
         </div>        
 
-        <div className="column-receptionist">
+        <div className="column-receptionist form-schedule">
           {urlLocation.pathname === '/receptionist/registration' ?
             <>
               <HomeHeader title="Cadastro de paciente" />

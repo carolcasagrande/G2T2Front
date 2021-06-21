@@ -24,9 +24,11 @@
 .icons {
   display: none;
 }
+
 .icon {
   margin-bottom: 8px;
 }
+
 .icon:active {
   position:relative;
   top:2px;
@@ -34,4 +36,41 @@
 
 .row-table:hover .icons{
   display: block;
+}
+
+.btnSave{
+  background-color: none;
+  border: none;
+}
+
+.btnSave:hover{
+  background-color: none;
+}
+
+.inputEdit, .select-edit{
+  border: none;
+  background:#f7f3f7;
+
+}
+
+.inputEdit:hover, .select-edit:hover{
+  background: #ffffff;
+}
+
+#dateEdit{
+  margin-left: 28px;
+}
+
+#timeEdit{
+  margin-left: 16px;
+  width: 66px;
+}
+
+.value-status-edit{
+  margin-left: 3px;
+}
+
+.date-schedule-edit{
+  margin-left: -14px;
+  margin-right: 36px;
 }
