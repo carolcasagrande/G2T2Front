@@ -19,6 +19,8 @@ const Login: React.FC = () => {
   
   function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     event?.preventDefault()
+    setLogin('')
+    setPassword('')
 
     const user = {
       login: login,
@@ -28,6 +30,8 @@ const Login: React.FC = () => {
     api.post(`sessions`, user ).then(
       response => {
         localStorage.setItem('@tokenMaisha', response.data.token)
+        localStorage.setItem('@roleMaisha', response.data.user.user_profile)
+        localStorage.setItem('@specialistIdMaisha', response.data.user.specialist_id)
       }
     ).then(
       
