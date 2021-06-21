@@ -3,6 +3,7 @@ import moment from 'moment';
 import EditIcon from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
+import SearchIcon from '@material-ui/icons/Search';
 import api from '../../service/api';
 
 import './styles.css'
@@ -63,6 +64,8 @@ const ReceptionistBody: React.FC = () => {
   const [dateCallsEdit, setDateCallsEdit] = useState('');
   const [updateSchedule, setUpdateSchedule] = useState('');
   const [active, setActive] = useState(0);
+  const [searchField, setSearchField] = useState<String>('');
+  const [searchFieldSelect, setSearchFieldSelect] = useState<String>('');
   
   function handleEditRow(event: FormEvent<HTMLFormElement>) {
     event?.preventDefault()
@@ -88,8 +91,24 @@ const ReceptionistBody: React.FC = () => {
     setActive(schedule.id)
     setScheduleEdit(schedule)
   }
-
+  
+  let filteredSchedules = ''
  
+  switch (searchFieldSelect) {
+    case 'client':
+      return {
+        filteredSchedules = schedules?.filter((schedule: any) =>
+          schedule.client.name.toLowerCase().includes(searchField.toLowerCase())
+        )
+      };
+    default {
+      return {
+        filteredSchedules = schedules
+      }
+    }
+  }
+  
+  console.log('*********************************************', searchFieldSelect, '*********************************************')
 
   useEffect(()=> {
     api.get('services').then(response => {
@@ -99,6 +118,25 @@ const ReceptionistBody: React.FC = () => {
 
  
   return(
+    <>
+    <div className="search-receptionist">
+      <div className="search-input-receptionist">
+        <SearchIcon style={{color: '#13132B'}}/>
+        <input onChange={((e) => setSearchField(e.target.value))} placeholder="Buscar pacientes" />
+      </div>
+    </div>
+
+                  
+    <div className="search-receptionist-select">
+      <select className="" name="status-search" id="status-search" value={searchFieldSelect} onChange={(e) => setSearchFieldSelect(e.target.value)}>
+          <option value="client">paciente</option>
+          <option value="especialist">especialist</option>
+          <option value="atendimento">atendimento</option>
+          <option value="horário">horário</option>
+          <option value="status">status</option>
+          <option value="agendamento">agendamento</option>
+      </select>
+    </div>
     
     <div>
       <div className="row-title" style={{display: 'flex'}}>
@@ -142,7 +180,7 @@ const ReceptionistBody: React.FC = () => {
                       <option value="AGENDADO">Agendado</option>
                       <option value="REALIZADO">Realizado</option>
                       <option value="CANCELADO">Cancelado</option>
-                      <option value="AGUARDANDO-ATENDIMENTO">Aguardando</option>
+                      <option value="statusAGUARDANDO-ATENDIMENTO">Aguardando</option>
                   </select>
                 </div>
 
@@ -165,6 +203,7 @@ const ReceptionistBody: React.FC = () => {
         ))
       }
     </div>
+    </>
   )
 
 };

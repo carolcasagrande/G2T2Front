@@ -33,7 +33,7 @@ const Receptionist: React.FC = () => {
       <div className="dashboard">        
         <div className="column-receptionist-status">
             <div className="column-receptionist column-2">
-                <HomeHeader title='Olá, Maria!' />
+                <HomeHeader title={`Olá ${currentUser?.name}`} />
             </div>
             <div className="column-receptionist column-1" >
                 <Accordion className="accordion-receptionist"  expanded={expanded === 'panel1'} onChange={handleChange('panel1')}>
