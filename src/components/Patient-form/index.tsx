@@ -3,6 +3,7 @@ import axios from 'axios';
 import { FiArrowRight, FiChevronRight } from 'react-icons/fi';
 import api from '../../service/api';
 import {toast} from 'react-toastify';
+import { zipCodeMask, cpfMask, phoneMask, mobileMask } from '../../utils/Mask';
 import './styles.css';
 
 // import { Container } from './styles';
@@ -14,9 +15,9 @@ interface IAddress{
     district: string;
     city: string;
     federative_unit: string;
-  }
+}
   
-  interface IPatient{
+interface IPatient{
     name: string,
     cpf: string,
     type_blood: string,
@@ -75,11 +76,10 @@ const PatientForm: React.FC = () => {
   return (
     <div className="form-content">
                 <form onSubmit={handleLogin}  className="form-patient  ">
-                  {/* <h1>Cadastro | Paciente</h1> */}
                     <div className="data-patient">
                       <input type="text" id="name" className="input-full" placeholder="Nome completo"value={patient?.name} onChange={(e) => setPatient({...patient, name: e.target.value})} />
                       <div className="cpf-sangue">
-                        <input type="text" id="cpf"  placeholder="CPF"  value={patient.cpf} onChange={(e) => setPatient({...patient, cpf: e.target.value})} required />
+                        <input type="text" id="cpf"  placeholder="CPF"  value={patient.cpf} onChange={(e) => setPatient({...patient, cpf: cpfMask(e.target.value)})} required />
 
                         <select className="select-blood" name="Tipo Sanguíneo" id="type_blood" value={patient.type_blood} onChange={(e) => setPatient({...patient, type_blood: e.target.value})}  required>
                             {blood_types.map(type => (
@@ -88,15 +88,15 @@ const PatientForm: React.FC = () => {
                         </select>
                       </div>
                       <div className="cel-tel">
-                          <input type="text" id="tel" placeholder="Tel" value={patient.phone} onChange={(e) => setPatient({...patient, phone: e.target.value})} required  />
-                          <input type="text" id="cel" placeholder="Cel" value={patient.mobile} onChange={(e) => setPatient({...patient, mobile: e.target.value})} required  />
+                          <input type="text" id="tel" placeholder="Tel" value={patient.phone} onChange={(e) => setPatient({...patient, phone: phoneMask(e.target.value)})} required  />
+                          <input type="text" id="cel" placeholder="Cel" value={patient.mobile} onChange={(e) => setPatient({...patient, mobile: mobileMask(e.target.value)})} required  />
                       </div>
                       <input type="email" id="email" className="input-full" placeholder="Email" value={patient.email} onChange={(e) => setPatient({...patient, email: e.target.value})} />
                       
                   </div>
                   <h3>Endereço:</h3>
                   <div className="address">
-                    <input type="text" id="cep" className="input-full" placeholder="CEP"  value={cep} onBlur={handleCep} onChange={(e) => setCep(e.target.value)} required />
+                    <input type="text" id="cep" className="input-full" placeholder="CEP"  value={cep} onBlur={handleCep} onChange={(e) => setCep(zipCodeMask(e.target.value))} required />
                     <input type="text" id="logradouro" className="input-full" placeholder="Logradouro"  value={address.street} onChange={(e) => setAddress({...address, street: e.target.value})} required  />
                     <div className="compl-bairro">
                       <input type="text" id="num" placeholder="Número" value={address.street_number} onChange={(e) => setAddress({...address, street_number: e.target.value})} required  />
