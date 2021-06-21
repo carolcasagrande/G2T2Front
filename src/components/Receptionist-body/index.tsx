@@ -56,16 +56,15 @@ interface ICalls {
 
 const ReceptionistBody: React.FC = () => {
   const [schedules, setSchedules] = useState<ISchedule[]>([])
-
-  //teste
   
   const [hourEdit, setHourEdit] = useState('');
   const [statusEdit, setStatusEdit] = useState('');
   const [scheduleEdit, setScheduleEdit ] = useState<any>({});
   const [dateCallsEdit, setDateCallsEdit] = useState('');
   const [updateSchedule, setUpdateSchedule] = useState('');
+  const [active, setActive] = useState(0);
   
-    function handleEditRow(event: FormEvent<HTMLFormElement>) {
+  function handleEditRow(event: FormEvent<HTMLFormElement>) {
     event?.preventDefault()
 
      let dataCallsEdit = {
@@ -74,14 +73,20 @@ const ReceptionistBody: React.FC = () => {
       time_service: hourEdit?`${dateCallsEdit} ${hourEdit}`:scheduleEdit.time_service,
       price: scheduleEdit.price,
       status_service: statusEdit?statusEdit:scheduleEdit.status_service,
-      client_id:scheduleEdit.client_id ,
+      client_id: scheduleEdit.client_id ,
       specialist_id: scheduleEdit.specialist_id,
     }
      
     api.put(`services/${scheduleEdit.id}`, dataCallsEdit).then(response => {
       setUpdateSchedule(response.data)
     })
+    setActive(0)
     
+  }
+  
+  function handleActive(schedule: ISchedule){
+    setActive(schedule.id)
+    setScheduleEdit(schedule)
   }
 
  
@@ -97,10 +102,10 @@ const ReceptionistBody: React.FC = () => {
     
     <div>
       <div className="row-title" style={{display: 'flex'}}>
-        <p className="col-3">Paciente</p>
-        <p className="col-3">Especialista</p>
+        <p className="col-2">Paciente</p>
+        <p className="col-2">Especialista</p>
         <p className="col-2">Atendimento</p>
-        <p className="col-1">Horário</p>
+        <p className="col-2">Horário</p>
         <p className="col-1">Status</p>
         <p className="col-2">Agendamento</p>
       </div>
@@ -109,11 +114,11 @@ const ReceptionistBody: React.FC = () => {
         schedules.map(schedule => (
         <>      
         
-          <div onClick={() => setScheduleEdit(schedule)} className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
-            <p className="col-3" >{schedule.client?.name}</p>
-            <p className="col-3" >{schedule.specialist?.name}</p>
+          <div onClick={() => handleActive(schedule)} className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
+            <p className="col-2" >{schedule.client?.name}</p>
+            <p className="col-2" >{schedule.specialist?.name}</p>
             <p className="col-2">{moment.utc(schedule.date_service).format('DD-MM-YY')}</p> 
-            <p className="col-1">{moment.utc(schedule.time_service).format('HH:mm')}</p>
+            <p className="col-2">{moment.utc(schedule.time_service).format('HH:mm')}</p>
             <p className="col-1">{schedule.status_service.toLowerCase()}</p>
             <p className="col-2">{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
             <div className="icons">
@@ -122,13 +127,13 @@ const ReceptionistBody: React.FC = () => {
               </span>
             </div>
           </div>
-
+          {active === schedule.id &&
           <form onSubmit={handleEditRow}  >
-          
             <div className="row-table" key={schedule.id} style={{display: 'flex'}}>
-              <p className="col-3" >{schedule.client?.name}</p>
-              <input type="date" id="dateEdit" placeholder="Data:" value={!dateCallsEdit?moment.utc(schedule.date_service).format('YYYY-MM-DD'):dateCallsEdit} onChange={(e) => setDateCallsEdit(e.target.value) /* required */}/>
-              <input type="time" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} /* required */ />
+              <p >{schedule.client?.name}</p>
+              <p >{schedule.specialist?.name}</p>
+              <input type="date" id="dateEdit" placeholder="Data:" value={!dateCallsEdit?moment.utc(schedule.date_service).format('YYYY-MM-DD'):dateCallsEdit} onChange={(e) => setDateCallsEdit(e.target.value)}/>
+              <input type="time" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
               
               <div className="value-status">
                   <select name="status" id="status" value={!statusEdit?schedule.status_service.toUpperCase():statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
@@ -140,20 +145,12 @@ const ReceptionistBody: React.FC = () => {
                   </select>
                 </div>
 
-              <p className="col-2">{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
-              
-              
-             {/* /*  {/* Value Hidden */}{/* 
-              <input type="hidden" id="idServiceCall" name="idServiceCall" value={schedule.id} />
-              <input type="hidden" id="dateSchedule" name="dateSchedule" value={schedule.date_schedule} />
-              <input type="hidden" id="price" name="price" value={schedule.price} />
-              <input type="hidden" id="idClient" name="idClient" value={schedule.client.id} />
-              <input type="hidden" id="idSpecialist" name="idSpecialist" value={schedule.specialist.id} /> */}
-
-              <button  type="submit" className="btnSave">/
+              <p >{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
+             
+              <button  type="submit" className="btnSave">
                 <div className="icons">
                   <span aria-label="Save">
-                    <SaveIcon className='icon' style={{ width: '20px' }} />
+                    <SaveIcon className='icon-save' style={{ width: '20px' }} />
                   </span>
                 </div>
               
@@ -161,6 +158,8 @@ const ReceptionistBody: React.FC = () => {
               
             </div>
           </form>
+          
+          }
          </>
         ))
       }
