@@ -44,32 +44,52 @@ interface ISchedule {
   status_service: string;
   time_service: string;
 } 
+interface ICalls {
+  date_schedule: string;
+  date_service: string;
+	time_service: string;
+  price: string;
+  status_service: string;
+  client_id: string;
+  specialist_id: string;
+}
 
 const ReceptionistBody: React.FC = () => {
   const [schedules, setSchedules] = useState<ISchedule[]>([])
 
   //teste
-  const [dateCallsEdit, setDateCallsEdit] = useState('');
+  
   const [hourEdit, setHourEdit] = useState('');
   const [statusEdit, setStatusEdit] = useState('');
-  
-  function handleEditRow(event: FormEvent<HTMLFormElement>){
-    event?.preventDefault()
+  const [scheduleEdit, setScheduleEdit ] = useState<any>({});
+  const [dateCallsEdit, setDateCallsEdit] = useState('');
 
-/*     let dataCallsEdit = {
-      date_schedule: ,
+  console.log("1111111111", scheduleEdit)
+  
+    function handleEditRow(event: FormEvent<HTMLFormElement>) {
+    event?.preventDefault()
+    console.log("2222222222", scheduleEdit)
+    console.log('3333333', scheduleEdit.date_schedule )
+
+     let dataCallsEdit = {
+      date_schedule: scheduleEdit.date_schedule,
       date_service: dateCallsEdit,
       time_service: `${dateCallsEdit} ${hourEdit}`,
-      price: ,
+      price: scheduleEdit.price,
       status_service: statusEdit,
-      client_id: ,
-      specialist_id: ,
+      client_id:scheduleEdit.client_id ,
+      specialist_id: scheduleEdit.specialist_id,
     }
-     */
+     
+    console.log("@@@@@@", dataCallsEdit)
     //acionar api para update
   }
 
- 
+  async function handleBeforeEditRow(schedule: any){
+    await setScheduleEdit(schedule)
+    setDateCallsEdit(scheduleEdit.date_service)
+  }
+
   useEffect(()=> {
     api.get('services').then(response => {
       setSchedules(response.data)
@@ -95,7 +115,7 @@ const ReceptionistBody: React.FC = () => {
         schedules.map(schedule => (
         <>      
         
-          <div className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
+          <div onClick={() => handleBeforeEditRow(schedule)} className="row-table" key={schedule.cpf} style={{display: 'flex'}}>
             <p className="col-3" >{schedule.client?.name}</p>
             <p className="col-2">{moment.utc(schedule.date_service).format('DD-MM-YY')}</p> 
             <p className="col-2">{moment.utc(schedule.time_service).format('HH:mm')}</p>
@@ -121,19 +141,19 @@ const ReceptionistBody: React.FC = () => {
                       <option value="AGENDADO">Agendado</option>
                       <option value="REALIZADO">Realizado</option>
                       <option value="CANCELADO">Cancelado</option>
-                      <option value="AGUARDANDO_ATENDIMENTO">Aguardando</option>
+                      <option value="AGUARDANDO-ATENDIMENTO">Aguardando</option>
                   </select>
                 </div>
 
               <p className="col-2">{moment.utc(schedule.date_schedule).format('DD-MM-YY')}</p>
               
               
-              {/* Value Hidden */}
+             {/* /*  {/* Value Hidden */}{/* 
               <input type="hidden" id="idServiceCall" name="idServiceCall" value={schedule.id} />
               <input type="hidden" id="dateSchedule" name="dateSchedule" value={schedule.date_schedule} />
               <input type="hidden" id="price" name="price" value={schedule.price} />
               <input type="hidden" id="idClient" name="idClient" value={schedule.client.id} />
-              <input type="hidden" id="idSpecialist" name="idSpecialist" value={schedule.specialist.id} />
+              <input type="hidden" id="idSpecialist" name="idSpecialist" value={schedule.specialist.id} /> */}
 
               <button  type="submit" className="btnSave">/
                 <div className="icons">
