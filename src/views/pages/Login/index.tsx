@@ -1,12 +1,15 @@
 import React, {  useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { FiArrowRight } from 'react-icons/fi';
 import Lottie from 'react-lottie';
 import './style.css'
 import api from '../../../service/api';
 import lottieLogin from '../../../assets/animation/lottie.json'
 
-const Login: React.FC = () => {
+import { setCurrentUser } from '../../../redux/user/user.action.js'
 
+const Login: React.FC = () => {
+  const dispatch = useDispatch();
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
 
@@ -32,6 +35,7 @@ const Login: React.FC = () => {
         localStorage.setItem('@tokenMaisha', response.data.token)
         localStorage.setItem('@roleMaisha', response.data.user.user_profile)
         localStorage.setItem('@specialistIdMaisha', response.data.user.specialist_id)
+        dispatch(setCurrentUser(response.data.user))
       }
     ).then(
       
