@@ -133,8 +133,8 @@ const ReceptionistBody: React.FC = () => {
             <div className="row-table" key={schedule.id} style={{display: 'flex'}}>
               <p  className="col-2">{schedule.client?.name}</p>
               <p className="col-2" >{schedule.specialist?.name}</p>
-              <input className="inputEdit col-2" type="text" id="dateEdit" placeholder="Data:" value={!dateCallsEdit?moment.utc(schedule.date_service).format('YYYY-MM-DD'):dateCallsEdit} onChange={(e) => setDateCallsEdit(e.target.value)}/>
-              <input className="inputEdit col-1" type="text" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
+              <input className="inputEdit col-2" type="date" id="dateEdit" min={moment().format('YYYY-MM-DD')} placeholder="Data:" value={!dateCallsEdit?moment.utc(schedule.date_service).format('YYYY-MM-DD'):dateCallsEdit} onChange={(e) => setDateCallsEdit(e.target.value)}/>
+              <input className="inputEdit col-1" type="time" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
               
               <div className="value-status-edit col-2">
                   <select className="select-edit" name="status" id="status" value={!statusEdit?schedule.status_service.toUpperCase():statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
