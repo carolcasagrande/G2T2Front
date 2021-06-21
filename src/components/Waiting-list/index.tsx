@@ -10,6 +10,23 @@ import './styles.css'
 
 const WaitingList: React.FC = () => {
   const services = useSelector((state: any) => state.services.servicesWaitingAppointment)
+  
+  const test = [
+    {"id":"1", "nome": "Fernando"},
+    {"id":"2", "nome": "Fernando"},
+    {"id":"3", "nome": "Roberto"}
+  ]
+  
+  const filterToMakeServicesUniqueByClient = (data: any, key: any) => {
+    return [
+      ...new Map(
+        data.map((x: any) => [key(x),x])
+      ).values()
+    ]
+  }
+  
+  const filteredServices = filterToMakeServicesUniqueByClient(services, (it: any) => it.client.id)
+    
 
   return(
 
@@ -18,8 +35,8 @@ const WaitingList: React.FC = () => {
       <PatientsHead />
       <div className='tbody'>
         {
-          services ?
-            (services.map( (service: any) => {
+          filteredServices ?
+            (filteredServices.map( (service: any) => {
               return (
                   <WaitingListPatient service={service} key={service.id}/>
               )

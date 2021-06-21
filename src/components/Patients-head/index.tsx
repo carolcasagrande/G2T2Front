@@ -11,7 +11,7 @@ const PatientsHead: React.FC = () => (
           <div className='th'>Nome</div>
         </div>
         <div className="col-5">
-          <div className='th'>Espera</div>
+          <div className='th'>Consulta</div>
         </div>
       </div>
     </div>

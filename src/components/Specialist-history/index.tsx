@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // Axios
 import api from '../../service/api';
 
@@ -12,10 +12,11 @@ import './styles.css'
 
 const SpecialistHistory: React.FC = () => {
   const dispatch = useDispatch();
+  const currentUser = useSelector((state: any) => state.user.currentUser);
 
   useEffect(() => {
     const status = 'realizado'
-    const specialist_id = '1'
+    const specialist_id = currentUser?.specialist_id
     try {
       api.get(`services/${specialist_id}/${status}`).then(response => {
         dispatch(setServicesDone(response.data));
