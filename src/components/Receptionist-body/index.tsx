@@ -55,7 +55,7 @@ interface ICalls {
   specialist_id: string;
 }
 
-const ReceptionistBody: React.FC = () => {
+const ReceptionistBody: React.FC = (): any => {
   const [schedules, setSchedules] = useState<ISchedule[]>([])
   
   const [hourEdit, setHourEdit] = useState('');
@@ -65,7 +65,7 @@ const ReceptionistBody: React.FC = () => {
   const [updateSchedule, setUpdateSchedule] = useState('');
   const [active, setActive] = useState(0);
   const [searchField, setSearchField] = useState<String>('');
-  const [searchFieldSelect, setSearchFieldSelect] = useState<String>('');
+  const [searchFieldSelect, setSearchFieldSelect] = useState('');
   
   function handleEditRow(event: FormEvent<HTMLFormElement>) {
     event?.preventDefault()
@@ -86,58 +86,20 @@ const ReceptionistBody: React.FC = () => {
     setActive(0)
     
   }
+
+  useEffect(() => {
+    api.get('services').then(response => {
+      setSchedules(response.data)
+    })
+  }, [updateSchedule])
   
   function handleActive(schedule: ISchedule){
     setActive(schedule.id)
     setScheduleEdit(schedule)
   }
   
-  let filteredSchedules = ''
  
-  switch (searchFieldSelect) {
-    case 'client':
-      return {
-        filteredSchedules = schedules?.filter((schedule: any) =>
-          schedule.client.name.toLowerCase().includes(searchField.toLowerCase())
-        )
-      };
-    default {
-      return {
-        filteredSchedules = schedules
-      }
-    }
-  }
-  
-  console.log('*********************************************', searchFieldSelect, '*********************************************')
-
-  useEffect(()=> {
-    api.get('services').then(response => {
-      setSchedules(response.data)
-    })
-  }, [updateSchedule])
-
- 
-  return(
-    <>
-    <div className="search-receptionist">
-      <div className="search-input-receptionist">
-        <SearchIcon style={{color: '#13132B'}}/>
-        <input onChange={((e) => setSearchField(e.target.value))} placeholder="Buscar pacientes" />
-      </div>
-    </div>
-
-                  
-    <div className="search-receptionist-select">
-      <select className="" name="status-search" id="status-search" value={searchFieldSelect} onChange={(e) => setSearchFieldSelect(e.target.value)}>
-          <option value="client">paciente</option>
-          <option value="especialist">especialist</option>
-          <option value="atendimento">atendimento</option>
-          <option value="horário">horário</option>
-          <option value="status">status</option>
-          <option value="agendamento">agendamento</option>
-      </select>
-    </div>
-    
+  return(    
     <div>
       <div className="row-title" style={{display: 'flex'}}>
         <p className="col-2">Paciente</p>
@@ -175,7 +137,7 @@ const ReceptionistBody: React.FC = () => {
               <input className="inputEdit col-1" type="time" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
               
               <div className="value-status-edit col-2">
-                  <select className="select-edit" name="status" id="status" value={!statusEdit?schedule.status_service.toUpperCase():statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
+                  <select className="select-edit" name="status" id="status" value={!statusEdit ? schedule.status_service.toUpperCase() : statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
                       <option value="status">Status</option>
                       <option value="AGENDADO">Agendado</option>
                       <option value="REALIZADO">Realizado</option>
@@ -203,7 +165,6 @@ const ReceptionistBody: React.FC = () => {
         ))
       }
     </div>
-    </>
   )
 
 };
