@@ -3,6 +3,7 @@ import moment from 'moment';
 import EditIcon from '@material-ui/icons/Edit';
 import SaveIcon from '@material-ui/icons/Save';
 import DeleteIcon from '@material-ui/icons/Delete';
+import SearchIcon from '@material-ui/icons/Search';
 import api from '../../service/api';
 
 import './styles.css'
@@ -54,7 +55,7 @@ interface ICalls {
   specialist_id: string;
 }
 
-const ReceptionistBody: React.FC = () => {
+const ReceptionistBody: React.FC = (): any => {
   const [schedules, setSchedules] = useState<ISchedule[]>([])
   
   const [hourEdit, setHourEdit] = useState('');
@@ -63,6 +64,8 @@ const ReceptionistBody: React.FC = () => {
   const [dateCallsEdit, setDateCallsEdit] = useState('');
   const [updateSchedule, setUpdateSchedule] = useState('');
   const [active, setActive] = useState(0);
+  const [searchField, setSearchField] = useState<String>('');
+  const [searchFieldSelect, setSearchFieldSelect] = useState('');
   
   function handleEditRow(event: FormEvent<HTMLFormElement>) {
     event?.preventDefault()
@@ -83,23 +86,20 @@ const ReceptionistBody: React.FC = () => {
     setActive(0)
     
   }
+
+  useEffect(() => {
+    api.get('services').then(response => {
+      setSchedules(response.data)
+    })
+  }, [updateSchedule])
   
   function handleActive(schedule: ISchedule){
     setActive(schedule.id)
     setScheduleEdit(schedule)
   }
-
+  
  
-
-  useEffect(()=> {
-    api.get('services').then(response => {
-      setSchedules(response.data)
-    })
-  }, [updateSchedule])
-
- 
-  return(
-    
+  return(    
     <div>
       <div className="row-title" style={{display: 'flex'}}>
         <p className="col-2">Paciente</p>
@@ -137,12 +137,12 @@ const ReceptionistBody: React.FC = () => {
               <input className="inputEdit col-1" type="time" id="timeEdit" placeholder="Hora:" value={!hourEdit?moment.utc(schedule.time_service).format('HH:mm'):hourEdit} onChange={(e) => setHourEdit(e.target.value)} />
               
               <div className="value-status-edit col-2">
-                  <select className="select-edit" name="status" id="status" value={!statusEdit?schedule.status_service.toUpperCase():statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
+                  <select className="select-edit" name="status" id="status" value={!statusEdit ? schedule.status_service.toUpperCase() : statusEdit} onChange={(e) => setStatusEdit(e.target.value)} required>
                       <option value="status">Status</option>
                       <option value="AGENDADO">Agendado</option>
                       <option value="REALIZADO">Realizado</option>
                       <option value="CANCELADO">Cancelado</option>
-                      <option value="AGUARDANDO-ATENDIMENTO">Aguardando</option>
+                      <option value="statusAGUARDANDO-ATENDIMENTO">Aguardando</option>
                   </select>
                 </div>
 

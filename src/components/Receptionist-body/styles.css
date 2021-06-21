@@ -68,9 +68,35 @@
 
 .value-status-edit{
   margin-left: 3px;
+  width: 14%;
 }
 
 .date-schedule-edit{
   margin-left: -14px;
   margin-right: 36px;
+}
+
+.search {
+  background-color: #F6F6F6;
+  border-bottom:1 px solid #EEE;
+  padding: 5px 15px;
+}
+
+.search-input-receptionist {
+  background-color: #FFF;
+  height: 35px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  margin: 5px 30px;
+  width: 80%;
+}
+
+.search-input-receptionist input {
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background-color: transparent;
+  margin-left: 10px;
 }
