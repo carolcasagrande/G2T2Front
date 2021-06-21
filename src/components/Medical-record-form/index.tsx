@@ -12,53 +12,50 @@ import 'moment/locale/pt-br';
 
 import HomeHeader from '../Home-header';
 
-import { setCheckinActive } from '../../redux/checkin/checkin.actions.js';
-
 import CalendarTodayIcon from '@material-ui/icons/CalendarToday';
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 
 const MedicalRecordForm: React.FC = () => {
   const dispatch = useDispatch();
-  const activeCheckinToMedicalRecordShow = useSelector((state: any) => state.checkin.activeCheckin)
+  const activeService = useSelector((state: any) =>  state.active.activePatientOrService)
   const [description, setDescription] = useState('');
+  
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const dataMedicalRecordHistory = {
-      history_date: moment().format('LL'),
-      history_time: moment().format('LT'),
+    const dataMedicalRecordHistoryToSave = {
+      history_date: moment().format('YYYY-MM-DD HH:mm:ss'),
+      history_time: moment().format('YYYY-MM-DD HH:mm:ss'),
       description: description,
-      specialist_id: 1,
-      medical_record_id: 1,
-    }
-
-    try {
-      const response = await api.post('medical-records-history', dataMedicalRecordHistory);
-          
-      if(response.status === 201) toast.success("Prontuário salvo com sucesso")
-
-    } catch (error) {
-
-      const errors = error.response.data?.erro
-
-      errors.map((erro: string) => toast.error(erro));
-      
+      specialist_id: activeService?.specialist.id,
+      medical_record_id: activeService?.medical_record.id,
     }
     
-    // dispatch(setCheckinActive(null));
+    console.log(dataMedicalRecordHistoryToSave);
+    
+    try {
+      const response = await api.post('medical-records-history', dataMedicalRecordHistoryToSave);  
+      if (response.status === 201) toast.success("Prontuário salvo com sucesso")
+      
+    } catch (error) {
+      const errors = error.response.data?.erro
+      errors.map((erro: string) => toast.error(erro)); 
+    }
+    
   }
-  const dateActive = activeCheckinToMedicalRecordShow?.appointment.split(" ")
-
+  
   return (
     <>
       <HomeHeader title='Novo prontuário' /> 
-      {activeCheckinToMedicalRecordShow ?    
+      {activeService ?    
       <div className="form-medical-record-container">
         <form onSubmit={handleSubmit} className="form-medical-record">
 
-          <div className="patient-name">
-          {activeCheckinToMedicalRecordShow.patient}
+            <div className="patient-name">
+              <strong className='form-client-name'>
+                {activeService.client.name}
+              </strong>
           </div>
         
           <div className="date-time">
@@ -76,7 +73,7 @@ const MedicalRecordForm: React.FC = () => {
             name="description" 
             className="description" 
             placeholder="Escreva o prontuário de atendimento..."
-            onChange={(e) => console.log(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           ></textarea>      
           <button className="btn-medical-record" type="submit">Registrar </button>
 

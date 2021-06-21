@@ -1,12 +1,3 @@
-.medical-records-container{
-  width: 85%;
-  padding: 10px 0;
-  margin: 0 auto;
-  max-height: 55vh;
-  box-sizing: border-box;
-}
-  
-    
 .date-time-medical-records {
   font-size: 16px;
   padding: 3px;
@@ -23,23 +14,11 @@
 .description-medical-records{
   width: 100%;
   margin: 0 auto; 
-  height: 40vh;
   padding: 5px;
   padding-top: 10px;
-  overflow-y: scroll;
+  margin-bottom: 30px;
 }
 
 .medical-records-material-icon {
   vertical-align: baseline;
 }
-.medical-record-history-not-selected {
-  display: flex;
-  height: 70%;
-}
-
-.medical-record-history-not-selected h3{
-  text-align: center;
-  margin: auto;
-  color:rgb(180, 179, 179);
-}
-

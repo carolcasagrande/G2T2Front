@@ -1,35 +1,30 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 //web-socket
 import Pusher from 'pusher-js';
 //axios
 import api from '../../../service/api';
 //Components
 import PatientForm from '../../../components/Patient-form'
-import Navbar from '../../../components/Navbar';
 import HomeHeader from '../../../components/Home-header';
 import PatientsHead from '../../../components/Patients-head';
 import PatientsBody from '../../../components/Patients-body';
 import CallsForm from '../../../components/CallsForm';
+import NavbarReceptionist from '../../../components/Navbar-receptionist';
 //Material-ui
 import Accordion from '@material-ui/core/Accordion';
 //import AccordionDetails from '@material-ui/core/AccordionDetails';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import EventAvailableIcon from '@material-ui/icons/EventAvailable';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-//Redux action
-import { setReceptionistNavbarActive } from '../../../redux/navbar/navbar.actions.js';
+
 //Styles
 import './styles.css';
 import ReceptionistBody from '../../../components/Receptionist-body';
 
 const Receptionist: React.FC = () => {
   const [checkins, setCheckins] = useState<Array<any>>([])
-
-  const dispatch = useDispatch();
-  const activeTab = useSelector((state: any) => state.navbar.activeReceptionistNavbar);
-
+  const urlLocation = useLocation<Array<{}>>();
+  
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
   const handleChange = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
@@ -63,20 +58,7 @@ const Receptionist: React.FC = () => {
   
   return(
     <div className="nav-cards">
-    <Navbar>
-      <div onClick={() => dispatch(setReceptionistNavbarActive('scheduling'))}
-        className={activeTab === 'scheduling' ? "active-tab" : ''}
-      >
-        <EventAvailableIcon style={{ fontSize: 60, color:'#D40054' }}/> 
-        Agendar
-      </div>
-      <div onClick={() => dispatch(setReceptionistNavbarActive('registration'))}
-        className={activeTab === 'registration' ? "active-tab" : ''}
-      >
-        <AssignmentIndIcon style={{ fontSize: 60, color:'#D40054'  }}/>
-        Cadastrar
-      </div>
-    </Navbar>
+    <NavbarReceptionist />
     <div className="container container-home">      
       <div className="dashboard">        
         <div className="column-receptionist-status">
@@ -135,7 +117,7 @@ const Receptionist: React.FC = () => {
         </div>        
 
         <div className="column-receptionist">
-          {activeTab === 'registration' ?
+          {urlLocation.pathname === '/receptionist/registration' ?
             <>
               <HomeHeader title="Cadastro de paciente" />
               <PatientForm/>
