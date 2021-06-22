@@ -96,32 +96,9 @@ Documentação dos endpoints disponível na rota:
 localhost:5000/
 </br>
 </br>
-## Para iniciar o Front
+## Para acessar o Frontend
 
-```
-git clone https://github.com/carolcasagrande/G2T2Front
-```
-
-</br>
-
-Para instalar as dependências:
-
-```
-cd G2T2Front 
-```
-
-```
-yarn 
-```
-
-Para iniciar em modo de desenvolvimento:
-
-```
-yarn start
-```
-
-</br>
-</br>
+[Link do frontend do projeto](http://g2t2-front.herokuapp.com/specialist/appointment)
 
 ## 📅 Gestão do Projeto
 <p align="left">Nosso trello</p>
