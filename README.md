@@ -21,10 +21,6 @@
 </br>
 
 ## 🚀 Acesso ao projeto:
-<p> Inserir o link do site do projeto </p>
-
-</br>
-</br>
 
 ## Aconselhado ter instalado NODEJS versão 14.x em diante.
 
@@ -33,7 +29,7 @@ Para instalar o node [clique aqui](https://nodejs.org/en/)
 
 Para iniciar o projeto:
 
-## Para iniciar o Backend
+## Para iniciar o Backend : link para o repositório do [backend](https://github.com/ofernandovegano/g2t2-backend)
 
 ```
 git clone https://github.com/ofernandovegano/g2t2-backend.git
@@ -55,13 +51,24 @@ yarn
 Edite o arquivo "env.example" com as configurações do seu banco de dados:
 
 ```
-DB_DIALECT=tipo_do_seu_banco
-DB_HOST=seu_host
-DB_USERNAME=seu_username
-DB_PASSWORD=sua_senha
-DB_DATABASE=nome_do_banco
+DB_DIALECT=postgres
+DB_HOST=<seu_host>
+DB_USERNAME=<seu_username>
+DB_PASSWORD=<sua_senha>
+DB_DATABASE=<nome_do_banco>
+MONGO_PASSWORD=<sua_senha>
+PUSHER_ID=<seu_id>
+PUSHER_KEY=<sua_chave>
+PUSHER_SECRET=<sua_senha>
+PUSHER_CLUSTER=<seu_cluster>
 ```
 </br>
+
+Crie seu banco de dados
+
+```
+ yarn sequelize db:create
+```
 
 Rode as migrations
 
@@ -106,6 +113,13 @@ cd G2T2Front
 ```
 yarn 
 ```
+
+Para iniciar em modo de desenvolvimento:
+
+```
+yarn start
+```
+
 </br>
 </br>
 
