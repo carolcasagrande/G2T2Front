@@ -98,7 +98,27 @@ localhost:5000/
 </br>
 ## Para acessar o Frontend
 
-[Link do frontend do projeto](http://g2t2-front.herokuapp.com/specialist/appointment)
+
+```
+git clone https://github.com/carolcasagrande/G2T2Front
+```
+
+Para instalar as dependências:
+
+```
+cd g2t2Front
+```
+
+```
+yarn 
+```
+
+Para iniciar o app
+
+```
+start
+```
+
 
 ## 📅 Gestão do Projeto
 <p align="left">Nosso trello</p>
