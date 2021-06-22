@@ -20,7 +20,7 @@ const WaitingList: React.FC = () => {
   const filterToMakeServicesUniqueByClient = (data: any, key: any) => {
     return [
       ...new Map(
-        data.map((x: any) => [key(x),x])
+        data?.map((x: any) => [key(x),x])
       ).values()
     ]
   }

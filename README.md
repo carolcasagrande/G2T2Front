@@ -11,7 +11,7 @@
  <p> Maisha tem como objetivo trazer mais agilidade para o dia a dia da clínica, facilitando o acesso e organização dos dados do paciente quando necessário, tanto pelo usuário Recepcionista e também para o usuário Especialista. É uma aplicação que busca contribuir com a produtividade do usuário, atribuindo várias telas em apenas uma, sendo um grande diferencial. Além disso, a segurança das informações é de extrema importância e levado muito em consideração. 
  </p>
  <p>
- - Recepcionista: poderá realizar cadastro de paciente, verificar agendamentos lançados, realizar novos agendamentos e fazer consultas
+ - Recepcionista: poderá realizar cadastro de paciente, verificar agendamentos lançados, realizar novos agendamentos.
  </p>
  <p>
  - Especialista: poderá verificar sua agenda e seus respectivos pacientes, terá acesso ao histórico dos prontuários dos seus pacientes e poderá fazer anotações referente aos novos atendimentos.
@@ -123,21 +123,13 @@ yarn
 </br>
 </br>
 
-## 🌟 Telas
-
-</br>
-</br>
-
 ## ⚙️ Funcionalidades
 Funcionalidades que o sistema oferece:
 - Cadastro de Clientes
 - Cadastro de Atendimentos e de Históricos de Prontuários
-- Pesquisa
-	- Busca de atendimentos por Status, Paciente, Especialista, Data de agendamento ou de atendimento
 - Criação de Agendamentos
 - Criptografia de senhas
 - Sistema de autenticação de usuário
-- Validação de requisições
 - Mensagens de erro 
 - Documentação dos endpoints
 
@@ -175,11 +167,11 @@ Funcionalidades que o sistema oferece:
 <p align="left">
 <a href="https://expressjs.com" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/express/express-original-wordmark.svg" alt="express" width="40" height="40"/> 
 <a href="https://www.postgresql.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original-wordmark.svg" alt="postgresql" width="40" height="40"/> </a> 
-<a href="https://jestjs.io" target="_blank"> <img src="https://www.vectorlogo.zone/logos/jestjsio/jestjsio-icon.svg" alt="jest" width="40" height="40"/> </a> <a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>
+<a href="https://nodejs.org" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original-wordmark.svg" alt="nodejs" width="40" height="40"/> </a>
 <a href="http://sequelize.org/" target="_blank"> <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/sequelize_original_logo_icon_146348.png" alt="sequelize" width="40" height="40"/> </a> 
 <a href="https://swagger.io/" target="_blank"> <img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_swagger_icon_130134.png" alt="swagger" width="40" height="40"/></a> 
-<a href="" target="_blank"> <img src="" alt="" width="40" height="40"/>Bcrypt </a> 
-<a href="" target="_blank"> <img src="" alt="" width="40" height="40"/>Sucrase </a> 
+<p><a href="" target="_blank"> Bcrypt </a></p> 
+<p><a href="" target="_blank"> Sucrase </a></p>
 </p>
 
 </br>
