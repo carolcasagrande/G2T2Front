@@ -116,7 +116,7 @@ yarn
 Para iniciar o app
 
 ```
-start
+yarn start
 ```
 
 
