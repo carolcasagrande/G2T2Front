@@ -23,7 +23,7 @@ nav img{
     align-items: center;
     box-sizing: border-box;
   }
-  
+/*   
   .form-calls{
     width:430px;
     height:400px;
@@ -33,37 +33,36 @@ nav img{
     flex-direction:column;
     justify-content: space-around; 
     
-  }
+  } */
   
-  .form-calls h1{
+/*   .form-calls h1{
     font-size: 30px;
     font-weight:300px;
     margin:18px 0 30px;
     text-align: center;
     color: #13132B;
-  }
+  } */
 
-  .form-calls h4{
+/*   .form-calls h4{
     font-size: 20px;
     font-weight: bold;
     margin:15px 0 5px;
     color: #13132B;
-  }      
+  }  */     
       
-  .form-calls input{
+ /*  .form-calls input{
     display: initial;
     border: none;
     font-size: 16px;
     padding: 3px;
     font-weight: 300;
     text-align:left;
-    /* width: 120%; */
     margin: 8px 10px; 
     border-bottom: 2px solid #666;
     transition: 0.5s; 
     background:#f7f3f7;
 
-  } 
+  }  */
 
   
   .value-status{
@@ -109,7 +108,7 @@ nav img{
   .specialist-select{
     width: 215px;
   }
-  .info-patient{
+/*   .info-patient{
     display: flex;
   }
   .info-patient input{
@@ -117,15 +116,7 @@ nav img{
   }
   .info-patient h4{
     font-size: 18px;
-  }
+  } */
   .date-hour, .specialist-full{
     display: flex;
-  }
-  .calls-input{
-    border: none;
-    background:#f7f3f7;
-    width: 100%;
-    text-align: center;
-    color: #7e7d7d;
-    margin-top: 5px;
   }

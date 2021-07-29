@@ -3,6 +3,7 @@ import moment from 'moment';
 import 'moment/locale/pt-br';
 import { FiArrowRight } from 'react-icons/fi';
 import "./styles.css"
+import { InputCalls, FormCalls, InfoPatient, Patient } from './styles';
 import api from '../../service/api'
 import { toast } from 'react-toastify';
 import { cpfMask } from '../../utils/Mask';
@@ -111,23 +112,24 @@ const CallsForm: React.FC = () => {
 
   
   return (<>
-    <input className="calls-input" type="text" placeholder={moment().format('llll')} value={moment().format('YYYY-MM-DD HH:mm:ss')} />
-    <form onSubmit={handleCalls}  className="form-calls" >
+    {/* <Container> */}
+    <InputCalls type="text" placeholder={moment().format('llll')} value={moment().format('YYYY-MM-DD HH:mm:ss')} />
+    <FormCalls onSubmit={handleCalls} >
 
-      <div className="data-calls">
-        <div >
+      <div>
+        <Patient >
           <h4>Paciente:</h4>
-          <div className="info-patient">
+          <InfoPatient className="info-patient">
             <h4>CPF</h4>
             <input type="text" id="cpfPatient" placeholder="CPF do Paciente" value={cpf} onBlur={handleCpf} onChange={(e) => setCpf(cpfMask(e.target.value))} required />
-          </div>
+          </InfoPatient>
           {patient && 
-          <div className="info-patient">
+          <InfoPatient className="info-patient">
             <h4>Nome</h4>
             <input type="text" id="namePatient" placeholder="Nome do Paciente" value={patient.name} required />
-          </div>
+          </InfoPatient>
           }
-        </div>
+        </Patient>
         <div className="specialist-full">
           <div>
 
@@ -177,7 +179,8 @@ const CallsForm: React.FC = () => {
               
       </div>         
       <button className="btnPatientForm" type="submit">Cadastrar <FiArrowRight size={18} /></button>
-    </form>
+    </FormCalls>
+    {/* </Container> */}
     </>
   )
 }
