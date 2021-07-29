@@ -22,7 +22,7 @@ const Routes: React.FC = () => {
             )
             : (<Login />)}
         />
-        <PrivateRoutes exact path="/receptionist/schedule" component={Receptionist} />
+        <Route exact path="/receptionist/schedule" component={Receptionist} />
         <PrivateRoutes exact path="/receptionist/registration" component={Receptionist} />
         <PrivateRoutes exact path="/specialist/appointment" component={Specialist} />
         <PrivateRoutes exact path="/specialist/history" component={Specialist} />
